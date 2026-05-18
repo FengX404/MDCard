@@ -2,6 +2,24 @@
   "name": "mdcard",
   "version": "1.0.0",
   "description": "Markdown to beautiful card images with glassmorphism design",
+  "author": "rouguangruye",
+  "license": "MIT",
+  "homepage": "https://mdcard.rouguang.top/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rouguangruye/MDCard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rouguangruye/MDCard/issues"
+  },
+  "keywords": [
+    "markdown",
+    "card",
+    "image",
+    "glassmorphism",
+    "html2canvas",
+    "converter"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

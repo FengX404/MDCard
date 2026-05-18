@@ -8,6 +8,8 @@ MDCard 采用毛玻璃 (Glassmorphism) 设计语言，支持深色 / 浅色 / �
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+**[在线演示](https://mdcard.rouguang.top/)**
+
 ## 功能
 
 - **Markdown 智能分页** — 自动按行边界分页，不截断文字，支持 `---` 强制分页
