@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDCard - Markdown 生成精美卡片</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="mc">
+        <header class="mc__toolbar">
+            <div class="mc__brand">
+                <span class="mc__brand-icon">🃏</span>
+                <span class="mc__brand-text">MDCard</span>
+            </div>
+            <div class="mc__appearance" id="mc-appearance">
+                <button class="mc__appearance-btn" data-mode="dark" title="深色">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <button class="mc__appearance-btn" data-mode="light" title="浅色">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <button class="mc__appearance-btn" data-mode="system" title="跟随系统">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </button>
+            </div>
+            <a class="mc__btn mc__btn--ghost mc__github" href="https://github.com/rouguangruye/MDCard" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.245.615 1.035 1.59 1.41 2.37 1.41.405 0 .81-.105 1.17-.285-.135-.885-.54-1.71-1.08-2.34-2.775-.345-5.67-1.395-5.67-6.195 0-1.365.495-2.49 1.29-3.36-.135-.315-.585-1.59.135-3.3 0 0 1.05-.33 3.45 1.29a11.93 11.93 0 016-1.605c2.04 0 4.08.54 6 1.605 2.4-1.635 3.45-1.29 3.45-1.29.72 1.71.27 2.985.135 3.3.81.87 1.29 1.995 1.29 3.36 0 4.815-2.91 5.85-5.685 6.195.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <div class="mc__toolbar-actions">
+                <button class="mc__btn mc__btn--ghost" id="mc-toggle-drawer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                    样式
+                </button>
+                <select class="mc__select" id="mc-format">
+                    <option value="portrait">3:4 竖版</option>
+                    <option value="story">9:16 长图</option>
+                    <option value="square">1:1 方形</option>
+                    <option value="wide">16:9 宽屏</option>
+                </select>
+                <button class="mc__btn mc__btn--primary" id="mc-export-png" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    PNG
+                </button>
+                <button class="mc__btn mc__btn--secondary" id="mc-export-jpg" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    JPG
+                </button>
+            </div>
+            <div class="mc__toolbar-status" id="mc-status"></div>
+        </header>
+
+        <main class="mc__workspace">
+            <section class="mc__editor mc__glass">
+                <textarea class="mc__editor-input" id="mc-markdown" placeholder="# 在此输入标题&#10;&#10;用 Markdown 编写内容...&#10;&#10;- **粗体** 和 *斜体*&#10;- 列表和 > 引用&#10;&#10;用 --- 单独一行强制分页"></textarea>
+            </section>
+
+            <section class="mc__preview" id="mc-preview">
+                <div class="mc__preview-empty" id="mc-preview-empty">
+                    <div class="mc__preview-empty-icon">📝</div>
+                    <p>输入 Markdown 即可预览卡片</p>
+                </div>
+                <div class="mc__preview-cards" id="mc-cards"></div>
+            </section>
+        </main>
+
+        <aside class="mc__drawer" id="mc-drawer">
+            <div class="mc__drawer-overlay" id="mc-drawer-overlay"></div>
+            <div class="mc__drawer-panel mc__glass">
+                <div class="mc__drawer-header">
+                    <h3 class="mc__drawer-title">样式设置</h3>
+                    <button class="mc__btn mc__btn--icon" id="mc-close-drawer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="mc__drawer-body">
+                    <div class="mc__group">
+                        <h4 class="mc__group-title">主题</h4>
+                        <div class="mc__theme-grid" id="mc-theme-grid"></div>
+                    </div>
+                    <div class="mc__group">
+                        <h4 class="mc__group-title">排版</h4>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">标题</label>
+                            <input class="mc__slider" type="range" id="mc-h1" min="10" max="30" value="20">
+                            <span class="mc__slider-val" id="mc-h1-val">20</span>
+                        </div>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">副标题</label>
+                            <input class="mc__slider" type="range" id="mc-h2" min="10" max="30" value="18">
+                            <span class="mc__slider-val" id="mc-h2-val">18</span>
+                        </div>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">三级标题</label>
+                            <input class="mc__slider" type="range" id="mc-h3" min="10" max="30" value="16">
+                            <span class="mc__slider-val" id="mc-h3-val">16</span>
+                        </div>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">正文</label>
+                            <input class="mc__slider" type="range" id="mc-body" min="10" max="30" value="14">
+                            <span class="mc__slider-val" id="mc-body-val">14</span>
+                        </div>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">行高</label>
+                            <input class="mc__slider" type="range" id="mc-lh" min="1" max="2.5" step="0.1" value="1.4">
+                            <span class="mc__slider-val" id="mc-lh-val">1.4</span>
+                        </div>
+                    </div>
+                    <div class="mc__group">
+                        <h4 class="mc__group-title">颜色</h4>
+                        <div class="mc__color-row">
+                            <label class="mc__color-label">背景</label>
+                            <input class="mc__color-input" type="color" id="mc-bg" value="#1e1b4b">
+                        </div>
+                        <div class="mc__color-row">
+                            <label class="mc__color-label">标题</label>
+                            <input class="mc__color-input" type="color" id="mc-header-c" value="#e0e7ff">
+                        </div>
+                        <div class="mc__color-row">
+                            <label class="mc__color-label">正文</label>
+                            <input class="mc__color-input" type="color" id="mc-body-c" value="#c7d2fe">
+                        </div>
+                    </div>
+                    <div class="mc__group">
+                        <h4 class="mc__group-title">间距</h4>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">内边距</label>
+                            <input class="mc__slider" type="range" id="mc-pad" min="20" max="100" value="40">
+                            <span class="mc__slider-val" id="mc-pad-val">40</span>
+                        </div>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">上下留白</label>
+                            <input class="mc__slider" type="range" id="mc-my" min="0" max="80" value="20">
+                            <span class="mc__slider-val" id="mc-my-val">20</span>
+                        </div>
+                    </div>
+                    <div class="mc__group">
+                        <h4 class="mc__group-title">边框</h4>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">粗细</label>
+                            <input class="mc__slider" type="range" id="mc-bw" min="0" max="16" value="0">
+                            <span class="mc__slider-val" id="mc-bw-val">0</span>
+                        </div>
+                        <div class="mc__color-row">
+                            <label class="mc__color-label">颜色</label>
+                            <input class="mc__color-input" type="color" id="mc-bc" value="#818cf8">
+                        </div>
+                    </div>
+                    <div class="mc__group">
+                        <h4 class="mc__group-title">水印</h4>
+                        <div class="mc__slider-row">
+                            <label class="mc__slider-label">文字</label>
+                            <input class="mc__text-input" type="text" id="mc-watermark" placeholder="留空关闭" maxlength="20">
+                        </div>
+                    </div>
+                    <div class="mc__group mc__group--actions">
+                        <button class="mc__btn mc__btn--ghost mc__btn--block" id="mc-reset">重置默认</button>
+                        <button class="mc__btn mc__btn--secondary mc__btn--block" id="mc-share-config">分享配置</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="mc__toast" id="mc-toast"></div>
+    </div>
+
+    <script type="module" src="./app/main.js"></script>
+</body>
+</html>

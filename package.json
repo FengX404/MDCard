@@ -1,0 +1,16 @@
+{
+  "name": "mdcard",
+  "version": "1.0.0",
+  "description": "Markdown to beautiful card images with glassmorphism design",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  }
+}
