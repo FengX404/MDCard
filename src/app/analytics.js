@@ -1,4 +1,4 @@
 import { inject } from '@vercel/analytics';
 
-// Initialize Vercel Analytics
+// Initialize Vercel Web Analytics
 inject();
