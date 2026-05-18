@@ -44,6 +44,7 @@ const dom = {
     my: $('mc-my'),     myV: $('mc-my-val'),
     bw: $('mc-bw'),     bwV: $('mc-bw-val'),
     bc: $('mc-bc'),
+    br: $('mc-br'),     brV: $('mc-br-val'),
     watermark: $('mc-watermark'),
 };
 
@@ -67,6 +68,7 @@ function readDomSettings() {
     opts.my = +dom.my.value;
     opts.bw = +dom.bw.value;
     opts.bc = dom.bc.value;
+    opts.br = +dom.br.value;
     opts.watermark = dom.watermark.value;
 }
 
@@ -83,6 +85,7 @@ function writeDomSettings() {
     dom.my.value = opts.my;   dom.myV.textContent = opts.my;
     dom.bw.value = opts.bw;   dom.bwV.textContent = opts.bw;
     dom.bc.value = opts.bc;
+    dom.br.value = opts.br;   dom.brV.textContent = opts.br;
     dom.watermark.value = opts.watermark;
 }
 
@@ -299,6 +302,7 @@ function bindEvents() {
         [dom.pad, dom.padV, 'pad'],
         [dom.my, dom.myV, 'my'],
         [dom.bw, dom.bwV, 'bw'],
+        [dom.br, dom.brV, 'br'],
     ];
 
     for (const [input, display, key] of sliders) {

@@ -22,6 +22,7 @@ export function applyCardVars(cardEl, s) {
         '--c-my': s.my + 'px',
         '--c-bw': s.bw + 'px',
         '--c-bc': s.bc,
+        '--c-br': s.br + 'px',
     };
     for (const [prop, val] of Object.entries(map)) {
         cardEl.style.setProperty(prop, val);

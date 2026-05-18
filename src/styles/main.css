@@ -356,12 +356,13 @@ body {
     --c-my: 20px;
     --c-bw: 0px;
     --c-bc: #818cf8;
+    --c-br: 0px;
 
     padding: calc(var(--c-pad) + var(--c-my)) var(--c-pad);
     overflow: hidden;
     background: var(--c-bg);
     border: var(--c-bw) solid var(--c-bc);
-    border-radius: var(--mc-radius-md);
+    border-radius: var(--c-br);
     box-sizing: border-box;
     position: relative;
 }

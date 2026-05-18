@@ -14,6 +14,7 @@ export const RANGES = {
     pad:    { min: 20, max: 100 },
     my:     { min: 0, max: 80 },
     bw:     { min: 0, max: 16 },
+    br:     { min: 0, max: 50 },
 };
 
 export const DEFAULTS = {
@@ -22,5 +23,6 @@ export const DEFAULTS = {
     bg: '#1e1b4b', headC: '#e0e7ff', bodyC: '#c7d2fe',
     pad: 40, my: 20,
     bw: 0, bc: '#818cf8',
+    br: 0,
     watermark: '',
 };
