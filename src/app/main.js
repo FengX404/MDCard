@@ -5,6 +5,7 @@ import { paginateMarkdown } from './paginator.js';
 import { renderToImage, triggerDownload, dataUrlToBlob } from './renderer.js';
 import { showToast } from './toast.js';
 import JSZip from 'jszip';
+import './analytics.js';
 
 marked.setOptions({ breaks: true, gfm: true });
 
