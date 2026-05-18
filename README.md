@@ -94,6 +94,12 @@ src/
     └── toast.js           # Toast 通知
 ```
 
+## 关注作者
+
+- 博客：[blog.rouguang.top](https://blog.rouguang.top/)
+- 小红书：[@揉光入野](https://www.xiaohongshu.com/user/profile/1043817685)
+- 公众号：![公众号二维码](./assets/wechat-qrcode.jpg)
+
 ## License
 
 [MIT](LICENSE)
