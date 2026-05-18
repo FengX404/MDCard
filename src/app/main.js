@@ -1,3 +1,4 @@
+import './analytics.js';
 import PALETTES from './palettes.js';
 import { FORMATS, DEFAULTS } from './config.js';
 import { createDefaults, cloneSettings, applyCardVars } from './settings.js';
