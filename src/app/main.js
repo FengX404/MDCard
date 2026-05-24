@@ -5,10 +5,19 @@ import { createDefaults, cloneSettings, applyCardVars } from './settings.js';
 import { paginateMarkdown } from './paginator.js';
 import { renderToImage, triggerDownload, dataUrlToBlob } from './renderer.js';
 import { showToast } from './toast.js';
+import { setupImageUpload, resolveMarkdown } from './image-upload.js';
 import JSZip from 'jszip';
 import './analytics.js';
 
 marked.setOptions({ breaks: true, gfm: true });
+
+const mdRenderer = new marked.Renderer();
+mdRenderer.image = function ({ href, title, text }) {
+    const alt = text || '';
+    const src = href || '';
+    return `<div class="md-img-wrap"><img src="${src}" alt="${alt}" /></div>`;
+};
+marked.setOptions({ renderer: mdRenderer });
 
 let opts = createDefaults();
 let paletteIdx = 0;
@@ -122,7 +131,7 @@ function closeDrawer() { dom.drawer.classList.remove('mc__drawer--open'); }
 
 function refresh() {
     readDomSettings();
-    const md = dom.markdown.value;
+    const md = resolveMarkdown(dom.markdown.value);
     const fmt = dom.format.value;
     pages = paginateMarkdown(md, fmt, opts);
 
@@ -330,6 +339,8 @@ function bindEvents() {
     }
 
     dom.watermark.addEventListener('input', debouncedRefresh);
+
+    setupImageUpload(dom.markdown, debouncedRefresh);
 
     window.addEventListener('beforeunload', persist);
 }

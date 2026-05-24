@@ -37,6 +37,31 @@ npm run build
 
 构建产物输出到 `dist/` 目录。
 
+## Docker 部署
+
+### 方式一：docker-compose（推荐）
+
+```bash
+docker-compose up -d
+```
+
+访问 http://localhost:8080
+
+### 方式二：手动构建
+
+```bash
+docker build -t mdcard:latest .
+docker run -d -p 8080:80 --name mdcard mdcard:latest
+```
+
+### 方式三：使用预构建镜像
+
+```bash
+docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
+```
+
+> 如果你 fork 了项目并自行构建推送，将 `rouguangruye` 替换为你的 GitHub 用户名。
+
 ## 使用说明
 
 1. 在左侧编辑器输入 Markdown 内容

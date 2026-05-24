@@ -415,6 +415,21 @@ body {
 .mc__card-body td { padding: 0.3em 0.6em; border-bottom: 1px solid var(--mc-td-border); }
 .mc__card-body hr { border: none; margin: 0.8em 0; }
 
+.mc__card-body .md-img-wrap {
+    margin: 0.8em 0;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    line-height: 0;
+}
+.mc__card-body .md-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
 .mc__card-watermark {
     position: absolute;
     bottom: 8px;
@@ -793,4 +808,101 @@ body {
 .mc__appearance-btn--active {
     background: var(--mc-accent-soft);
     color: var(--mc-accent);
+}
+
+.mc__crop-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.mc__crop-dialog {
+    background: var(--mc-bg-mid);
+    border: 1px solid var(--mc-glass-border);
+    border-radius: var(--mc-radius-lg);
+    padding: 24px;
+    width: 520px;
+    max-width: 92vw;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mc__crop-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mc-text-primary);
+    margin: 0;
+}
+
+.mc__crop-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--mc-radius-sm);
+    background: rgba(0, 0, 0, 0.3);
+    cursor: grab;
+    touch-action: none;
+}
+
+.mc__crop-container:active {
+    cursor: grabbing;
+}
+
+.mc__crop-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.mc__crop-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mc__crop-zoom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.mc__crop-zoom-label {
+    font-size: 0.8rem;
+    color: var(--mc-text-secondary);
+}
+
+.mc__crop-zoom-slider {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.mc__crop-zoom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--mc-accent);
+    cursor: pointer;
+}
+
+.mc__crop-btns {
+    display: flex;
+    gap: 8px;
 }

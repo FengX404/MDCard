@@ -46,6 +46,13 @@ function splitByRenderedHeight(container, html, maxH) {
 
     if (totalH <= maxH) return [html];
 
+    const imgBounds = [];
+    const imgWraps = container.querySelectorAll('.md-img-wrap');
+    for (const img of imgWraps) {
+        const rect = img.getBoundingClientRect();
+        imgBounds.push({ top: rect.top - containerTop, bottom: rect.bottom - containerTop });
+    }
+
     const results = [];
     let offset = 0;
 
@@ -67,6 +74,17 @@ function splitByRenderedHeight(container, html, maxH) {
                 cutY = lineOffset;
                 break;
             }
+        }
+
+        for (const ib of imgBounds) {
+            if (ib.top < cutY && ib.bottom > cutY) {
+                cutY = ib.top;
+                break;
+            }
+        }
+
+        if (cutY <= offset) {
+            cutY = pageEnd;
         }
 
         const pageH = cutY - offset;
@@ -104,17 +122,31 @@ function collectLineBreaks(container) {
         }
     }
 
+    const imgWraps = container.querySelectorAll('.md-img-wrap');
+    for (const img of imgWraps) {
+        const rect = img.getBoundingClientRect();
+        charBounds.push({ top: rect.top, bottom: rect.bottom, isImage: true });
+    }
+
     if (charBounds.length === 0) return [];
 
     charBounds.sort((a, b) => a.top - b.top || a.bottom - b.bottom);
 
     const lineEnds = [];
     let curLineEnd = charBounds[0].bottom;
+    let curIsImage = charBounds[0].isImage || false;
 
     for (let i = 1; i < charBounds.length; i++) {
         const gap = charBounds[i].top - curLineEnd;
         if (gap > 1) {
             lineEnds.push(curLineEnd);
+            curIsImage = false;
+        }
+        if (charBounds[i].isImage) {
+            if (i > 0 && !charBounds[i - 1].isImage && gap <= 1) {
+                lineEnds.push(charBounds[i].top);
+            }
+            curIsImage = true;
         }
         curLineEnd = Math.max(curLineEnd, charBounds[i].bottom);
     }
