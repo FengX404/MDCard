@@ -142,7 +142,7 @@ On every pull request and push to `main`, all stages run automatically. Docker i
 ## Follow the Author
 
 - Blog: [blog.rouguang.top](https://blog.rouguang.top/)
-- Xiaohongshu: [@揉光入野](https://www.xiaohongshu.com/user/profile/1043817685)
+- Xiaohongshu: [@FengX](https://www.xiaohongshu.com/user/profile/1043817685)
 
 ## License
 
