@@ -101,7 +101,6 @@ function paginateSection(container, html, maxH) {
         // Can't split or no remaining space — commit current page, start new
         if (pageContent.length > 0) {
             pages.push(renderHTML(pageContent));
-            pageContent = [];
         }
 
         if (canSplit(child)) {
@@ -286,7 +285,6 @@ function splitListAtHeight(el, targetHeight, container) {
     if (items.length === 0) return null;
 
     container.innerHTML = '';
-    const listClone = el.cloneNode(false);
 
     let firstPartItems = [];
     for (const item of items) {
@@ -520,7 +518,6 @@ function splitIntoPages(html, container, maxH) {
 
         if (currentContent.length > 0) {
             pages.push(renderHTML(currentContent));
-            currentContent = [];
         }
 
         if (canSplit(child)) {

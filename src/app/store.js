@@ -1,4 +1,4 @@
-import { DEFAULTS, levelToValue, valueToLevel } from './config.js';
+import { levelToValue, valueToLevel } from './config.js';
 import { createDefaults } from './settings.js';
 import { dom } from './dom.js';
 

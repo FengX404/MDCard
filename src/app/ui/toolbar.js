@@ -1,5 +1,5 @@
-import TEMPLATES, { DEFAULT_TEMPLATE } from '../templates.js';
-import { DEFAULTS, levelToValue } from '../config.js';
+import { DEFAULT_TEMPLATE } from '../templates.js';
+import { levelToValue } from '../config.js';
 import { createDefaults } from '../settings.js';
 import { renderToImage, triggerDownload, dataUrlToBlob } from '../renderer.js';
 import { showToast } from '../toast.js';

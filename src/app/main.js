@@ -5,7 +5,7 @@ import { loadFromHash, restore, loadAppearance } from './storage.js';
 import { renderPalettes, renderTemplates } from './ui/drawer.js';
 import { refresh } from './ui/preview.js';
 import { setAppearance, bindEvents } from './ui/toolbar.js';
-import { t, setLocale, getLocale, init as initI18n, onLocaleChange } from './i18n.js';
+import { t, getLocale, init as initI18n, onLocaleChange } from './i18n.js';
 import './analytics.js';
 
 marked.setOptions({ breaks: true, gfm: true });
