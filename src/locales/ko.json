@@ -1,0 +1,94 @@
+{
+  "title": "MDCard - 마크다운으로 아름다운 카드 만들기",
+  "toolbar": {
+    "style": "스타일",
+    "dark": "다크",
+    "light": "라이트",
+    "followSys": "시스템 설정 따르기"
+  },
+  "format": {
+    "portrait": "3:4 세로",
+    "story": "9:16 스토리",
+    "square": "1:1 정사각형",
+    "wide": "16:9 와이드"
+  },
+  "editor": {
+    "placeholder": "# 여기에 제목 입력\u000a\u000aMarkdown으로 내용 작성...\u000a\u000a- **굵게** 와 *기울임*\u000a- 목록과 > 인용\u000a\u000a=== 를 단독 줄에 넣으면 강제 페이지 나누기\u000a--- 로 구분선 그리기",
+    "emptyPreview": "Markdown을 입력하면 카드가 미리보기됩니다"
+  },
+  "drawer": {
+    "title": "스타일 설정",
+    "template": "템플릿",
+    "theme": "테마",
+    "typography": "타이포그래피",
+    "color": "색상",
+    "spacing": "간격",
+    "border": "테두리",
+    "watermark": "워터마크"
+  },
+  "typo": {
+    "h1": "제목",
+    "h2": "부제목",
+    "h3": "소제목",
+    "body": "본문",
+    "lineHeight": "줄 간격"
+  },
+  "color": {
+    "bg": "배경",
+    "title": "제목",
+    "body": "본문"
+  },
+  "spacing": {
+    "padding": "패딩",
+    "marginY": "상하 여백"
+  },
+  "border": {
+    "width": "굵기",
+    "color": "색상",
+    "radius": "둥글기"
+  },
+  "watermark": {
+    "text": "텍스트",
+    "placeholder": "비우면 비활성화"
+  },
+  "actions": {
+    "reset": "기본값으로 초기화",
+    "share": "설정 공유"
+  },
+  "status": {
+    "cards": "{count}장의 카드",
+    "generating": "생성 중\u2026"
+  },
+  "toast": {
+    "exportSuccess": "{count}장의 {format} 이미지를 내보냈습니다",
+    "exportFail": "내보내기 실패, 다시 시도해 주세요",
+    "resetDone": "기본 설정으로 초기화되었습니다",
+    "shareSuccess": "설정 링크가 클립보드에 복사되었습니다",
+    "shareFail": "복사 실패, URL을 수동으로 복사해 주세요"
+  },
+  "theme": {
+    "dark": "다크 테마",
+    "light": "라이트 테마"
+  },
+  "templates": {
+    "default": { "name": "기본", "desc": "균형 잡힌 레이아웃, 일반 공유에 적합" },
+    "magazine": { "name": "매거진", "desc": "잡지 스타일: 장식선, 이미지 전체 폭" },
+    "minimal": { "name": "미니멀", "desc": "여백을 살린 미니멀 디자인, 인용/발췌에 적합" },
+    "card": { "name": "카드", "desc": "둥근 모서리 그림자 카드, 공식 공유에 적합" }
+  },
+  "palettes": {
+    "0": "죽운",
+    "1": "심야 독서",
+    "2": "송연입묵",
+    "3": "호박 시간",
+    "4": "자월",
+    "5": "신죽",
+    "6": "상백",
+    "7": "미지",
+    "8": "앵분",
+    "9": "청공"
+  },
+  "demo": {
+    "content": "# MDCard\u000a\u000aMarkdown을 아름다운 공유 카드로 변환\u000a\u000a## 특징\u000a\u000a- **16가지 테마 팔레트** 원클릭 전환\u000a- **글래스모피즘 UI** 모던 디자인\u000a- **워터마크 & 설정 공유** 저작권 보호\u000a\u000a===\u000a\u000a## 빠른 시작\u000a\u000a1. 왼쪽에 Markdown 작성\u000a2. \uD83C\uDCCF 버튼을 클릭하여 스타일 패널 열기\u000a3. 테마 선택 또는 색상 커스터마이즈\u000a4. PNG / JPG로 내보내기\u000a\u000a> === 로 강제 페이지 나누기, --- 로 구분선 그리기"
+  }
+}

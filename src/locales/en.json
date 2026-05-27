@@ -1,0 +1,94 @@
+{
+  "title": "MDCard — Create Beautiful Cards from Markdown",
+  "toolbar": {
+    "style": "Style",
+    "dark": "Dark",
+    "light": "Light",
+    "followSys": "Follow System"
+  },
+  "format": {
+    "portrait": "3:4 Portrait",
+    "story": "9:16 Story",
+    "square": "1:1 Square",
+    "wide": "16:9 Wide"
+  },
+  "editor": {
+    "placeholder": "# Enter heading here\u000a\u000aWrite Markdown content…\u000a\u000a- **Bold** and *italic*\u000a- Lists and > blockquotes\u000a\u000aUse === on a separate line to force page break\u000aUse --- to render a divider",
+    "emptyPreview": "Write Markdown to preview cards"
+  },
+  "drawer": {
+    "title": "Style Settings",
+    "template": "Template",
+    "theme": "Theme",
+    "typography": "Typography",
+    "color": "Color",
+    "spacing": "Spacing",
+    "border": "Border",
+    "watermark": "Watermark"
+  },
+  "typo": {
+    "h1": "Heading 1",
+    "h2": "Heading 2",
+    "h3": "Heading 3",
+    "body": "Body",
+    "lineHeight": "Line Height"
+  },
+  "color": {
+    "bg": "Background",
+    "title": "Title",
+    "body": "Body"
+  },
+  "spacing": {
+    "padding": "Padding",
+    "marginY": "Vertical Margin"
+  },
+  "border": {
+    "width": "Width",
+    "color": "Color",
+    "radius": "Radius"
+  },
+  "watermark": {
+    "text": "Text",
+    "placeholder": "Leave empty to disable"
+  },
+  "actions": {
+    "reset": "Reset Defaults",
+    "share": "Share Config"
+  },
+  "status": {
+    "cards": "{count} card(s)",
+    "generating": "Generating\u2026"
+  },
+  "toast": {
+    "exportSuccess": "Exported {count} {format} image(s)",
+    "exportFail": "Export failed, please try again",
+    "resetDone": "Reset to defaults",
+    "shareSuccess": "Config link copied to clipboard",
+    "shareFail": "Copy failed, please copy the URL manually"
+  },
+  "theme": {
+    "dark": "Dark Themes",
+    "light": "Light Themes"
+  },
+  "templates": {
+    "default": { "name": "Default", "desc": "Balanced layout for general sharing" },
+    "magazine": { "name": "Magazine", "desc": "Magazine style with decorative lines, full-width images" },
+    "minimal": { "name": "Minimal", "desc": "Clean and airy, perfect for quotes and excerpts" },
+    "card": { "name": "Card", "desc": "Rounded card with shadow, ideal for formal sharing" }
+  },
+  "palettes": {
+    "0": "Bamboo",
+    "1": "Night Reading",
+    "2": "Ink & Pine",
+    "3": "Amber Time",
+    "4": "Purple Moon",
+    "5": "New Bamboo",
+    "6": "Frost White",
+    "7": "Rice Paper",
+    "8": "Cherry Pink",
+    "9": "Clear Sky"
+  },
+  "demo": {
+    "content": "# MDCard\u000a\u000aTransform Markdown into beautiful share cards\u000a\u000a## Features\u000a\u000a- **16 theme palettes** one-click switch\u000a- **Glassmorphism UI** modern design language\u000a- **Watermark & config sharing** for authorship protection\u000a\u000a===\u000a\u000a## Quick Start\u000a\u000a1. Write Markdown on the left\u000a2. Click the \uD83C\uDCCF button to open style panel\u000a3. Pick a theme or customize colors\u000a4. Export as PNG / JPG\u000a\u000a> Use === to force page break, --- to render a divider"
+  }
+}

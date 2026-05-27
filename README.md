@@ -1,129 +1,148 @@
 # 🃏 MDCard
 
-将 Markdown 变成精美的分享卡片。
+Turn Markdown into beautiful shareable card images.
 
-输入 Markdown，选择主题，导出图片——适合技术分享、读书笔记、观点卡片、社交平台长图等场景。
+Write Markdown, pick a theme, export as images — ideal for tech articles, reading notes, opinion cards, and social media long-form graphics.
 
-MDCard 采用毛玻璃 (Glassmorphism) 设计语言，支持深色 / 浅色 / 跟随系统三种外观，提供 16 款精选配色主题和四种常见画幅，排版细节可逐项自定义。
+MDCard features a Glassmorphism design language with dark / light / system appearance modes, 10 curated color palettes, four aspect ratios, and fully customizable typography.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/rouguangruye/MDCard/actions/workflows/codeql.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/codeql.yml)
 
-**[在线演示](https://mdcard.rouguang.top/)**
+**[Live Demo](https://mdcard.rouguang.top/)**
 
-## 功能
+Read this in: [简体中文](./README.zh-CN.md)
 
-- **Markdown 智能分页** — 自动按行边界分页，不截断文字，支持 `---` 强制分页
-- **16 款主题配色** — 一键切换，涵盖深色与浅色风格
-- **四种画幅** — 3:4 竖版 / 9:16 长图 / 1:1 方形 / 16:9 宽屏
-- **深色 / 浅色 / 跟随系统** — 三种外观模式，右上角一键切换
-- **毛玻璃界面** — Glassmorphism 设计语言
-- **自定义排版** — 标题、正文字号、行高、间距、边框均可调
-- **水印** — 可自定义水印文字，留空关闭
-- **配置分享** — 一键生成配置链接，他人打开即可复现样式
-- **ZIP 批量导出** — 超过 2 张图片时自动打包为 ZIP 下载
+## Features
 
-## 快速开始
+- **Smart Markdown Pagination** — Auto-paginate at line boundaries, never truncate mid-line. Use `---` for manual page breaks
+- **10 Curated Palettes** — One-click theme switching across dark and light styles, all WCAG AA compliant
+- **Four Aspect Ratios** — 3:4 portrait / 9:16 story / 1:1 square / 16:9 wide
+- **Dark / Light / System** — Three appearance modes, toggle from the toolbar
+- **Glassmorphism UI** — Modern frosted-glass design language
+- **Custom Typography** — Heading sizes, body font size, line height, spacing, and borders — all adjustable
+- **Watermark** — Custom watermark text; leave blank to disable
+- **Shareable Config** — One-click config link generation; anyone can reproduce your exact style
+- **ZIP Batch Export** — Auto-package 3+ pages into a ZIP download
+
+## Quick Start
 
 ```bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start dev server
 npm run dev
 
-# 构建生产版本
+# Build for production
 npm run build
 ```
 
-构建产物输出到 `dist/` 目录。
+Output goes to the `dist/` directory.
 
-## Docker 部署
+## Docker Deployment
 
-### 方式一：docker-compose（推荐）
+### Option 1: docker-compose (Recommended)
 
 ```bash
 docker-compose up -d
 ```
 
-访问 http://localhost:8080
+Visit http://localhost:8080
 
-### 方式二：手动构建
+### Option 2: Manual Build
 
 ```bash
 docker build -t mdcard:latest .
 docker run -d -p 8080:80 --name mdcard mdcard:latest
 ```
 
-### 方式三：使用预构建镜像
+### Option 3: Pre-built Image
 
 ```bash
 docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
 ```
 
-> 如果你 fork 了项目并自行构建推送，将 `rouguangruye` 替换为你的 GitHub 用户名。
+> If you fork the project and build your own image, replace `rouguangruye` with your GitHub username.
 
-## 使用说明
+## Usage
 
-1. 在左侧编辑器输入 Markdown 内容
-2. 点击工具栏「样式」按钮打开右侧设置面板
-3. 选择主题或自定义颜色、排版、间距
-4. 点击 PNG / JPG 按钮导出图片
+1. Type Markdown in the left editor
+2. Click the **Style** button to open the settings panel
+3. Pick a theme or customize colors, typography, and spacing
+4. Click **PNG** or **JPG** to export
 
-### 分页
+### Pagination
 
-- 内容超出单页高度时自动分页，在行边界处切割，不会截断文字
-- 使用 `---`（三个横杠）独占一行可强制分页
+- Content exceeding a single page height is automatically paginated at line boundaries
+- Use `---` (three dashes) on its own line to force a page break
 
-### 导出
+### Export
 
-- 1~2 张图片：逐张下载
-- 3 张及以上：自动打包为 ZIP 压缩包下载
+- 1–2 cards: downloaded individually
+- 3+ cards: auto-packaged as a ZIP file
 
-### 外观模式
+### Appearance
 
-工具栏右上角三个按钮：
+Three buttons in the toolbar:
 
-| 按钮 | 说明 |
-|------|------|
-| 🌙 | 深色模式 |
-| ☀️ | 浅色模式 |
-| 🖥 | 跟随系统 |
+| Button | Mode |
+|--------|------|
+| 🌙 | Dark |
+| ☀️ | Light |
+| 🖥 | System |
 
-选择会持久化到 localStorage。
+Your preference persists in localStorage.
 
-### 配置分享
+### Shareable Config
 
-点击设置面板中「分享配置」按钮，当前样式配置会被编码到 URL hash 中，复制链接后他人打开即可复现完全相同的样式设置。
+Click the **Share Config** button in the settings panel. Your current style configuration is encoded into the URL hash — anyone opening the link sees exactly the same settings.
 
-## 技术栈
+## Tech Stack
 
-- [Vite](https://vitejs.dev/) — 构建工具
-- [marked](https://marked.js.org/) — Markdown 解析
-- [html2canvas](https://html2canvas.hertzen.com/) — DOM 转图片
-- [JSZip](https://stuk.github.io/jszip/) — ZIP 打包
+- [Vite](https://vitejs.dev/) — Build tool
+- [marked](https://marked.js.org/) — Markdown parser
+- [dom-to-image-more](https://github.com/1904labs/dom-to-image-more) — DOM to image
+- [JSZip](https://stuk.github.io/jszip/) — ZIP packaging
 
-## 项目结构
+## Project Structure
 
 ```
 src/
-├── index.html            # 入口页面
+├── index.html            # Entry page
 ├── styles/
-│   └── main.css          # 全局样式 & 主题变量
+│   └── main.css          # Global styles & theme variables
 └── app/
-    ├── main.js            # 应用入口 & 事件绑定
-    ├── config.js          # 格式 & 默认值定义
-    ├── palettes.js        # 16 款主题配色数据
-    ├── settings.js        # 设置读写 & CSS 变量映射
-    ├── paginator.js       # Markdown 分页算法
-    ├── renderer.js        # html2canvas 渲染 & 下载
-    └── toast.js           # Toast 通知
+    ├── main.js            # App entry & event bindings
+    ├── config.js          # Format & defaults
+    ├── palettes.js        # 10 curated palette data
+    ├── settings.js        # Settings read/write & CSS variable mapping
+    ├── paginator.js       # Markdown pagination algorithm
+    ├── renderer.js        # dom-to-image-more rendering & download
+    └── toast.js           # Toast notifications
 ```
 
-## 关注作者
+## Contributing
 
-- 博客：[blog.rouguang.top](https://blog.rouguang.top/)
-- 小红书：[@揉光入野](https://www.xiaohongshu.com/user/profile/1043817685)
-- 公众号：![公众号二维码](./assets/wechat-qrcode.jpg)
+Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+### CI Pipeline
+
+| Stage | Description |
+|-------|-------------|
+| `audit` | Dependency vulnerability scanning |
+| `lint` | ESLint + Prettier format check |
+| `test` | Unit tests (vitest + jsdom) |
+| `build` | Production bundle |
+| `e2e` | Browser E2E tests (Playwright) |
+
+On every pull request and push to `main`, all stages run automatically. Docker images are built and pushed to GHCR on tag pushes.
+
+## Follow the Author
+
+- Blog: [blog.rouguang.top](https://blog.rouguang.top/)
+- Xiaohongshu: [@揉光入野](https://www.xiaohongshu.com/user/profile/1043817685)
 
 ## License
 

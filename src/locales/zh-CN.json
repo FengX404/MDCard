@@ -1,0 +1,94 @@
+{
+  "title": "MDCard - Markdown 生成精美卡片",
+  "toolbar": {
+    "style": "样式",
+    "dark": "深色",
+    "light": "浅色",
+    "followSys": "跟随系统"
+  },
+  "format": {
+    "portrait": "3:4 竖版",
+    "story": "9:16 长图",
+    "square": "1:1 方形",
+    "wide": "16:9 宽屏"
+  },
+  "editor": {
+    "placeholder": "# 在此输入标题\u000a\u000a用 Markdown 编写内容...\u000a\u000a- **粗体** 和 *斜体*\u000a- 列表和 > 引用\u000a\u000a用 === 单独一行强制分页\u000a用 --- 渲染分割线",
+    "emptyPreview": "输入 Markdown 即可预览卡片"
+  },
+  "drawer": {
+    "title": "样式设置",
+    "template": "模板",
+    "theme": "主题",
+    "typography": "排版",
+    "color": "颜色",
+    "spacing": "间距",
+    "border": "边框",
+    "watermark": "水印"
+  },
+  "typo": {
+    "h1": "标题",
+    "h2": "副标题",
+    "h3": "三级标题",
+    "body": "正文",
+    "lineHeight": "行高"
+  },
+  "color": {
+    "bg": "背景",
+    "title": "标题",
+    "body": "正文"
+  },
+  "spacing": {
+    "padding": "内边距",
+    "marginY": "上下留白"
+  },
+  "border": {
+    "width": "粗细",
+    "color": "颜色",
+    "radius": "圆角"
+  },
+  "watermark": {
+    "text": "文字",
+    "placeholder": "留空关闭"
+  },
+  "actions": {
+    "reset": "重置默认",
+    "share": "分享配置"
+  },
+  "status": {
+    "cards": "{count} 张卡片",
+    "generating": "生成中\u2026"
+  },
+  "toast": {
+    "exportSuccess": "已导出 {count} 张{format}图片",
+    "exportFail": "导出失败，请重试",
+    "resetDone": "已重置为默认设置",
+    "shareSuccess": "配置链接已复制到剪贴板",
+    "shareFail": "复制失败，请手动复制地址栏"
+  },
+  "theme": {
+    "dark": "深色主题",
+    "light": "浅色主题"
+  },
+  "templates": {
+    "default": { "name": "默认", "desc": "均衡排版，适合通用分享场景" },
+    "magazine": { "name": "杂志", "desc": "杂志风格：上下装饰线，图片通栏" },
+    "minimal": { "name": "极简", "desc": "极简留白：细字无框，适合文艺/摘录" },
+    "card": { "name": "名片", "desc": "名片卡片：圆角阴影，适合正式分享" }
+  },
+  "palettes": {
+    "0": "竹韵",
+    "1": "深夜阅读",
+    "2": "松烟入墨",
+    "3": "琥珀时光",
+    "4": "紫月",
+    "5": "新竹",
+    "6": "霜白",
+    "7": "米纸",
+    "8": "樱粉",
+    "9": "晴空"
+  },
+  "demo": {
+    "content": "# MDCard\u000a\u000a将 Markdown 转为精美分享卡片\u000a\u000a## 特色功能\u000a\u000a- **16 款主题配色** 一键切换\u000a- **毛玻璃界面** 现代设计语言\u000a- **水印 & 配置分享** 原创保护\u000a\u000a===\u000a\u000a## 快速上手\u000a\u000a1. 左侧编写 Markdown\u000a2. 点击 \uD83C\uDCCF 按钮打开样式面板\u000a3. 选择主题或自定义颜色\u000a4. 导出 PNG / JPG\u000a\u000a> 用 === 强制分页，用 --- 渲染分割线"
+  }
+}
