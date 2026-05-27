@@ -19,6 +19,12 @@ export async function renderToImage(cardEl, fmt, kind = 'png') {
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
         },
+        onclone(clone) {
+            clone.style.overflow = 'visible';
+            clone.style.border = 'none';
+            clone.style.outline = 'none';
+            clone.style.boxShadow = 'none';
+        },
     };
 
     const dataUrl = kind === 'png'
