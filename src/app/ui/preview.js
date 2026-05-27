@@ -4,13 +4,19 @@ import { paginateMarkdown } from '../paginator.js';
 import { resolveMarkdown } from '../image-upload.js';
 import { dom } from '../dom.js';
 import { store, readDomSettings } from '../store.js';
+import { showToast } from '../toast.js';
 import { t } from '../i18n.js';
 
 export function refresh() {
     readDomSettings();
     const md = resolveMarkdown(dom.markdown.value);
     const fmt = dom.format.value;
-    store.pages = paginateMarkdown(md, fmt, store.opts);
+    const tpl = TEMPLATES.find(tmpl => tmpl.id === store.templateId);
+    const tplClass = tpl ? tpl.cssClass : '';
+
+    store.pages = paginateMarkdown(md, fmt, store.opts, () => {
+        showToast(t('toast.imageTooLarge'));
+    }, tplClass);
 
     if (store.pages.length === 0) {
         dom.cards.innerHTML = '';
@@ -23,8 +29,6 @@ export function refresh() {
 
     dom.empty.style.display = 'none';
     const total = store.pages.length;
-    const tpl = TEMPLATES.find(tmpl => tmpl.id === store.templateId);
-    const tplClass = tpl ? tpl.cssClass : '';
 
     dom.cards.innerHTML = store.pages.map((html, i) => `
         <div class="mc__card-wrapper">

@@ -1,5 +1,3 @@
-import { cropImage } from './cropper.js';
-
 const imageMap = new Map();
 let nextId = 1;
 
@@ -14,12 +12,12 @@ export function resolveMarkdown(md) {
     });
 }
 
-export function setupImageUpload(textarea, onInsert) {
+export function setupImageUpload(textarea, onInsert, validateImage) {
     textarea.addEventListener('paste', (e) => {
         const files = extractImageFiles(e.clipboardData);
         if (files.length > 0) {
             e.preventDefault();
-            handleFiles(files, textarea, onInsert);
+            handleFiles(files, textarea, onInsert, validateImage);
         }
     });
 
@@ -27,7 +25,7 @@ export function setupImageUpload(textarea, onInsert) {
         const files = extractImageFiles(e.dataTransfer);
         if (files.length > 0) {
             e.preventDefault();
-            handleFiles(files, textarea, onInsert);
+            handleFiles(files, textarea, onInsert, validateImage);
         }
     });
 
@@ -49,13 +47,15 @@ function extractImageFiles(dataTransfer) {
     return files;
 }
 
-async function handleFiles(files, textarea, onInsert) {
+async function handleFiles(files, textarea, onInsert, validateImage) {
     for (const file of files) {
         const raw = await readFileAsDataUrl(file);
-        const result = await cropImage(raw);
-        if (!result) continue;
+        if (validateImage) {
+            const ok = await validateImage(raw);
+            if (!ok) continue;
+        }
         const id = nextId++;
-        imageMap.set(id, result);
+        imageMap.set(id, raw);
         insertImageMarkdown(textarea, id, onInsert);
     }
 }

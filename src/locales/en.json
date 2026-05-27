@@ -64,7 +64,10 @@
     "exportFail": "Export failed, please try again",
     "resetDone": "Reset to defaults",
     "shareSuccess": "Config link copied to clipboard",
-    "shareFail": "Copy failed, please copy the URL manually"
+    "shareFail": "Copy failed, please copy the URL manually",
+    "imageTooLarge": "Image is too tall for a single page",
+    "imageTooLargeHint": "Please use a smaller image or switch to a taller card format such as Story.",
+    "dismiss": "OK"
   },
   "theme": {
     "dark": "Dark Themes",

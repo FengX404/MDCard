@@ -1,6 +1,6 @@
-import { DEFAULT_TEMPLATE } from '../templates.js';
+import TEMPLATES, { DEFAULT_TEMPLATE } from '../templates.js';
 import { levelToValue } from '../config.js';
-import { createDefaults } from '../settings.js';
+import { createDefaults, availableHeight, applyCardVars } from '../settings.js';
 import { renderToImage, triggerDownload, dataUrlToBlob } from '../renderer.js';
 import { showToast } from '../toast.js';
 import { setupImageUpload } from '../image-upload.js';
@@ -161,7 +161,95 @@ export function bindEvents() {
 
     dom.watermark.addEventListener('input', debouncedRefresh);
 
-    setupImageUpload(dom.markdown, debouncedRefresh);
+    setupImageUpload(dom.markdown, debouncedRefresh, checkImageFits);
 
     window.addEventListener('beforeunload', persist);
+}
+
+function checkImageFits(dataUrl) {
+    return new Promise((resolve) => {
+        readDomSettings();
+        const fmt = dom.format.value;
+        const tpl = TEMPLATES.find(tmpl => tmpl.id === store.templateId);
+        const tplClass = tpl ? tpl.cssClass : '';
+
+        const probe = document.createElement('div');
+        probe.className = `mc__card mc__card--${fmt}${tplClass ? ' ' + tplClass : ''}`;
+        probe.style.cssText = 'position:absolute;left:-9999px;top:0;';
+        applyCardVars(probe, store.opts);
+        document.body.appendChild(probe);
+
+        const contentBox = document.createElement('div');
+        contentBox.className = 'mc__card-body';
+        probe.appendChild(contentBox);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'md-img-wrap';
+        const img = document.createElement('img');
+        img.alt = '';
+        wrap.appendChild(img);
+        contentBox.appendChild(wrap);
+
+        function measure() {
+            const maxH = availableHeight(fmt, store.opts);
+            const fits = contentBox.scrollHeight <= maxH;
+            document.body.removeChild(probe);
+            if (!fits) {
+                showImageTooLargeDialog(dataUrl);
+            }
+            resolve(fits);
+        }
+
+        img.onload = measure;
+        img.onerror = () => {
+            document.body.removeChild(probe);
+            resolve(false);
+        };
+        img.src = dataUrl;
+        if (img.complete) measure();
+    });
+}
+
+function showImageTooLargeDialog(dataUrl) {
+    const overlay = document.createElement('div');
+    overlay.className = 'mc__alert-overlay';
+
+    const dialog = document.createElement('div');
+    dialog.className = 'mc__alert-dialog';
+
+    const icon = document.createElement('div');
+    icon.className = 'mc__alert-icon';
+    icon.textContent = '!';
+
+    const title = document.createElement('h3');
+    title.className = 'mc__alert-title';
+    title.textContent = t('toast.imageTooLarge');
+
+    const preview = document.createElement('div');
+    preview.className = 'mc__alert-preview';
+    const previewImg = document.createElement('img');
+    previewImg.src = dataUrl;
+    previewImg.alt = '';
+    preview.appendChild(previewImg);
+
+    const msg = document.createElement('p');
+    msg.className = 'mc__alert-msg';
+    msg.textContent = t('toast.imageTooLargeHint');
+
+    const btn = document.createElement('button');
+    btn.className = 'mc__btn mc__btn--primary';
+    btn.textContent = t('toast.dismiss');
+    btn.addEventListener('click', () => overlay.remove());
+
+    dialog.appendChild(icon);
+    dialog.appendChild(title);
+    dialog.appendChild(preview);
+    dialog.appendChild(msg);
+    dialog.appendChild(btn);
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+    });
 }

@@ -64,7 +64,10 @@
     "exportFail": "匯出失敗，請重試",
     "resetDone": "已重設為預設設定",
     "shareSuccess": "設定連結已複製到剪貼簿",
-    "shareFail": "複製失敗，請手動複製網址列"
+    "shareFail": "複製失敗，請手動複製網址列",
+    "imageTooLarge": "圖片高度超出單頁範圍",
+    "imageTooLargeHint": "請使用更小的圖片，或切換為長圖等更高的卡片格式",
+    "dismiss": "知道了"
   },
   "theme": {
     "dark": "深色主題",

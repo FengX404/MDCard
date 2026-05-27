@@ -64,7 +64,10 @@
     "exportFail": "내보내기 실패, 다시 시도해 주세요",
     "resetDone": "기본 설정으로 초기화되었습니다",
     "shareSuccess": "설정 링크가 클립보드에 복사되었습니다",
-    "shareFail": "복사 실패, URL을 수동으로 복사해 주세요"
+    "shareFail": "복사 실패, URL을 수동으로 복사해 주세요",
+    "imageTooLarge": "이미지가 한 페이지 높이를 초과합니다",
+    "imageTooLargeHint": "더 작은 이미지를 사용하거나 스토리와 같은 세로 형식으로 전환하세요.",
+    "dismiss": "확인"
   },
   "theme": {
     "dark": "다크 테마",

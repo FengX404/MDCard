@@ -64,7 +64,10 @@
     "exportFail": "导出失败，请重试",
     "resetDone": "已重置为默认设置",
     "shareSuccess": "配置链接已复制到剪贴板",
-    "shareFail": "复制失败，请手动复制地址栏"
+    "shareFail": "复制失败，请手动复制地址栏",
+    "imageTooLarge": "图片高度超出单页范围",
+    "imageTooLargeHint": "请使用更小的图片，或切换为长图等更高的卡片格式",
+    "dismiss": "知道了"
   },
   "theme": {
     "dark": "深色主题",

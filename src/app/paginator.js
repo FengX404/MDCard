@@ -9,16 +9,18 @@ const UNSPLITTABLE_TAGS = new Set(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'HR']);
  * @param {string} raw - Raw Markdown input
  * @param {string} fmt - Format key from FORMATS (portrait|story|square|wide)
  * @param {import('./config.js').DEFAULTS} s - Current style settings
+ * @param {Function} [onWarn] - Callback when an image exceeds page height
+ * @param {string} [tplClass] - Template CSS class for accurate measurement
  * @returns {string[]} Array of HTML strings, one per page
  */
-export function paginateMarkdown(raw, fmt, s) {
+export function paginateMarkdown(raw, fmt, s, onWarn, tplClass) {
     if (!raw.trim()) return [];
 
     const sections = raw.split(/^===$/m).map(t => t.trim()).filter(Boolean);
     const pages = [];
 
     const probe = document.createElement('div');
-    probe.className = `mc__card mc__card--${fmt}`;
+    probe.className = `mc__card mc__card--${fmt}${tplClass ? ' ' + tplClass : ''}`;
     probe.style.cssText = 'position:absolute;left:-9999px;top:0;';
     applyCardVars(probe, s);
     document.body.appendChild(probe);
@@ -31,7 +33,7 @@ export function paginateMarkdown(raw, fmt, s) {
 
     for (const sec of sections) {
         const secHtml = marked.parse(sec);
-        const secPages = paginateSection(contentBox, secHtml, maxH);
+        const secPages = paginateSection(contentBox, secHtml, maxH, onWarn);
         pages.push(...secPages);
     }
 
@@ -41,7 +43,7 @@ export function paginateMarkdown(raw, fmt, s) {
 
 // ── Streaming pagination ──────────────────────────────────────────────
 
-function paginateSection(container, html, maxH) {
+function paginateSection(container, html, maxH, onWarn) {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
     const allChildren = Array.from(tempDiv.children);
@@ -117,6 +119,14 @@ function paginateSection(container, html, maxH) {
                 pageContent = [child];
             }
         } else {
+            if (onWarn && isImageWrap(child)) {
+                container.innerHTML = '';
+                container.appendChild(child.cloneNode(true));
+                if (container.scrollHeight > maxH) {
+                    onWarn();
+                }
+                container.innerHTML = '';
+            }
             pageContent = [child];
         }
     }
