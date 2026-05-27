@@ -38,7 +38,7 @@
     "format:check": "prettier --check \"src/**/*.js\" \"tests/**/*.js\""
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.60.0",
     "eslint": "^9.15.0",
     "globals": "^15.12.0",
