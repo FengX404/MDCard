@@ -4,7 +4,8 @@
     "style": "Style",
     "dark": "Dark",
     "light": "Light",
-    "followSys": "Follow System"
+    "followSys": "Follow System",
+    "autosave": "Auto Save"
   },
   "format": {
     "portrait": "3:4 Portrait",
@@ -24,6 +25,7 @@
     "color": "Color",
     "spacing": "Spacing",
     "border": "Border",
+    "ratio": "Layout",
     "watermark": "Watermark"
   },
   "typo": {
@@ -93,5 +95,22 @@
   },
   "demo": {
     "content": "# MDCard\u000a\u000aTransform Markdown into beautiful share cards\u000a\u000a## Features\u000a\u000a- **16 theme palettes** one-click switch\u000a- **Glassmorphism UI** modern design language\u000a- **Watermark & config sharing** for authorship protection\u000a\u000a===\u000a\u000a## Quick Start\u000a\u000a1. Write Markdown on the left\u000a2. Click the \uD83C\uDCCF button to open style panel\u000a3. Pick a theme or customize colors\u000a4. Export as PNG / JPG\u000a\u000a> Use === to force page break, --- to render a divider"
+  },
+  "draft": {
+    "restored": "Draft \"{title}\" restored",
+    "autoSave": "Auto-save draft",
+    "label": "Drafts",
+    "list": "Drafts",
+    "panelTitle": "Drafts",
+    "empty": "No drafts yet",
+    "load": "Load",
+    "delete": "Delete",
+    "confirmDelete": "Delete draft \"{title}\"?",
+    "justNow": "just now",
+    "minutesAgo": "{n} min ago",
+    "hoursAgo": "{n}h ago",
+    "daysAgo": "{n}d ago",
+    "untitled": "Untitled draft",
+    "notFound": "Draft not found"
   }
 }

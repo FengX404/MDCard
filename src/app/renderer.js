@@ -2,13 +2,12 @@ import { FORMATS } from './config.js';
 import domtoimage from 'dom-to-image-more';
 
 /**
- * Render a card DOM element to a data URL image.
+ * Render a card DOM element to a PNG data URL.
  * @param {HTMLElement} cardEl - The card container element
  * @param {string} fmt - Format key from FORMATS (portrait|story|square|wide)
- * @param {'png'|'jpg'} [kind='png'] - Output image format
  * @returns {Promise<string>} Data URL of the rendered image
  */
-export async function renderToImage(cardEl, fmt, kind = 'png') {
+export async function renderToImage(cardEl, fmt) {
     const cfg = FORMATS[fmt];
     const scale = cfg.w / cfg.pw;
 
@@ -27,11 +26,7 @@ export async function renderToImage(cardEl, fmt, kind = 'png') {
         },
     };
 
-    const dataUrl = kind === 'png'
-        ? await domtoimage.toPng(cardEl, options)
-        : await domtoimage.toJpeg(cardEl, { ...options, quality: 0.95 });
-
-    return dataUrl;
+    return domtoimage.toPng(cardEl, options);
 }
 
 /**

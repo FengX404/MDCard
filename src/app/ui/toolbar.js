@@ -4,29 +4,30 @@ import { createDefaults, availableHeight, applyCardVars } from '../settings.js';
 import { renderToImage, triggerDownload, dataUrlToBlob } from '../renderer.js';
 import { showToast } from '../toast.js';
 import { setupImageUpload } from '../image-upload.js';
-import { setLocale, t } from '../i18n.js';
+import { setLocale, getLocale, t } from '../i18n.js';
 import { dom } from '../dom.js';
 import { store, readDomSettings, writeDomSettings } from '../store.js';
 import { renderPalettes, renderTemplates, openDrawer, closeDrawer } from './drawer.js';
 import { refresh } from './preview.js';
 import { persist, saveAppearance } from '../storage.js';
+import { saveDraft, getCurrentId, setCurrentId, clearCurrentId, getAutoSave, setAutoSave } from '../draft.js';
+import { exportImages } from '../image-upload.js';
+import { openDraftsPanel } from './drafts-panel.js';
 import JSZip from 'jszip';
 
-let debounceId = 0;
-
 function debounce(fn, ms) {
+    let id = 0;
     return (...args) => {
-        clearTimeout(debounceId);
-        debounceId = setTimeout(() => fn(...args), ms);
+        clearTimeout(id);
+        id = setTimeout(() => fn(...args), ms);
     };
 }
 
-export async function exportAll(kind) {
+export async function exportAll() {
     const cards = dom.cards.querySelectorAll('.mc__card');
     if (!cards.length) return;
 
     dom.exportPng.disabled = true;
-    dom.exportJpg.disabled = true;
     dom.status.textContent = t('status.generating');
 
     const fmt = dom.format.value;
@@ -35,8 +36,8 @@ export async function exportAll(kind) {
     try {
         const images = [];
         for (let i = 0; i < cards.length; i++) {
-            const url = await renderToImage(cards[i], fmt, kind);
-            images.push({ url, name: `mdcard-${i + 1}-${ts}.${kind}` });
+            const url = await renderToImage(cards[i], fmt);
+            images.push({ url, name: `mdcard-${i + 1}-${ts}.png` });
             if (i < cards.length - 1) await new Promise(r => setTimeout(r, 100));
         }
 
@@ -56,15 +57,14 @@ export async function exportAll(kind) {
             setTimeout(() => URL.revokeObjectURL(zipUrl), 5000);
         }
 
-        showToast(t('toast.exportSuccess', { count: images.length, format: kind.toUpperCase() }));
+        showToast(t('toast.exportSuccess', { count: images.length, format: 'PNG' }));
     } catch (e) {
         console.error(e);
         showToast(t('toast.exportFail'));
     }
 
     dom.exportPng.disabled = false;
-    dom.exportJpg.disabled = false;
-    dom.status.textContent = t('status.cards', { count: cards.length });
+    dom.status.textContent = '';
 }
 
 export function resetAll() {
@@ -104,11 +104,56 @@ export function setAppearance(mode) {
 export function bindEvents() {
     const debouncedRefresh = debounce(refresh, 250);
 
-    dom.markdown.addEventListener('input', debouncedRefresh);
-    dom.format.addEventListener('change', refresh);
+    const performAutoSave = async () => {
+        const md = dom.markdown.value;
+        if (!md.trim()) { clearCurrentId(); return; }
+        const currentId = getCurrentId();
+        const savedId = await saveDraft(md, exportImages(), currentId);
+        if (currentId == null) setCurrentId(savedId);
+    };
 
-    dom.exportPng.addEventListener('click', () => exportAll('png'));
-    dom.exportJpg.addEventListener('click', () => exportAll('jpg'));
+    const debouncedAutoSave = debounce(() => {
+        if (getAutoSave()) performAutoSave();
+    }, 2000);
+
+    dom.markdown.addEventListener('input', () => {
+        debouncedRefresh();
+        debouncedAutoSave();
+    });
+    const markFormatActive = (fmt) => {
+        dom.formatDropdown.querySelectorAll('.mc__format-option').forEach(o => {
+            o.classList.toggle('active', o.dataset.format === fmt);
+            if (o.dataset.format === fmt) dom.formatLabel.textContent = o.textContent;
+        });
+    };
+
+    dom.formatBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dom.formatArea.classList.toggle('mc__format--open');
+    });
+
+    dom.formatDropdown.addEventListener('click', (e) => {
+        const opt = e.target.closest('.mc__format-option');
+        if (!opt) return;
+        const fmt = opt.dataset.format;
+        dom.format.value = fmt;
+        dom.format.dispatchEvent(new Event('change', { bubbles: true }));
+        markFormatActive(fmt);
+        dom.formatArea.classList.remove('mc__format--open');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!dom.formatArea.contains(e.target)) {
+            dom.formatArea.classList.remove('mc__format--open');
+        }
+    });
+
+    dom.format.addEventListener('change', () => {
+        refresh();
+        if (getAutoSave()) performAutoSave();
+    });
+
+    dom.exportPng.addEventListener('click', () => exportAll());
 
     dom.toggleDrawer.addEventListener('click', openDrawer);
     dom.closeDrawer.addEventListener('click', closeDrawer);
@@ -121,7 +166,34 @@ export function bindEvents() {
         btn.addEventListener('click', () => setAppearance(btn.dataset.mode));
     });
 
-    dom.langSwitch.addEventListener('change', () => setLocale(dom.langSwitch.value));
+    const opts = dom.langDropdown.querySelectorAll('.mc__lang-option');
+    const markActive = (locale) => {
+        opts.forEach(o => {
+            o.classList.toggle('active', o.dataset.lang === locale);
+            if (o.dataset.lang === locale) dom.langLabel.textContent = o.textContent;
+        });
+    };
+    markActive(getLocale());
+
+    dom.langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = dom.langDropdown.parentElement.classList.toggle('mc__lang--open');
+        if (!open) return;
+        dom.langDropdown.querySelector('.mc__lang-option.active')?.focus();
+    });
+
+    dom.langDropdown.addEventListener('click', (e) => {
+        const opt = e.target.closest('.mc__lang-option');
+        if (!opt) return;
+        const locale = opt.dataset.lang;
+        setLocale(locale);
+        markActive(locale);
+        dom.langDropdown.parentElement.classList.remove('mc__lang--open');
+    });
+
+    document.addEventListener('click', () => {
+        dom.langDropdown.parentElement.classList.remove('mc__lang--open');
+    });
 
     const sliders = [
         [dom.h1, dom.h1V, 'h1'],
@@ -163,7 +235,29 @@ export function bindEvents() {
 
     setupImageUpload(dom.markdown, debouncedRefresh, checkImageFits);
 
-    window.addEventListener('beforeunload', persist);
+    window.addEventListener('beforeunload', () => {
+        persist();
+        const md = dom.markdown.value;
+        if (md.trim()) {
+            saveDraft(md, exportImages(), getCurrentId()).then(savedId => {
+                if (getCurrentId() == null) setCurrentId(savedId);
+            });
+        }
+    });
+
+    const updateAutosaveUI = (enabled) => {
+        dom.autosaveToggle.classList.toggle('mc__autosave-btn--on', enabled);
+    };
+    updateAutosaveUI(getAutoSave());
+
+    dom.autosaveToggle.addEventListener('click', () => {
+        const enabled = !getAutoSave();
+        setAutoSave(enabled);
+        updateAutosaveUI(enabled);
+        if (enabled) performAutoSave();
+    });
+
+    dom.draftsBtn.addEventListener('click', openDraftsPanel);
 }
 
 function checkImageFits(dataUrl) {

@@ -4,7 +4,8 @@
     "style": "樣式",
     "dark": "深色",
     "light": "淺色",
-    "followSys": "跟隨系統"
+    "followSys": "跟隨系統",
+    "autosave": "自動儲存"
   },
   "format": {
     "portrait": "3:4 直式",
@@ -24,6 +25,7 @@
     "color": "顏色",
     "spacing": "間距",
     "border": "邊框",
+    "ratio": "畫幅",
     "watermark": "浮水印"
   },
   "typo": {
@@ -93,5 +95,22 @@
   },
   "demo": {
     "content": "# MDCard\u000a\u000a將 Markdown 轉為精美分享卡片\u000a\u000a## 特色功能\u000a\u000a- **16 款主題配色** 一鍵切換\u000a- **毛玻璃介面** 現代設計語言\u000a- **浮水印 & 設定分享** 原創保護\u000a\u000a===\u000a\u000a## 快速上手\u000a\u000a1. 左側編寫 Markdown\u000a2. 點擊 \uD83C\uDCCF 按鈕開啟樣式面板\u000a3. 選擇主題或自訂顏色\u000a4. 匯出 PNG / JPG\u000a\u000a> 用 === 強制分頁，用 --- 繪製分隔線"
+  },
+  "draft": {
+    "restored": "已復原草稿「{title}」",
+    "autoSave": "自動儲存草稿",
+    "label": "草稿",
+    "list": "草稿列表",
+    "panelTitle": "草稿列表",
+    "empty": "暫無草稿",
+    "load": "載入",
+    "delete": "刪除",
+    "confirmDelete": "確認刪除草稿「{title}」？",
+    "justNow": "剛剛",
+    "minutesAgo": "{n} 分鐘前",
+    "hoursAgo": "{n} 小時前",
+    "daysAgo": "{n} 天前",
+    "untitled": "未命名草稿",
+    "notFound": "草稿不存在或已被刪除"
   }
 }

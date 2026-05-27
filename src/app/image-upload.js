@@ -1,6 +1,24 @@
 const imageMap = new Map();
 let nextId = 1;
 
+export function exportImages() {
+    return Array.from(imageMap.entries());
+}
+
+export function importImages(entries) {
+    imageMap.clear();
+    if (!entries || !entries.length) {
+        nextId = 1;
+        return;
+    }
+    let maxId = 0;
+    for (const [id, url] of entries) {
+        imageMap.set(id, url);
+        if (id > maxId) maxId = id;
+    }
+    nextId = maxId + 1;
+}
+
 export function getImageUrl(ref) {
     return imageMap.get(ref) || '';
 }

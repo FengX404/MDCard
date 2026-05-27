@@ -22,7 +22,6 @@ export function refresh() {
         dom.cards.innerHTML = '';
         dom.empty.style.display = '';
         dom.exportPng.disabled = true;
-        dom.exportJpg.disabled = true;
         dom.status.textContent = '';
         return;
     }
@@ -43,8 +42,7 @@ export function refresh() {
     dom.cards.querySelectorAll('.mc__card').forEach(el => applyCardVars(el, store.opts));
 
     dom.exportPng.disabled = false;
-    dom.exportJpg.disabled = false;
-    dom.status.textContent = t('status.cards', { count: total });
+    dom.status.textContent = '';
 }
 
 export function escHtml(s) {

@@ -4,7 +4,8 @@
     "style": "スタイル",
     "dark": "ダーク",
     "light": "ライト",
-    "followSys": "システムに従う"
+    "followSys": "システムに従う",
+    "autosave": "自動保存"
   },
   "format": {
     "portrait": "3:4 縦向き",
@@ -24,6 +25,7 @@
     "color": "カラー",
     "spacing": "間隔",
     "border": "枠線",
+    "ratio": "レイアウト",
     "watermark": "ウォーターマーク"
   },
   "typo": {
@@ -93,5 +95,22 @@
   },
   "demo": {
     "content": "# MDCard\u000a\u000aMarkdownを美しい共有カードに変換\u000a\u000a## 特徴\u000a\u000a- **16種類のテーマ** ワンクリック切替\u000a- **グラスモーフィズムUI** モダンデザイン\u000a- **ウォーターマーク & 設定共有** 著作権保護\u000a\u000a===\u000a\u000a## クイックスタート\u000a\u000a1. 左側にMarkdownを記述\u000a2. \uD83C\uDCCF ボタンをクリックしてスタイルパネルを開く\u000a3. テーマを選ぶか色をカスタマイズ\u000a4. PNG / JPG でエクスポート\u000a\u000a> === で強制改ページ、--- で区切り線を描画"
+  },
+  "draft": {
+    "restored": "下書き「{title}」を復元しました",
+    "autoSave": "下書きを自動保存",
+    "label": "下書き",
+    "list": "下書き一覧",
+    "panelTitle": "下書き一覧",
+    "empty": "下書きはありません",
+    "load": "読み込む",
+    "delete": "削除",
+    "confirmDelete": "下書き「{title}」を削除しますか？",
+    "justNow": "たった今",
+    "minutesAgo": "{n}分前",
+    "hoursAgo": "{n}時間前",
+    "daysAgo": "{n}日前",
+    "untitled": "無題の下書き",
+    "notFound": "下書きが見つかりません"
   }
 }

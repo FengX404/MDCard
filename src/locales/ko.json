@@ -4,7 +4,8 @@
     "style": "스타일",
     "dark": "다크",
     "light": "라이트",
-    "followSys": "시스템 설정 따르기"
+    "followSys": "시스템 설정 따르기",
+    "autosave": "자동 저장"
   },
   "format": {
     "portrait": "3:4 세로",
@@ -24,6 +25,7 @@
     "color": "색상",
     "spacing": "간격",
     "border": "테두리",
+    "ratio": "비율",
     "watermark": "워터마크"
   },
   "typo": {
@@ -93,5 +95,22 @@
   },
   "demo": {
     "content": "# MDCard\u000a\u000aMarkdown을 아름다운 공유 카드로 변환\u000a\u000a## 특징\u000a\u000a- **16가지 테마 팔레트** 원클릭 전환\u000a- **글래스모피즘 UI** 모던 디자인\u000a- **워터마크 & 설정 공유** 저작권 보호\u000a\u000a===\u000a\u000a## 빠른 시작\u000a\u000a1. 왼쪽에 Markdown 작성\u000a2. \uD83C\uDCCF 버튼을 클릭하여 스타일 패널 열기\u000a3. 테마 선택 또는 색상 커스터마이즈\u000a4. PNG / JPG로 내보내기\u000a\u000a> === 로 강제 페이지 나누기, --- 로 구분선 그리기"
+  },
+  "draft": {
+    "restored": "임시 저장된 초안「{title}」을 복원했습니다",
+    "autoSave": "초안 자동 저장",
+    "label": "임시저장",
+    "list": "초안 목록",
+    "panelTitle": "초안 목록",
+    "empty": "초안이 없습니다",
+    "load": "불러오기",
+    "delete": "삭제",
+    "confirmDelete": "초안「{title}」을 삭제하시겠습니까?",
+    "justNow": "방금",
+    "minutesAgo": "{n}분 전",
+    "hoursAgo": "{n}시간 전",
+    "daysAgo": "{n}일 전",
+    "untitled": "제목 없는 초안",
+    "notFound": "초안을 찾을 수 없습니다"
   }
 }

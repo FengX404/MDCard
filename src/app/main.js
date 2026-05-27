@@ -5,7 +5,10 @@ import { loadFromHash, restore, loadAppearance } from './storage.js';
 import { renderPalettes, renderTemplates } from './ui/drawer.js';
 import { refresh } from './ui/preview.js';
 import { setAppearance, bindEvents } from './ui/toolbar.js';
-import { t, getLocale, init as initI18n, onLocaleChange } from './i18n.js';
+import { t, init as initI18n, onLocaleChange } from './i18n.js';
+import { loadDraft, getCurrentId } from './draft.js';
+import { importImages } from './image-upload.js';
+import { showToast } from './toast.js';
 import './analytics.js';
 
 marked.setOptions({ breaks: true, gfm: true });
@@ -30,10 +33,26 @@ function init() {
     renderPalettes();
     renderTemplates();
 
-    dom.langSwitch.value = getLocale();
-
     if (!fromHash && !fromLocal) {
-        dom.markdown.value = t('demo.content');
+        const draftId = getCurrentId();
+        if (draftId != null) {
+            loadDraft(draftId).then(draft => {
+                if (draft) {
+                    importImages(draft.images);
+                    dom.markdown.value = draft.md;
+                    showToast(t('draft.restored', { title: draft.title }));
+                    refresh();
+                    return;
+                }
+                dom.markdown.value = t('demo.content');
+                refresh();
+            });
+        } else {
+            dom.markdown.value = t('demo.content');
+            refresh();
+        }
+    } else {
+        refresh();
     }
 
     onLocaleChange(() => {
@@ -46,7 +65,6 @@ function init() {
     });
 
     bindEvents();
-    refresh();
 }
 
 init();
