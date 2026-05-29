@@ -10,7 +10,7 @@ MDCard features a Glassmorphism design language with dark / light / system appea
 [![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/rouguangruye/MDCard/actions/workflows/codeql.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/codeql.yml)
 
-**[Live Demo](https://mdcard.rouguang.top/)**
+**[Live Demo](https://mdcard.rouguang.top/)** · **[Changelog](https://github.com/rouguangruye/MDCard/releases)**
 
 Read this in: [简体中文](./README.zh-CN.md)
 

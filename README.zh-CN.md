@@ -9,7 +9,7 @@ MDCard 采用毛玻璃 (Glassmorphism) 设计语言，支持深色 / 浅色 / �
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
 
-**[在线演示](https://mdcard.rouguang.top/)**
+**[在线演示](https://mdcard.rouguang.top/)** · **[更新日志](https://github.com/rouguangruye/MDCard/releases)**
 
 其他语言：[English](./README.md) | [繁體中文](./README.zh-TW.md) | [한국어](./README.ko.md) | [日本語](./README.ja.md)
 
