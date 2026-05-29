@@ -1,5 +1,5 @@
 import PALETTES from '../palettes.js';
-import TEMPLATES from '../templates.js';
+import LAYOUTS from '../templates.js';
 import { DEFAULTS } from '../config.js';
 import { dom } from '../dom.js';
 import { store, writeDomSettings } from '../store.js';
@@ -32,17 +32,25 @@ export function renderPalettes() {
     });
 }
 
-export function renderTemplates() {
-    dom.templateGrid.innerHTML = TEMPLATES.map(tmpl => `
-        <div class="mc__template-item ${tmpl.id === store.templateId ? 'mc__template-item--active' : ''}"
-             data-id="${tmpl.id}">
-            <div class="mc__template-item-name">${t('templates.' + tmpl.id + '.name')}</div>
-            <div class="mc__template-item-desc">${t('templates.' + tmpl.id + '.desc')}</div>
-        </div>
-    `).join('');
+export function renderLayouts() {
+    const editorialLayouts = LAYOUTS.filter(l => l.family === 'editorial');
+    const swissLayouts = LAYOUTS.filter(l => l.family === 'swiss');
+
+    const itemHTML = (l) => `
+        <div class="mc__template-item ${l.id === store.layoutId ? 'mc__template-item--active' : ''}"
+             data-id="${l.id}">
+            <div class="mc__template-item-name">${t('templates.' + l.id + '.name')}</div>
+            <div class="mc__template-item-desc">${t('templates.' + l.id + '.desc')}</div>
+        </div>`;
+
+    dom.templateGrid.innerHTML =
+        `<div class="mc__theme-group-label">${t('templates.family.editorial')}</div>` +
+        editorialLayouts.map(itemHTML).join('') +
+        `<div class="mc__theme-group-label">${t('templates.family.swiss')}</div>` +
+        swissLayouts.map(itemHTML).join('');
 
     dom.templateGrid.querySelectorAll('.mc__template-item').forEach(el => {
-        el.addEventListener('click', () => pickTemplate(el.dataset.id));
+        el.addEventListener('click', () => pickLayout(el.dataset.id));
     });
 }
 
@@ -57,18 +65,18 @@ export function pickPalette(idx) {
     refresh();
 }
 
-export function pickTemplate(id) {
-    store.templateId = id;
-    const tpl = TEMPLATES.find(tmpl => tmpl.id === id);
+export function pickLayout(id) {
+    store.layoutId = id;
+    const layout = LAYOUTS.find(l => l.id === id);
     store.opts.pad = DEFAULTS.pad;
     store.opts.my = DEFAULTS.my;
     store.opts.bw = DEFAULTS.bw;
     store.opts.br = DEFAULTS.br;
-    if (tpl && tpl.defaults) {
-        Object.assign(store.opts, tpl.defaults);
+    if (layout && layout.defaults) {
+        Object.assign(store.opts, layout.defaults);
     }
     writeDomSettings();
-    renderTemplates();
+    renderLayouts();
     refresh();
 }
 

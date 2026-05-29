@@ -76,10 +76,16 @@
     "light": "ライトテーマ"
   },
   "templates": {
-    "default": { "name": "デフォルト", "desc": "バランスの取れたレイアウト、一般的な共有に最適" },
-    "magazine": { "name": "マガジン", "desc": "誌面スタイル：飾り罫線、画像フル幅" },
-    "minimal": { "name": "ミニマル", "desc": "余白を活かしたミニマルデザイン、引用や抜粋に最適" },
-    "card": { "name": "カード", "desc": "角丸と影付きカード、フォーマルな共有に最適" }
+    "family": {
+      "editorial": "Editorial · マガジン",
+      "swiss": "Swiss · インターナショナル"
+    },
+    "editorial-default": { "name": "Editorial デフォルト", "desc": "セリフ体誌面レイアウト、一般的な共有に最適" },
+    "editorial-magazine": { "name": "Editorial マガジン", "desc": "誌面スタイル強化：セリフ見出し、画像フル幅、飾り罫線" },
+    "editorial-essay": { "name": "Editorial エッセイ", "desc": "長文レイアウト：ゆとりのある余白、セリフ本文、深い読書向け" },
+    "swiss-minimal": { "name": "Swiss ミニマル", "desc": "スイス国際主義：細字サンセリフ、ミニマル余白、引用向け" },
+    "swiss-card": { "name": "Swiss カード", "desc": "カードレイアウト：角丸と影、フォーマルな共有に最適" },
+    "swiss-statement": { "name": "Swiss ステートメント", "desc": "大胆な宣言：超大細字タイトル、単一アクセントカラー、主張向け" }
   },
   "palettes": {
     "0": "竹韻",

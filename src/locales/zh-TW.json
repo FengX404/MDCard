@@ -76,10 +76,16 @@
     "light": "淺色主題"
   },
   "templates": {
-    "default": { "name": "預設", "desc": "均衡排版，適合通用分享場景" },
-    "magazine": { "name": "雜誌", "desc": "雜誌風格：上下裝飾線，圖片通欄" },
-    "minimal": { "name": "極簡", "desc": "極簡留白：細字無框，適合文藝/摘錄" },
-    "card": { "name": "名片", "desc": "名片卡片：圓角陰影，適合正式分享" }
+    "family": {
+      "editorial": "Editorial · 雜誌",
+      "swiss": "Swiss · 國際主義"
+    },
+    "editorial-default": { "name": "Editorial 預設", "desc": "襯線體雜誌排版，均衡適配通用分享" },
+    "editorial-magazine": { "name": "Editorial 雜誌", "desc": "強化雜誌風格：襯線標題，通欄圖片，上下裝飾線" },
+    "editorial-essay": { "name": "Editorial 隨筆", "desc": "長文佈局：寬裕留白，襯線正文，適合深度閱讀" },
+    "swiss-minimal": { "name": "Swiss 極簡", "desc": "瑞士國際主義：輕字重無襯線，極簡留白，適合文藝摘錄" },
+    "swiss-card": { "name": "Swiss 名片", "desc": "名片卡片：圓角投影，適合正式場合分享" },
+    "swiss-statement": { "name": "Swiss 聲明", "desc": "大膽聲明：超大輕字重標題，單一強調色，適合觀點輸出" }
   },
   "palettes": {
     "0": "竹韻",

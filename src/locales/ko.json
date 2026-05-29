@@ -76,10 +76,16 @@
     "light": "라이트 테마"
   },
   "templates": {
-    "default": { "name": "기본", "desc": "균형 잡힌 레이아웃, 일반 공유에 적합" },
-    "magazine": { "name": "매거진", "desc": "잡지 스타일: 장식선, 이미지 전체 폭" },
-    "minimal": { "name": "미니멀", "desc": "여백을 살린 미니멀 디자인, 인용/발췌에 적합" },
-    "card": { "name": "카드", "desc": "둥근 모서리 그림자 카드, 공식 공유에 적합" }
+    "family": {
+      "editorial": "Editorial · 매거진",
+      "swiss": "Swiss · 인터내셔널"
+    },
+    "editorial-default": { "name": "Editorial 기본", "desc": "세리프체 매거진 레이아웃, 일반 공유에 적합" },
+    "editorial-magazine": { "name": "Editorial 매거진", "desc": "매거진 스타일 강화: 세리프 제목, 이미지 전체 폭, 장식선" },
+    "editorial-essay": { "name": "Editorial 에세이", "desc": "장문 레이아웃: 넉넉한 여백, 세리프 본문, 깊은 독서에 적합" },
+    "swiss-minimal": { "name": "Swiss 미니멀", "desc": "스위스 국제주의: 가는 산세리프, 미니멀 여백, 인용에 적합" },
+    "swiss-card": { "name": "Swiss 카드", "desc": "카드 레이아웃: 둥근 모서리와 그림자, 공식 공유에 적합" },
+    "swiss-statement": { "name": "Swiss 스테이트먼트", "desc": "대담한 선언: 초대형 가는 제목, 단일 강조색, 의견 표출에 적합" }
   },
   "palettes": {
     "0": "죽운",

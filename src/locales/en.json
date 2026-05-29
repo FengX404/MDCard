@@ -76,10 +76,16 @@
     "light": "Light Themes"
   },
   "templates": {
-    "default": { "name": "Default", "desc": "Balanced layout for general sharing" },
-    "magazine": { "name": "Magazine", "desc": "Magazine style with decorative lines, full-width images" },
-    "minimal": { "name": "Minimal", "desc": "Clean and airy, perfect for quotes and excerpts" },
-    "card": { "name": "Card", "desc": "Rounded card with shadow, ideal for formal sharing" }
+    "family": {
+      "editorial": "Editorial · Magazine",
+      "swiss": "Swiss · International"
+    },
+    "editorial-default": { "name": "Editorial Default", "desc": "Serif magazine layout, balanced for general sharing" },
+    "editorial-magazine": { "name": "Editorial Magazine", "desc": "Enhanced magazine style: serif titles, full-width images, decorative rules" },
+    "editorial-essay": { "name": "Editorial Essay", "desc": "Long-form layout: generous whitespace, serif body, for deep reading" },
+    "swiss-minimal": { "name": "Swiss Minimal", "desc": "Swiss International: light sans-serif, minimal whitespace, for quotes" },
+    "swiss-card": { "name": "Swiss Card", "desc": "Card layout: rounded corners and shadow, for formal sharing" },
+    "swiss-statement": { "name": "Swiss Statement", "desc": "Bold statement: oversized light titles, single accent color, for opinions" }
   },
   "palettes": {
     "0": "Bamboo",

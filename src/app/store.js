@@ -1,24 +1,25 @@
 import { levelToValue, valueToLevel } from './config.js';
 import { createDefaults } from './settings.js';
+import { DEFAULT_LAYOUT } from './templates.js';
 import { dom } from './dom.js';
 
 let opts = createDefaults();
 let paletteIdx = 7;
-let templateId = 'default';
+let layoutId = DEFAULT_LAYOUT;
 let pages = [];
 let appearanceMode = 'system';
 
 export const store = {
-    get opts()        { return opts; },
-    set opts(v)       { opts = v; },
-    get paletteIdx()  { return paletteIdx; },
-    set paletteIdx(v) { paletteIdx = v; },
-    get templateId()  { return templateId; },
-    set templateId(v) { templateId = v; },
-    get pages()       { return pages; },
-    set pages(v)      { pages = v; },
-    get appearanceMode()  { return appearanceMode; },
-    set appearanceMode(v) { appearanceMode = v; },
+    get opts()           { return opts; },
+    set opts(v)          { opts = v; },
+    get paletteIdx()     { return paletteIdx; },
+    set paletteIdx(v)    { paletteIdx = v; },
+    get layoutId()       { return layoutId; },
+    set layoutId(v)      { layoutId = v; },
+    get pages()          { return pages; },
+    set pages(v)         { pages = v; },
+    get appearanceMode() { return appearanceMode; },
+    set appearanceMode(v){ appearanceMode = v; },
 };
 
 export function readDomSettings() {

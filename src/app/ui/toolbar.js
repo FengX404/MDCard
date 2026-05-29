@@ -1,4 +1,4 @@
-import TEMPLATES, { DEFAULT_TEMPLATE } from '../templates.js';
+import LAYOUTS, { DEFAULT_LAYOUT } from '../templates.js';
 import { levelToValue } from '../config.js';
 import { createDefaults, availableHeight, applyCardVars } from '../settings.js';
 import { renderToImage, triggerDownload, dataUrlToBlob } from '../renderer.js';
@@ -7,7 +7,7 @@ import { setupImageUpload } from '../image-upload.js';
 import { setLocale, getLocale, t } from '../i18n.js';
 import { dom } from '../dom.js';
 import { store, readDomSettings, writeDomSettings } from '../store.js';
-import { renderPalettes, renderTemplates, openDrawer, closeDrawer } from './drawer.js';
+import { renderPalettes, renderLayouts, openDrawer, closeDrawer } from './drawer.js';
 import { refresh } from './preview.js';
 import { persist, saveAppearance } from '../storage.js';
 import { saveDraft, getCurrentId, setCurrentId, clearCurrentId, getAutoSave, setAutoSave } from '../draft.js';
@@ -70,17 +70,17 @@ export async function exportAll() {
 export function resetAll() {
     store.opts = createDefaults();
     store.paletteIdx = 7;
-    store.templateId = DEFAULT_TEMPLATE;
+    store.layoutId = DEFAULT_LAYOUT;
     writeDomSettings();
     renderPalettes();
-    renderTemplates();
+    renderLayouts();
     refresh();
     showToast(t('toast.resetDone'));
 }
 
 export function shareConfig() {
     readDomSettings();
-    const payload = { ...store.opts, paletteIdx: store.paletteIdx, templateId: store.templateId };
+    const payload = { ...store.opts, paletteIdx: store.paletteIdx, layoutId: store.layoutId };
     const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
     const url = `${location.origin}${location.pathname}#cfg=${encoded}`;
 
@@ -264,11 +264,12 @@ function checkImageFits(dataUrl) {
     return new Promise((resolve) => {
         readDomSettings();
         const fmt = dom.format.value;
-        const tpl = TEMPLATES.find(tmpl => tmpl.id === store.templateId);
-        const tplClass = tpl ? tpl.cssClass : '';
+        const layout = LAYOUTS.find(l => l.id === store.layoutId);
+        const familyClass = layout ? 'mc--' + layout.family : '';
+        const layoutClass = layout ? layout.cssClass : '';
 
         const probe = document.createElement('div');
-        probe.className = `mc__card mc__card--${fmt}${tplClass ? ' ' + tplClass : ''}`;
+        probe.className = `mc__card mc__card--${fmt} ${familyClass} ${layoutClass}`;
         probe.style.cssText = 'position:absolute;left:-9999px;top:0;';
         applyCardVars(probe, store.opts);
         document.body.appendChild(probe);

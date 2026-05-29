@@ -1,4 +1,4 @@
-import TEMPLATES from '../templates.js';
+import LAYOUTS from '../templates.js';
 import { applyCardVars } from '../settings.js';
 import { paginateMarkdown } from '../paginator.js';
 import { resolveMarkdown } from '../image-upload.js';
@@ -11,12 +11,13 @@ export function refresh() {
     readDomSettings();
     const md = resolveMarkdown(dom.markdown.value);
     const fmt = dom.format.value;
-    const tpl = TEMPLATES.find(tmpl => tmpl.id === store.templateId);
-    const tplClass = tpl ? tpl.cssClass : '';
+    const layout = LAYOUTS.find(l => l.id === store.layoutId);
+    const familyClass = layout ? 'mc--' + layout.family : '';
+    const layoutClass = layout ? layout.cssClass : '';
 
     store.pages = paginateMarkdown(md, fmt, store.opts, () => {
         showToast(t('toast.imageTooLarge'));
-    }, tplClass);
+    }, layoutClass);
 
     if (store.pages.length === 0) {
         dom.cards.innerHTML = '';
@@ -32,7 +33,7 @@ export function refresh() {
     dom.cards.innerHTML = store.pages.map((html, i) => `
         <div class="mc__card-wrapper">
             <span class="mc__card-badge">${i + 1}/${total}</span>
-            <div class="mc__card mc__card--${fmt} ${tplClass}">
+            <div class="mc__card mc__card--${fmt} ${familyClass} ${layoutClass}">
                 <div class="mc__card-body">${html}</div>
                 ${store.opts.watermark ? `<div class="mc__card-watermark">${escHtml(store.opts.watermark)}</div>` : ''}
             </div>
