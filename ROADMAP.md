@@ -6,7 +6,6 @@
 
 - [x] **结构化版式骨架** — 参考 Editorial/Swiss 视觉系统，6 套版式（editorial-default / magazine / prose + swiss-minimal / card / poster），每套定义 typography + visual 元数据与 CSS class
 - [x] **主题色彩打磨** — 精炼 10 套调色板（5 暗色 + 5 亮色），WCAG AA 4.5:1 对比度合规
-- [ ] **版式微调** — 支持用户逐版式微调字号、字重、装饰线等细节参数
 
 ### 内容增强
 
