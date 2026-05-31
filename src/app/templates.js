@@ -58,11 +58,11 @@ const LAYOUTS = [
         },
     },
     {
-        id: 'editorial-essay',
-        name: 'Editorial 随笔',
+        id: 'editorial-prose',
+        name: 'Editorial 散文',
         desc: '长文布局：宽裕留白，衬线正文，适合深度阅读',
         family: 'editorial',
-        cssClass: 'mc--editorial-essay',
+        cssClass: 'mc--editorial-prose',
         typography: {
             headingFont: 'var(--mc-font-serif)',
             bodyFont: 'var(--mc-font-serif)',
@@ -80,10 +80,9 @@ const LAYOUTS = [
             ruleStyle: 'none',
         },
         defaults: {
-            pad: 36,
-            my: 12,
-            bw: 0,
-            br: 0,
+            pad: 36, my: 12, bw: 0, br: 0,
+            h1: 24, h2: 18, h3: 15,
+            bodyFs: 15, lh: 1.6,
         },
     },
     {
@@ -138,18 +137,17 @@ const LAYOUTS = [
             ruleStyle: 'dashed',
         },
         defaults: {
-            pad: 32,
-            my: 8,
-            bw: 2,
-            br: 16,
+            pad: 28, my: 8, bw: 0, br: 16,
+            h1: 17, h2: 16, h3: 14,
+            bodyFs: 14, lh: 1.35,
         },
     },
     {
-        id: 'swiss-statement',
-        name: 'Swiss 声明',
-        desc: '大胆声明：超大轻字重标题，单一强调色，适合观点输出',
+        id: 'swiss-poster',
+        name: 'Swiss 海报',
+        desc: '海报风格：超大轻字重标题，单一强调色，适合观点输出',
         family: 'swiss',
-        cssClass: 'mc--swiss-statement',
+        cssClass: 'mc--swiss-poster',
         typography: {
             headingFont: 'var(--mc-font-sans)',
             bodyFont: 'var(--mc-font-sans)',
@@ -167,10 +165,9 @@ const LAYOUTS = [
             ruleStyle: 'hairline',
         },
         defaults: {
-            pad: 48,
-            my: 28,
-            bw: 0,
-            br: 0,
+            pad: 48, my: 28, bw: 0, br: 0,
+            h1: 28, h2: 24, h3: 17,
+            bodyFs: 16, lh: 1.35,
         },
     },
 ];

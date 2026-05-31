@@ -66,9 +66,12 @@ export function applyCardVars(cardEl, s) {
  * @param {typeof DEFAULTS} s - Style settings object
  * @returns {number} Available height in CSS pixels
  */
+const WATERMARK_HEIGHT_ESTIMATE = 20;
+
 export function availableHeight(fmt, s) {
     const cfg = FORMATS[fmt];
     const borderOff = s.bw * 2;
     const padOff = (s.pad * 2) + (s.my * 2);
-    return cfg.ph - padOff - borderOff;
+    const watermarkOff = s.watermark ? WATERMARK_HEIGHT_ESTIMATE : 0;
+    return cfg.ph - padOff - borderOff - watermarkOff;
 }

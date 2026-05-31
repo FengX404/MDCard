@@ -1,3 +1,4 @@
+import { applyPalette } from './drawer.js';
 import LAYOUTS, { DEFAULT_LAYOUT } from '../templates.js';
 import { levelToValue } from '../config.js';
 import { createDefaults, availableHeight, applyCardVars } from '../settings.js';
@@ -21,6 +22,11 @@ function debounce(fn, ms) {
         clearTimeout(id);
         id = setTimeout(() => fn(...args), ms);
     };
+}
+
+function updateBorderColorState(bw) {
+    dom.bc.disabled = bw === 0;
+    dom.bc.style.opacity = bw === 0 ? '0.4' : '';
 }
 
 export async function exportAll() {
@@ -69,8 +75,9 @@ export async function exportAll() {
 
 export function resetAll() {
     store.opts = createDefaults();
-    store.paletteIdx = 7;
+    store.paletteIdx = 5;
     store.layoutId = DEFAULT_LAYOUT;
+    applyPalette(store.paletteIdx);
     writeDomSettings();
     renderPalettes();
     renderLayouts();
@@ -81,7 +88,10 @@ export function resetAll() {
 export function shareConfig() {
     readDomSettings();
     const payload = { ...store.opts, paletteIdx: store.paletteIdx, layoutId: store.layoutId };
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    const bytes = new TextEncoder().encode(JSON.stringify(payload));
+    let binary = '';
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    const encoded = btoa(binary);
     const url = `${location.origin}${location.pathname}#cfg=${encoded}`;
 
     navigator.clipboard.writeText(url).then(() => {
@@ -191,8 +201,10 @@ export function bindEvents() {
         dom.langDropdown.parentElement.classList.remove('mc__lang--open');
     });
 
-    document.addEventListener('click', () => {
-        dom.langDropdown.parentElement.classList.remove('mc__lang--open');
+    document.addEventListener('click', (e) => {
+        if (!dom.langDropdown.parentElement.contains(e.target)) {
+            dom.langDropdown.parentElement.classList.remove('mc__lang--open');
+        }
     });
 
     const sliders = [
@@ -213,6 +225,7 @@ export function bindEvents() {
             store.opts[key] = levelToValue(key, level);
             const val = store.opts[key];
             display.textContent = (key === 'lh') ? String(val) : val + 'px';
+            if (key === 'bw') updateBorderColorState(val);
             debouncedRefresh();
         });
     }
@@ -233,12 +246,20 @@ export function bindEvents() {
 
     dom.watermark.addEventListener('input', debouncedRefresh);
 
+    updateBorderColorState(store.opts.bw);
+
     setupImageUpload(dom.markdown, debouncedRefresh, checkImageFits);
 
     window.addEventListener('beforeunload', () => {
         persist();
         const md = dom.markdown.value;
         if (md.trim()) {
+            // Sync save to localStorage as emergency backup (IndexedDB may not complete)
+            try {
+                localStorage.setItem('mdcard-emergency-draft', md);
+                localStorage.setItem('mdcard-emergency-draft-id', String(getCurrentId() || ''));
+            } catch { /* localStorage full — ignore */ }
+            // Also attempt IndexedDB save (best-effort, may not complete)
             saveDraft(md, exportImages(), getCurrentId()).then(savedId => {
                 if (getCurrentId() == null) setCurrentId(savedId);
             });

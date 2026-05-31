@@ -80,24 +80,24 @@
       "editorial": "Editorial · Magazine",
       "swiss": "Swiss · International"
     },
-    "editorial-default": { "name": "Editorial Default", "desc": "Serif magazine layout, balanced for general sharing" },
-    "editorial-magazine": { "name": "Editorial Magazine", "desc": "Enhanced magazine style: serif titles, full-width images, decorative rules" },
-    "editorial-essay": { "name": "Editorial Essay", "desc": "Long-form layout: generous whitespace, serif body, for deep reading" },
-    "swiss-minimal": { "name": "Swiss Minimal", "desc": "Swiss International: light sans-serif, minimal whitespace, for quotes" },
-    "swiss-card": { "name": "Swiss Card", "desc": "Card layout: rounded corners and shadow, for formal sharing" },
-    "swiss-statement": { "name": "Swiss Statement", "desc": "Bold statement: oversized light titles, single accent color, for opinions" }
+    "editorial-default": { "name": "Default", "desc": "Serif magazine layout, balanced for general sharing" },
+    "editorial-magazine": { "name": "Magazine", "desc": "Enhanced magazine style: serif titles, full-width images, decorative rules" },
+    "editorial-prose": { "name": "Prose", "desc": "Long-form layout: generous whitespace, serif body, for deep reading" },
+    "swiss-minimal": { "name": "Minimal", "desc": "Swiss International: light sans-serif, minimal whitespace, for quotes" },
+    "swiss-card": { "name": "Card", "desc": "Card layout: rounded corners and shadow, for formal sharing" },
+    "swiss-poster": { "name": "Poster", "desc": "Poster style: oversized light titles, single accent color, for opinions" }
   },
   "palettes": {
-    "0": "Bamboo",
-    "1": "Night Reading",
-    "2": "Ink & Pine",
-    "3": "Amber Time",
-    "4": "Purple Moon",
-    "5": "New Bamboo",
-    "6": "Frost White",
-    "7": "Rice Paper",
-    "8": "Cherry Pink",
-    "9": "Clear Sky"
+    "0": "Monochrome",
+    "1": "Night Read",
+    "2": "Bamboo",
+    "3": "Ink Wash",
+    "4": "Amber",
+    "5": "Newsprint",
+    "6": "Rice Paper",
+    "7": "New Bamboo",
+    "8": "Clear Sky",
+    "9": "Cherry Pink"
   },
   "demo": {
     "content": "# MDCard\u000a\u000aTransform Markdown into beautiful share cards\u000a\u000a## Features\u000a\u000a- **16 theme palettes** one-click switch\u000a- **Glassmorphism UI** modern design language\u000a- **Watermark & config sharing** for authorship protection\u000a\u000a===\u000a\u000a## Quick Start\u000a\u000a1. Write Markdown on the left\u000a2. Click the \uD83C\uDCCF button to open style panel\u000a3. Pick a theme or customize colors\u000a4. Export as PNG / JPG\u000a\u000a> Use === to force page break, --- to render a divider"
@@ -117,6 +117,7 @@
     "hoursAgo": "{n}h ago",
     "daysAgo": "{n}d ago",
     "untitled": "Untitled draft",
-    "notFound": "Draft not found"
+    "notFound": "Draft not found",
+    "emergency": "Emergency recovered draft"
   }
 }

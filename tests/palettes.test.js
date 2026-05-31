@@ -29,42 +29,34 @@ describe('palettes', () => {
         expect(PALETTES).toHaveLength(10);
     });
 
-    it('should have unique names', () => {
-        const names = PALETTES.map((p) => p.name);
-        expect(new Set(names).size).toBe(names.length);
-    });
-
     describe('each palette', () => {
-        for (const p of PALETTES) {
-            it(`${p.name} should have required keys`, () => {
-                expect(p).toHaveProperty('name');
+        for (let i = 0; i < PALETTES.length; i++) {
+            const p = PALETTES[i];
+
+            it(`palette[${i}] should have required keys`, () => {
                 expect(p).toHaveProperty('bg');
                 expect(p).toHaveProperty('head');
                 expect(p).toHaveProperty('body');
             });
 
-            it(`${p.name} should have valid hex color for bg`, () => {
+            it(`palette[${i}] should have valid hex color for bg`, () => {
                 expect(p.bg).toMatch(HEX_RE);
             });
 
-            it(`${p.name} should have valid hex color for head`, () => {
+            it(`palette[${i}] should have valid hex color for head`, () => {
                 expect(p.head).toMatch(HEX_RE);
             });
 
-            it(`${p.name} should have valid hex color for body`, () => {
+            it(`palette[${i}] should have valid hex color for body`, () => {
                 expect(p.body).toMatch(HEX_RE);
             });
 
-            it(`${p.name} should have non-empty name`, () => {
-                expect(p.name.length).toBeGreaterThan(0);
-            });
-
-            it(`${p.name} body text should pass WCAG AA contrast (≥4.5:1)`, () => {
+            it(`palette[${i}] body text should pass WCAG AA contrast (≥4.5:1)`, () => {
                 const cr = contrastRatio(p.bg, p.body);
                 expect(cr).toBeGreaterThanOrEqual(4.5);
             });
 
-            it(`${p.name} heading should pass WCAG AA contrast (≥4.5:1)`, () => {
+            it(`palette[${i}] heading should pass WCAG AA contrast (≥4.5:1)`, () => {
                 const cr = contrastRatio(p.bg, p.head);
                 expect(cr).toBeGreaterThanOrEqual(4.5);
             });

@@ -33,33 +33,29 @@ export function renderPalettes() {
 }
 
 export function renderLayouts() {
-    const editorialLayouts = LAYOUTS.filter(l => l.family === 'editorial');
-    const swissLayouts = LAYOUTS.filter(l => l.family === 'swiss');
-
     const itemHTML = (l) => `
         <div class="mc__template-item ${l.id === store.layoutId ? 'mc__template-item--active' : ''}"
              data-id="${l.id}">
             <div class="mc__template-item-name">${t('templates.' + l.id + '.name')}</div>
-            <div class="mc__template-item-desc">${t('templates.' + l.id + '.desc')}</div>
         </div>`;
 
-    dom.templateGrid.innerHTML =
-        `<div class="mc__theme-group-label">${t('templates.family.editorial')}</div>` +
-        editorialLayouts.map(itemHTML).join('') +
-        `<div class="mc__theme-group-label">${t('templates.family.swiss')}</div>` +
-        swissLayouts.map(itemHTML).join('');
+    dom.templateGrid.innerHTML = LAYOUTS.map(itemHTML).join('');
 
     dom.templateGrid.querySelectorAll('.mc__template-item').forEach(el => {
         el.addEventListener('click', () => pickLayout(el.dataset.id));
     });
 }
 
-export function pickPalette(idx) {
+export function applyPalette(idx) {
     const p = PALETTES[idx];
-    store.paletteIdx = idx;
     store.opts.bg = p.bg;
     store.opts.headC = p.head;
     store.opts.bodyC = p.body;
+}
+
+export function pickPalette(idx) {
+    applyPalette(idx);
+    store.paletteIdx = idx;
     writeDomSettings();
     renderPalettes();
     refresh();
@@ -68,10 +64,11 @@ export function pickPalette(idx) {
 export function pickLayout(id) {
     store.layoutId = id;
     const layout = LAYOUTS.find(l => l.id === id);
-    store.opts.pad = DEFAULTS.pad;
-    store.opts.my = DEFAULTS.my;
-    store.opts.bw = DEFAULTS.bw;
-    store.opts.br = DEFAULTS.br;
+    // Reset only layout-specific fields — preserve user color customizations
+    const layoutFields = ['pad', 'my', 'bw', 'br', 'h1', 'h2', 'h3', 'bodyFs', 'lh'];
+    for (const key of layoutFields) {
+        store.opts[key] = DEFAULTS[key];
+    }
     if (layout && layout.defaults) {
         Object.assign(store.opts, layout.defaults);
     }
@@ -82,3 +79,11 @@ export function pickLayout(id) {
 
 export function openDrawer()  { dom.drawer.classList.add('mc__drawer--open'); }
 export function closeDrawer() { dom.drawer.classList.remove('mc__drawer--open'); }
+
+export function initCollapsibleGroups() {
+    dom.drawer.querySelectorAll('.mc__group-header').forEach(header => {
+        header.addEventListener('click', () => {
+            header.parentElement.classList.toggle('mc__group--collapsed');
+        });
+    });
+}

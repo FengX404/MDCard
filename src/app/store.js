@@ -4,7 +4,7 @@ import { DEFAULT_LAYOUT } from './templates.js';
 import { dom } from './dom.js';
 
 let opts = createDefaults();
-let paletteIdx = 7;
+let paletteIdx = 5;
 let layoutId = DEFAULT_LAYOUT;
 let pages = [];
 let appearanceMode = 'system';
@@ -62,6 +62,8 @@ export function writeDomSettings() {
     dom.my.value = lmy;   dom.myV.textContent = opts.my + 'px';
     dom.bw.value = lbw;   dom.bwV.textContent = opts.bw + 'px';
     dom.bc.value = opts.bc;
+    dom.bc.disabled = opts.bw === 0;
+    dom.bc.style.opacity = opts.bw === 0 ? '0.4' : '';
     dom.br.value = lbr;   dom.brV.textContent = opts.br + 'px';
     dom.watermark.value = opts.watermark;
 }

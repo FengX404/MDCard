@@ -2,14 +2,13 @@ import './analytics.js';
 import { dom } from './dom.js';
 import { store, writeDomSettings } from './store.js';
 import { loadFromHash, restore, loadAppearance } from './storage.js';
-import { renderPalettes, renderTemplates } from './ui/drawer.js';
+import { renderPalettes, renderLayouts, initCollapsibleGroups, applyPalette } from './ui/drawer.js';
 import { refresh } from './ui/preview.js';
 import { setAppearance, bindEvents } from './ui/toolbar.js';
-import { t, init as initI18n, onLocaleChange } from './i18n.js';
-import { loadDraft, getCurrentId } from './draft.js';
+import { t, init as initI18n, onLocaleChange, getLocale } from './i18n.js';
+import { loadDraft, getCurrentId, setCurrentId } from './draft.js';
 import { importImages } from './image-upload.js';
 import { showToast } from './toast.js';
-import './analytics.js';
 
 marked.setOptions({ breaks: true, gfm: true });
 
@@ -29,27 +28,45 @@ function init() {
 
     store.appearanceMode = loadAppearance();
     setAppearance(store.appearanceMode);
-    writeDomSettings();
-    renderPalettes();
-    renderTemplates();
 
     if (!fromHash && !fromLocal) {
-        const draftId = getCurrentId();
-        if (draftId != null) {
-            loadDraft(draftId).then(draft => {
-                if (draft) {
-                    importImages(draft.images);
-                    dom.markdown.value = draft.md;
-                    showToast(t('draft.restored', { title: draft.title }));
+        applyPalette(store.paletteIdx);
+    }
+
+    writeDomSettings();
+    renderPalettes();
+    renderLayouts();
+    initCollapsibleGroups();
+
+    if (!fromHash && !fromLocal) {
+        // Check for emergency draft from beforeunload crash recovery
+        const emergencyMd = localStorage.getItem('mdcard-emergency-draft');
+        if (emergencyMd) {
+            const emergencyId = localStorage.getItem('mdcard-emergency-draft-id');
+            localStorage.removeItem('mdcard-emergency-draft');
+            localStorage.removeItem('mdcard-emergency-draft-id');
+            dom.markdown.value = emergencyMd;
+            if (emergencyId) setCurrentId(+emergencyId || null);
+            showToast(t('draft.restored', { title: t('draft.emergency') }));
+            refresh();
+        } else {
+            const draftId = getCurrentId();
+            if (draftId != null) {
+                loadDraft(draftId).then(draft => {
+                    if (draft) {
+                        importImages(draft.images);
+                        dom.markdown.value = draft.md;
+                        showToast(t('draft.restored', { title: draft.title }));
+                        refresh();
+                        return;
+                    }
+                    dom.markdown.value = t('demo.content');
                     refresh();
-                    return;
-                }
+                });
+            } else {
                 dom.markdown.value = t('demo.content');
                 refresh();
-            });
-        } else {
-            dom.markdown.value = t('demo.content');
-            refresh();
+            }
         }
     } else {
         refresh();
@@ -57,10 +74,20 @@ function init() {
 
     onLocaleChange(() => {
         renderPalettes();
-        renderTemplates();
+        renderLayouts();
         if (dom.markdown.value === t('demo.content')) {
             dom.markdown.value = t('demo.content');
         }
+        // Update format dropdown button label
+        const fmt = dom.format.value;
+        dom.formatDropdown.querySelectorAll('.mc__format-option').forEach(o => {
+            if (o.dataset.format === fmt) dom.formatLabel.textContent = o.textContent;
+        });
+        // Update language dropdown button label
+        const locale = getLocale();
+        dom.langDropdown.querySelectorAll('.mc__lang-option').forEach(o => {
+            if (o.dataset.lang === locale) dom.langLabel.textContent = o.textContent;
+        });
         refresh();
     });
 

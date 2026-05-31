@@ -10,24 +10,24 @@ test.describe('Settings Panel', () => {
     await expect(drawer).toBeVisible();
   });
 
-  test('should show palettes in drawer', async ({ page }) => {
+  test('should show themes in drawer', async ({ page }) => {
     await page.goto('/');
     await page.locator('[data-i18n="toolbar.style"]').click();
 
-    const palettes = page.locator('.mc__palette-item');
-    const count = await palettes.count();
+    const themes = page.locator('.mc__theme-item');
+    const count = await themes.count();
     expect(count).toBe(10);
   });
 
-  test('should switch palette and update preview', async ({ page }) => {
+  test('should switch theme and update preview', async ({ page }) => {
     await page.goto('/');
     const editor = page.locator('textarea#mc-input');
     await editor.fill('# Test');
 
     await page.locator('[data-i18n="toolbar.style"]').click();
 
-    const firstPalette = page.locator('.mc__palette-item').first();
-    await firstPalette.click();
+    const firstTheme = page.locator('.mc__theme-item').first();
+    await firstTheme.click();
 
     const card = page.locator('.mc__card').first();
     await expect(card).toBeVisible();
@@ -42,7 +42,7 @@ test.describe('Settings Panel', () => {
 
     const templates = page.locator('.mc__template-item');
     const count = await templates.count();
-    expect(count).toBe(4);
+    expect(count).toBe(6);
   });
 
   test('should change aspect ratio', async ({ page }) => {
@@ -64,7 +64,7 @@ test.describe('Settings Panel', () => {
     await darkBtn.click();
 
     const html = page.locator('html');
-    await expect(html).toHaveAttribute('data-theme', 'dark');
+    await expect(html).toHaveAttribute('data-appearance', 'dark');
   });
 
   test('should have share config button', async ({ page }) => {

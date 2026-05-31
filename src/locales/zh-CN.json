@@ -80,24 +80,24 @@
       "editorial": "Editorial · 杂志",
       "swiss": "Swiss · 国际主义"
     },
-    "editorial-default": { "name": "Editorial 默认", "desc": "衬线体杂志排版，均衡适配通用分享" },
-    "editorial-magazine": { "name": "Editorial 杂志", "desc": "强化杂志风格：衬线标题，通栏图片，上下装饰线" },
-    "editorial-essay": { "name": "Editorial 随笔", "desc": "长文布局：宽裕留白，衬线正文，适合深度阅读" },
-    "swiss-minimal": { "name": "Swiss 极简", "desc": "瑞士国际主义：轻字重无衬线，极简留白，适合文艺摘录" },
-    "swiss-card": { "name": "Swiss 名片", "desc": "名片卡片：圆角投影，适合正式场合分享" },
-    "swiss-statement": { "name": "Swiss 声明", "desc": "大胆声明：超大轻字重标题，单一强调色，适合观点输出" }
+    "editorial-default": { "name": "默认", "desc": "衬线体杂志排版，均衡适配通用分享" },
+    "editorial-magazine": { "name": "杂志", "desc": "强化杂志风格：衬线标题，通栏图片，上下装饰线" },
+    "editorial-prose": { "name": "散文", "desc": "长文布局：宽裕留白，衬线正文，适合深度阅读" },
+    "swiss-minimal": { "name": "极简", "desc": "瑞士国际主义：轻字重无衬线，极简留白，适合文艺摘录" },
+    "swiss-card": { "name": "名片", "desc": "名片卡片：圆角投影，适合正式场合分享" },
+    "swiss-poster": { "name": "海报", "desc": "海报风格：超大轻字重标题，单一强调色，适合观点输出" }
   },
   "palettes": {
-    "0": "竹韵",
-    "1": "深夜阅读",
-    "2": "松烟入墨",
-    "3": "琥珀时光",
-    "4": "紫月",
-    "5": "新竹",
-    "6": "霜白",
-    "7": "米纸",
-    "8": "樱粉",
-    "9": "晴空"
+    "0": "墨白",
+    "1": "夜读",
+    "2": "竹韵",
+    "3": "松烟",
+    "4": "琥珀",
+    "5": "晨报",
+    "6": "米纸",
+    "7": "新竹",
+    "8": "晴空",
+    "9": "樱粉"
   },
   "demo": {
     "content": "# MDCard\u000a\u000a将 Markdown 转为精美分享卡片\u000a\u000a## 特色功能\u000a\u000a- **16 款主题配色** 一键切换\u000a- **毛玻璃界面** 现代设计语言\u000a- **水印 & 配置分享** 原创保护\u000a\u000a===\u000a\u000a## 快速上手\u000a\u000a1. 左侧编写 Markdown\u000a2. 点击 \uD83C\uDCCF 按钮打开样式面板\u000a3. 选择主题或自定义颜色\u000a4. 导出 PNG / JPG\u000a\u000a> 用 === 强制分页，用 --- 渲染分割线"
@@ -117,6 +117,7 @@
     "hoursAgo": "{n} 小时前",
     "daysAgo": "{n} 天前",
     "untitled": "未命名草稿",
-    "notFound": "草稿不存在或已被删除"
+    "notFound": "草稿不存在或已被删除",
+    "emergency": "已恢复紧急保存的内容"
   }
 }

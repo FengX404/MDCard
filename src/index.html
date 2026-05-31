@@ -26,7 +26,7 @@
                         <defs>
                             <linearGradient id="mcBrandGrad" x1="0" y1="0" x2="32" y2="32">
                                 <stop stop-color="#1BA784"/>
-                                <stop offset="1" stop-color="#45c9a3"/>
+                                <stop offset="1" stop-color="#6ee7c7"/>
                             </linearGradient>
                         </defs>
                     </svg>
@@ -50,7 +50,7 @@
                 </button>
                 <button class="mc__btn mc__btn--primary" id="mc-export-png" disabled>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/><polyline points="12 18 12 12"/><polyline points="9 15 12 18 15 15"/></svg>
-                    PNG
+                    导出
                 </button>
                 <span class="mc__toolbar-sep"></span>
                 <div class="mc__appearance" id="mc-appearance">
@@ -144,36 +144,45 @@
                         <h4 class="mc__group-title" data-i18n="drawer.theme">主题</h4>
                         <div class="mc__theme-grid" id="mc-theme-grid"></div>
                     </div>
-                    <div class="mc__group">
-                        <h4 class="mc__group-title" data-i18n="drawer.typography">排版</h4>
+                    <div class="mc__group mc__group--collapsible">
+                        <div class="mc__group-header">
+                            <h4 class="mc__group-title" data-i18n="drawer.typography">排版</h4>
+                            <svg class="mc__group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="mc__group-content">
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="typo.h1">标题</label>
-                            <input class="mc__slider" type="range" id="mc-h1" min="0" max="10" value="5">
-                            <span class="mc__slider-val" id="mc-h1-val">5</span>
+                            <input class="mc__slider" type="range" id="mc-h1" min="0" max="10" value="3">
+                            <span class="mc__slider-val" id="mc-h1-val">20px</span>
                         </div>
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="typo.h2">副标题</label>
                             <input class="mc__slider" type="range" id="mc-h2" min="0" max="10" value="5">
-                            <span class="mc__slider-val" id="mc-h2-val">5</span>
+                            <span class="mc__slider-val" id="mc-h2-val">18px</span>
                         </div>
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="typo.h3">三级标题</label>
-                            <input class="mc__slider" type="range" id="mc-h3" min="0" max="10" value="5">
-                            <span class="mc__slider-val" id="mc-h3-val">5</span>
+                            <input class="mc__slider" type="range" id="mc-h3" min="0" max="10" value="3">
+                            <span class="mc__slider-val" id="mc-h3-val">15px</span>
                         </div>
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="typo.body">正文</label>
-                            <input class="mc__slider" type="range" id="mc-body" min="0" max="10" value="5">
-                            <span class="mc__slider-val" id="mc-body-val">5</span>
+                            <input class="mc__slider" type="range" id="mc-body" min="0" max="10" value="3">
+                            <span class="mc__slider-val" id="mc-body-val">14px</span>
                         </div>
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="typo.lineHeight">行高</label>
-                            <input class="mc__slider" type="range" id="mc-lh" min="0" max="10" value="5">
-                            <span class="mc__slider-val" id="mc-lh-val">5</span>
+                            <input class="mc__slider" type="range" id="mc-lh" min="0" max="10" value="2">
+                            <span class="mc__slider-val" id="mc-lh-val">1.25</span>
+                        </div>
                         </div>
                     </div>
-                    <div class="mc__group">
-                        <h4 class="mc__group-title" data-i18n="drawer.color">颜色</h4>
+                    <div class="mc__group mc__group--collapsible mc__group--collapsed">
+                        <div class="mc__group-header">
+                            <h4 class="mc__group-title" data-i18n="drawer.color">颜色</h4>
+                            <svg class="mc__group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="mc__group-content">
                         <div class="mc__color-row">
                             <label class="mc__color-label" data-i18n="color.bg">背景</label>
                             <input class="mc__color-input" type="color" id="mc-bg" value="#1e1b4b">
@@ -186,26 +195,36 @@
                             <label class="mc__color-label" data-i18n="color.body">正文</label>
                             <input class="mc__color-input" type="color" id="mc-body-c" value="#c7d2fe">
                         </div>
+                        </div>
                     </div>
-                    <div class="mc__group">
-                        <h4 class="mc__group-title" data-i18n="drawer.spacing">间距</h4>
+                    <div class="mc__group mc__group--collapsible mc__group--collapsed">
+                        <div class="mc__group-header">
+                            <h4 class="mc__group-title" data-i18n="drawer.spacing">间距</h4>
+                            <svg class="mc__group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="mc__group-content">
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="spacing.padding">内边距</label>
-                            <input class="mc__slider" type="range" id="mc-pad" min="0" max="10" value="4">
-                            <span class="mc__slider-val" id="mc-pad-val">4</span>
+                            <input class="mc__slider" type="range" id="mc-pad" min="0" max="10" value="3">
+                            <span class="mc__slider-val" id="mc-pad-val">26px</span>
                         </div>
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="spacing.marginY">上下留白</label>
-                            <input class="mc__slider" type="range" id="mc-my" min="0" max="10" value="5">
-                            <span class="mc__slider-val" id="mc-my-val">5</span>
+                            <input class="mc__slider" type="range" id="mc-my" min="0" max="10" value="4">
+                            <span class="mc__slider-val" id="mc-my-val">10px</span>
+                        </div>
                         </div>
                     </div>
-                    <div class="mc__group">
-                        <h4 class="mc__group-title" data-i18n="drawer.border">边框</h4>
+                    <div class="mc__group mc__group--collapsible mc__group--collapsed">
+                        <div class="mc__group-header">
+                            <h4 class="mc__group-title" data-i18n="drawer.border">边框</h4>
+                            <svg class="mc__group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="mc__group-content">
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="border.width">粗细</label>
                             <input class="mc__slider" type="range" id="mc-bw" min="0" max="10" value="0">
-                            <span class="mc__slider-val" id="mc-bw-val">0</span>
+                            <span class="mc__slider-val" id="mc-bw-val">0px</span>
                         </div>
                         <div class="mc__color-row">
                             <label class="mc__color-label" data-i18n="border.color">颜色</label>
@@ -214,14 +233,20 @@
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="border.radius">圆角</label>
                             <input class="mc__slider" type="range" id="mc-br" min="0" max="10" value="0">
-                            <span class="mc__slider-val" id="mc-br-val">0</span>
+                            <span class="mc__slider-val" id="mc-br-val">0px</span>
+                        </div>
                         </div>
                     </div>
-                    <div class="mc__group">
-                        <h4 class="mc__group-title" data-i18n="drawer.watermark">水印</h4>
+                    <div class="mc__group mc__group--collapsible mc__group--collapsed">
+                        <div class="mc__group-header">
+                            <h4 class="mc__group-title" data-i18n="drawer.watermark">水印</h4>
+                            <svg class="mc__group-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="mc__group-content">
                         <div class="mc__slider-row">
                             <label class="mc__slider-label" data-i18n="watermark.text">文字</label>
                             <input class="mc__text-input" type="text" id="mc-watermark" data-i18n-placeholder="watermark.placeholder" placeholder="留空关闭" maxlength="20">
+                        </div>
                         </div>
                     </div>
                     <div class="mc__group mc__group--actions">

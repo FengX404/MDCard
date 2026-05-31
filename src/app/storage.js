@@ -17,7 +17,10 @@ export function loadFromHash() {
     const m = location.hash.match(/#cfg=(.+)/);
     if (!m) return false;
     try {
-        const payload = JSON.parse(decodeURIComponent(escape(atob(m[1]))));
+        const binary = atob(m[1]);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        const payload = JSON.parse(new TextDecoder().decode(bytes));
         store.opts = { ...DEFAULTS, ...payload };
         if (payload.paletteIdx != null) store.paletteIdx = payload.paletteIdx;
         if (payload.layoutId != null) store.layoutId = payload.layoutId;
