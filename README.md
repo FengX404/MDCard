@@ -139,10 +139,12 @@ Contributions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for g
 
 On every pull request and push to `main`, all stages run automatically. Docker images are built and pushed to GHCR on tag pushes.
 
-## Follow the Author
+## 关注作者
 
-- Blog: [blog.rouguang.top](https://blog.rouguang.top/)
-- Xiaohongshu: [@FengX](https://www.xiaohongshu.com/user/profile/1043817685)
+| 博客 | 小红书 | X | 公众号 |
+|:---:|:---:|:---:|:---:|
+| [![博客](./assets/blog-qr.png)](https://fengx404.com/blog/) | [![小红书](./assets/xiaohongshu-qr.png)](https://www.xiaohongshu.com/user/profile/5fa9ed6d000000000100a8be) | [![X](./assets/x-qr.png)](https://x.com/FengX404) | ![公众号](./assets/wechat-qr.jpg) |
+| [fengx404.com/blog](https://fengx404.com/blog/) | [FengX](https://www.xiaohongshu.com/user/profile/5fa9ed6d000000000100a8be) | [@FengX404](https://x.com/FengX404) | FengX |
 
 ## License
 
