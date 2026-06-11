@@ -3,15 +3,15 @@
   "version": "1.1.0",
   "type": "module",
   "description": "Markdown to beautiful card images with glassmorphism design",
-  "author": "rouguangruye",
+  "author": "FengX404",
   "license": "MIT",
   "homepage": "https://mdcard.rouguang.top/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rouguangruye/MDCard.git"
+    "url": "https://github.com/FengX404/MDCard.git"
   },
   "bugs": {
-    "url": "https://github.com/rouguangruye/MDCard/issues"
+    "url": "https://github.com/FengX404/MDCard/issues"
   },
   "keywords": [
     "markdown",

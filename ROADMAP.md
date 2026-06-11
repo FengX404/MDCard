@@ -17,7 +17,7 @@
 
 ## 中期探索
 
-- [ ] **MCP 功能集成** — 提供 MCP Server，让 AI agent 可以直接调用卡片生成能力（Markdown → 图片）
+- [x] **MCP 功能集成** — 独立项目 [MDCard-MCP](https://github.com/FengX404/MDCard-MCP)（private），HTTP Streamable 传输。Claude Code skill 独立项目 [MDCard-Skill](https://github.com/FengX404/MDCard-Skill)（private），提供 `/mdcard` 斜杠命令。
 
 ## 远期
 

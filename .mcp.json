@@ -1,0 +1,7 @@
+{
+  "mdcard": {
+    "type": "http",
+    "url": "https://mdcard.rouguang.top/mcp",
+    "description": "MDCard MCP server — renders Markdown as beautiful card images. Source: https://github.com/FengX404/MDCard-MCP"
+  }
+}

@@ -38,3 +38,23 @@ All style values use a discrete 0–10 integer level mapped to real CSS values v
 ## Image placeholders (`image-upload.js`)
 
 Pasted/dropped images are stored as data URLs in a `Map<id, dataURL>`. The Markdown gets `![alt](img:ID)` placeholders — the real data URL is substituted by `resolveMarkdown()` just before rendering. Keeps data URLs out of the textarea and draft storage until export time.
+
+## MCP Server
+
+The MCP server is a standalone project at [MDCard-MCP](https://github.com/FengX404/MDCard-MCP) (private). It provides the `render_cards` tool via HTTP Streamable transport for use with Claude Code.
+
+```bash
+claude mcp add --transport http mdcard https://mdcard.rouguang.top/mcp
+```
+
+Project-level `.mcp.json` is provided for auto-discovery.
+
+## Skill
+
+The Claude Code skill (`/mdcard` slash command) is a standalone project at [MDCard-Skill](https://github.com/FengX404/MDCard-Skill) (private). It provides a CLI for rendering Markdown as card images via Playwright.
+
+```bash
+git clone https://github.com/FengX404/MDCard-Skill.git
+cd MDCard-Skill && npm install
+node render.mjs --text "# Hello World" --output-dir ./cards
+```
