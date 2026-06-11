@@ -53,12 +53,3 @@ export function restore() {
     }
     return false;
 }
-
-export function saveAppearance(mode) {
-    localStorage.setItem('mdcard-appearance', mode);
-}
-
-export function loadAppearance() {
-    const saved = localStorage.getItem('mdcard-appearance');
-    return ['dark', 'light', 'system'].includes(saved) ? saved : 'system';
-}

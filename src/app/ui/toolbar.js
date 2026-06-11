@@ -10,7 +10,7 @@ import { dom } from '../dom.js';
 import { store, readDomSettings, writeDomSettings } from '../store.js';
 import { renderPalettes, renderLayouts, openDrawer, closeDrawer } from './drawer.js';
 import { refresh } from './preview.js';
-import { persist, saveAppearance } from '../storage.js';
+import { persist } from '../storage.js';
 import { saveDraft, getCurrentId, setCurrentId, clearCurrentId, getAutoSave, setAutoSave } from '../draft.js';
 import { exportImages } from '../image-upload.js';
 import { openDraftsPanel } from './drafts-panel.js';
@@ -101,16 +101,6 @@ export function shareConfig() {
     });
 }
 
-export function setAppearance(mode) {
-    store.appearanceMode = mode;
-    document.documentElement.setAttribute('data-appearance', mode);
-    saveAppearance(mode);
-
-    dom.appearance.querySelectorAll('.mc__appearance-btn').forEach(btn => {
-        btn.classList.toggle('mc__appearance-btn--active', btn.dataset.mode === mode);
-    });
-}
-
 export function bindEvents() {
     const debouncedRefresh = debounce(refresh, 250);
 
@@ -171,10 +161,6 @@ export function bindEvents() {
 
     dom.resetBtn.addEventListener('click', resetAll);
     dom.shareBtn.addEventListener('click', shareConfig);
-
-    dom.appearance.querySelectorAll('.mc__appearance-btn').forEach(btn => {
-        btn.addEventListener('click', () => setAppearance(btn.dataset.mode));
-    });
 
     const opts = dom.langDropdown.querySelectorAll('.mc__lang-option');
     const markActive = (locale) => {

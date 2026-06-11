@@ -394,10 +394,6 @@ body {
     .mc__brand-text {
         display: none;
     }
-    .mc__appearance {
-        order: -1;
-        margin-left: 0;
-    }
     .mc__autosave-btn { margin-left: auto; }
 }
 

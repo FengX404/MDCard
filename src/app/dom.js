@@ -19,7 +19,6 @@ export const dom = {
     templateGrid: $('mc-template-grid'),
     resetBtn:     $('mc-reset'),
     shareBtn:     $('mc-share-config'),
-    appearance:   $('mc-appearance'),
     langBtn:      $('mc-lang-btn'),
     langLabel:    $('mc-lang-label'),
     langDropdown: $('mc-lang-dropdown'),

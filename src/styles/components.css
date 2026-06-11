@@ -280,40 +280,6 @@
     color: #fff;
 }
 
-/* ── Appearance toggle ──────────────────────────────────────────────────── */
-
-.mc__appearance {
-    display: flex;
-    gap: 2px;
-    background: var(--mc-glass-bg);
-    border: 1px solid var(--mc-glass-border);
-    border-radius: var(--mc-radius-sm);
-    padding: 2px;
-}
-
-.mc__appearance-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 26px;
-    border: none;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--mc-text-muted);
-    cursor: pointer;
-    transition: all var(--mc-transition);
-}
-
-.mc__appearance-btn:hover {
-    color: var(--mc-text-secondary);
-}
-
-.mc__appearance-btn--active {
-    background: var(--mc-accent-soft);
-    color: var(--mc-accent);
-}
-
 /* ── Card ───────────────────────────────────────────────────────────────── */
 
 .mc__card-wrapper {
@@ -711,7 +677,6 @@
 
 .mc__theme-item:focus-visible .mc__theme-swatch,
 .mc__template-item:focus-visible,
-.mc__appearance-btn:focus-visible,
 .mc__color-input:focus-visible {
     outline: 2px solid var(--mc-text-primary);
     outline-offset: 2px;

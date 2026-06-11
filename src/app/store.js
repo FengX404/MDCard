@@ -7,7 +7,6 @@ let opts = createDefaults();
 let paletteIdx = 5;
 let layoutId = DEFAULT_LAYOUT;
 let pages = [];
-let appearanceMode = 'system';
 
 export const store = {
     get opts()           { return opts; },
@@ -18,8 +17,6 @@ export const store = {
     set layoutId(v)      { layoutId = v; },
     get pages()          { return pages; },
     set pages(v)         { pages = v; },
-    get appearanceMode() { return appearanceMode; },
-    set appearanceMode(v){ appearanceMode = v; },
 };
 
 export function readDomSettings() {

@@ -1,10 +1,10 @@
 import './analytics.js';
 import { dom } from './dom.js';
 import { store, writeDomSettings } from './store.js';
-import { loadFromHash, restore, loadAppearance } from './storage.js';
+import { loadFromHash, restore } from './storage.js';
 import { renderPalettes, renderLayouts, initCollapsibleGroups, applyPalette } from './ui/drawer.js';
 import { refresh } from './ui/preview.js';
-import { setAppearance, bindEvents } from './ui/toolbar.js';
+import { bindEvents } from './ui/toolbar.js';
 import { t, init as initI18n, onLocaleChange, getLocale } from './i18n.js';
 import { loadDraft, getCurrentId, setCurrentId } from './draft.js';
 import { importImages } from './image-upload.js';
@@ -26,8 +26,7 @@ function init() {
     const fromHash = loadFromHash();
     const fromLocal = !fromHash && restore();
 
-    store.appearanceMode = loadAppearance();
-    setAppearance(store.appearanceMode);
+    document.documentElement.setAttribute('data-appearance', 'system');
 
     if (!fromHash && !fromLocal) {
         applyPalette(store.paletteIdx);
