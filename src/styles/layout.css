@@ -347,6 +347,34 @@ body {
     color: var(--mc-text-primary);
 }
 
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+
+.mc__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-top: 1px solid var(--mc-glass-border);
+    flex-shrink: 0;
+    font-size: 0.82rem;
+}
+
+.mc__footer-label {
+    color: var(--mc-text-muted);
+}
+
+.mc__footer-link {
+    color: var(--mc-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--mc-transition);
+}
+
+.mc__footer-link:hover {
+    color: var(--mc-text-primary);
+}
+
 /* ── Responsive breakpoints ────────────────────────────────────────────── */
 
 @media (max-width: 768px) {

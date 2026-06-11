@@ -119,5 +119,8 @@
     "untitled": "未命名草稿",
     "notFound": "草稿不存在或已被刪除",
     "emergency": "已恢復緊急儲存的內容"
+  },
+  "footer": {
+    "links": "友情連結"
   }
 }
