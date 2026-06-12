@@ -11,7 +11,7 @@ MDCard 采用毛玻璃 (Glassmorphism) 设计语言，自动跟随系统外观�
 
 **[在线演示](https://mdcard.rouguang.top/)** · **[更新日志](https://github.com/rouguangruye/MDCard/releases)**
 
-其他语言：[English](./README.md) | [繁體中文](./README.zh-TW.md) | [한국어](./README.ko.md) | [日本語](./README.ja.md)
+其他语言：[English](./README.md)
 
 ## 功能
 
