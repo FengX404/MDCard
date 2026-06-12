@@ -1088,10 +1088,12 @@
         height: 36px;
     }
 
-    /* Settings button: more visible background on mobile (icon-only, no text) */
     #mc-toggle-drawer {
-        background: color-mix(in srgb, var(--mc-accent) 25%, transparent);
-        border: 1px solid color-mix(in srgb, var(--mc-accent) 35%, transparent);
+        border: 1.5px solid var(--mc-accent);
+    }
+    #mc-toggle-drawer svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
