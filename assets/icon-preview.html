@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDCard Icon Preview — Minimal Mono</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    background: #f0f2f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    max-width: 560px;
+  }
+  h1 { font-size: 22px; color: #1A1A1A; margin-bottom: 6px; font-weight: 700; }
+  .sub { font-size: 13px; color: #888; margin-bottom: 32px; }
+  .icons { display: flex; gap: 32px; justify-content: center; align-items: flex-end; margin-bottom: 32px; }
+  .icon-wrap { text-align: center; }
+  .icon-wrap img { border-radius: 22%; }
+  .icon-wrap.large img { width: 180px; height: 180px; border-radius: 42px; }
+  .label { font-size: 11px; color: #aaa; margin-top: 8px; font-weight: 500; letter-spacing: .3px; }
+  .specs { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .spec {
+    background: #F0F9F6;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 11px;
+    color: #158A6D;
+  }
+  .spec strong { display: block; font-size: 14px; color: #1BA784; margin-bottom: 2px; }
+  .color-row { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 24px; }
+  .swatch { width: 28px; height: 28px; border-radius: 7px; }
+  .color-label { font-size: 10px; color: #999; font-family: 'SF Mono', monospace; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>MDCard · Icon Replaced</h1>
+  <p class="sub">F · Minimal Mono — 基于品牌色规范</p>
+
+  <div class="icons">
+    <div class="icon-wrap large">
+      <img src="../assets/icon.svg" alt="App Icon">
+      <div class="label">icon.svg<br>1024 × 1024</div>
+    </div>
+    <div class="icon-wrap large">
+      <img src="../assets/favicon.svg" alt="Favicon">
+      <div class="label">favicon.svg<br>180 × 180</div>
+    </div>
+  </div>
+
+  <div class="specs">
+    <div class="spec"><strong>Rounded Soft M</strong>四腿圆润结构</div>
+    <div class="spec"><strong>Glassmorphism</strong>毛玻璃质感</div>
+    <div class="spec"><strong>Bamboo Green</strong>#158A6D → #0F6B53</div>
+    <div class="spec"><strong>BRAND.md</strong>严格遵循规范</div>
+  </div>
+
+  <div class="color-row">
+    <div class="swatch" style="background:#F0F9F6"></div><span class="color-label">#F0F9F6</span>
+    <div class="swatch" style="background:#DDF0E8"></div><span class="color-label">#DDF0E8</span>
+    <div class="swatch" style="background:#158A6D"></div><span class="color-label">#158A6D</span>
+    <div class="swatch" style="background:#0F6B53"></div><span class="color-label">#0F6B53</span>
+    <div class="swatch" style="background:#1BA784"></div><span class="color-label">#1BA784</div>
+  </div>
+</div>
+</body>
+</html>

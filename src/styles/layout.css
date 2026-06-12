@@ -10,13 +10,20 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: var(--mc-font-sans);
     background: var(--mc-bg-deep);
     color: var(--mc-text-primary);
+    width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
     overflow: hidden;
+    position: relative;
 }
 
 /* ── Root container ────────────────────────────────────────────────────── */
@@ -446,7 +453,6 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        height: 100dvh;
         z-index: 30;
         background: var(--mc-bg-deep);
         border-radius: 20px 20px 0 0;
@@ -460,6 +466,7 @@ body {
     /* State: collapsed — only handle visible */
     .mc__sheet--collapsed {
         height: 44px;
+        background: var(--mc-bg-deep);
     }
     /* State: peek — 70% glassmorphism preview */
     .mc__sheet--peek {

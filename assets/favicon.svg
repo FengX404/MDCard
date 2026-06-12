@@ -1,10 +1,39 @@
 <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1BA784"/>
-      <stop offset="100%" stop-color="#158A6D"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9F6"/>
+      <stop offset="100%" stop-color="#DDF0E8"/>
     </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.18)"/>
+    </linearGradient>
+    <linearGradient id="border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(27,167,132,0.20)"/>
+      <stop offset="100%" stop-color="rgba(27,167,132,0.06)"/>
+    </linearGradient>
+    <linearGradient id="m" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#158A6D"/>
+      <stop offset="100%" stop-color="#0F6B53"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="3" flood-color="#158A6D" flood-opacity="0.08"/>
+    </filter>
   </defs>
-  <path d="M 45,144 L 45,50 Q 45,35 54,35 Q 65,53 86,96 C 86,102 94,102 94,96 Q 115,53 126,35 Q 135,35 135,50 L 135,144" 
-        stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <rect width="180" height="180" rx="42" fill="url(#bg)"/>
+  <rect width="177" height="177" x="1.5" y="1.5" rx="40.5" fill="url(#glass)" filter="url(#shadow)"/>
+  <rect width="176" height="176" x="2" y="2" rx="40" fill="none" stroke="url(#border)" stroke-width="1.2"/>
+
+  <path d="
+    M 48.6,132
+    Q 48.6,56 52.2,52
+    Q 86.4,95.2 90,97.4
+    Q 127.8,52 131.4,52
+    Q 135,56 135,132
+    L 115.2,132
+    Q 113.4,77.4 90,109.8
+    Q 66.6,77.4 64.8,132
+    Z
+  " fill="url(#m)"/>
 </svg>

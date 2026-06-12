@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MDCard - Markdown 生成精美卡片</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -19,12 +19,10 @@
         <header class="mc__toolbar">
             <div class="mc__brand">
                 <span class="mc__brand-icon">
-                    <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
-                        <rect x="2" y="5" width="17" height="22" rx="3" stroke="url(#mcBrandGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <rect x="12" y="5" width="17" height="22" rx="3" stroke="url(#mcBrandGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
-                        <rect x="7" y="10" width="10" height="12" rx="1.5" stroke="url(#mcBrandGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="22" height="22" viewBox="0 0 1024 1024" fill="none">
+                        <path d="M 276,750 Q 276,318 296,290 Q 492,544 512,556 Q 532,544 728,290 Q 748,318 748,750" stroke="url(#mcBrandGrad)" stroke-width="100" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         <defs>
-                            <linearGradient id="mcBrandGrad" x1="0" y1="0" x2="32" y2="32">
+                            <linearGradient id="mcBrandGrad" x1="0" y1="0" x2="1024" y2="1024">
                                 <stop stop-color="#1BA784"/>
                                 <stop offset="1" stop-color="#6ee7c7"/>
                             </linearGradient>
@@ -107,7 +105,7 @@
                 <textarea class="mc__editor-input" id="mc-markdown" data-i18n-placeholder="editor.placeholder" placeholder="# 在此输入标题&#10;&#10;用 Markdown 编写内容...&#10;&#10;- **粗体** 和 *斜体*&#10;- 列表和 > 引用&#10;&#10;用 === 单独一行强制分页&#10;用 --- 渲染分割线"></textarea>
             </section>
 
-            <div class="mc__sheet" id="mc-sheet">
+            <div class="mc__sheet mc__sheet--collapsed" id="mc-sheet">
                 <div class="mc__sheet-handle" id="mc-sheet-handle"></div>
                 <div class="mc__sheet-header" id="mc-sheet-header">
                     <button class="mc__btn mc__btn--icon mc__sheet-back" id="mc-sheet-back">
