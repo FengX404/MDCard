@@ -1088,12 +1088,10 @@
         height: 36px;
     }
 
-    /* Keep settings button label visible on mobile for discoverability */
-    #mc-toggle-drawer > span[data-i18n] {
-        display: inline;
-    }
+    /* Settings button: more visible background on mobile (icon-only, no text) */
     #mc-toggle-drawer {
-        border: 1px solid var(--mc-glass-border);
+        background: color-mix(in srgb, var(--mc-accent) 25%, transparent);
+        border: 1px solid color-mix(in srgb, var(--mc-accent) 35%, transparent);
     }
 }
 
