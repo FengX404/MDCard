@@ -1088,9 +1088,11 @@
         height: 36px;
     }
 
-    /* Settings button: increase visibility on mobile (icon-only, no text label) */
+    /* Keep settings button label visible on mobile for discoverability */
+    #mc-toggle-drawer > span[data-i18n] {
+        display: inline;
+    }
     #mc-toggle-drawer {
-        background: rgba(27, 167, 132, 0.22);
         border: 1px solid var(--mc-glass-border);
     }
 }
