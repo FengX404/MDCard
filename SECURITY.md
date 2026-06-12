@@ -14,7 +14,7 @@ If you discover a security vulnerability in MDCard, please **do not** open a pub
 Instead, report it via one of these channels:
 
 1. Email the maintainer directly
-2. Use GitHub's [private vulnerability reporting](https://github.com/rouguangruye/MDCard/security/advisories/new) feature
+2. Use GitHub's [private vulnerability reporting](https://github.com/FengX404/MDCard/security/advisories/new) feature
 
 Please include:
 

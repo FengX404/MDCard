@@ -10,8 +10,8 @@ This project adheres to the [Contributor Covenant Code of Conduct](./CODE_OF_CON
 
 ### Reporting Bugs
 
-1. Check the [issue tracker](https://github.com/rouguangruye/MDCard/issues) to see if the bug has already been reported.
-2. If not, [open a new issue](https://github.com/rouguangruye/MDCard/issues/new/choose) using the **Bug Report** template.
+1. Check the [issue tracker](https://github.com/FengX404/MDCard/issues) to see if the bug has already been reported.
+2. If not, [open a new issue](https://github.com/FengX404/MDCard/issues/new/choose) using the **Bug Report** template.
 3. Include:
    - Steps to reproduce
    - Expected behavior
@@ -21,8 +21,8 @@ This project adheres to the [Contributor Covenant Code of Conduct](./CODE_OF_CON
 
 ### Suggesting Features
 
-1. Check the [issue tracker](https://github.com/rouguangruye/MDCard/issues) to see if the feature has already been suggested.
-2. If not, [open a new issue](https://github.com/rouguangruye/MDCard/issues/new/choose) using the **Feature Request** template.
+1. Check the [issue tracker](https://github.com/FengX404/MDCard/issues) to see if the feature has already been suggested.
+2. If not, [open a new issue](https://github.com/FengX404/MDCard/issues/new/choose) using the **Feature Request** template.
 3. Describe the problem your feature would solve and how it would work.
 
 ### Pull Requests

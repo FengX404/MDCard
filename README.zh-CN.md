@@ -7,9 +7,9 @@
 MDCard 采用毛玻璃 (Glassmorphism) 设计语言，自动跟随系统外观（深色 / 浅色），提供 10 款精选配色主题、四种常见画幅、多语言界面，排版细节可逐项自定义。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
+[![CI](https://github.com/FengX404/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/FengX404/MDCard/actions/workflows/ci.yml)
 
-**[在线演示](https://mdcard.rouguang.top/)** · **[更新日志](https://github.com/rouguangruye/MDCard/releases)**
+**[在线演示](https://mdcard.fengx404.com/)** · **[更新日志](https://github.com/FengX404/MDCard/releases)**
 
 其他语言：[English](./README.md)
 
@@ -63,10 +63,10 @@ docker run -d -p 8080:80 --name mdcard mdcard:latest
 ### 方式三：使用预构建镜像
 
 ```bash
-docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
+docker run -d -p 8080:80 --name mdcard ghcr.io/FengX404/mdcard:latest
 ```
 
-> 如果你 fork 了项目并自行构建推送，将 `rouguangruye` 替换为你的 GitHub 用户名。
+> 如果你 fork 了项目并自行构建推送，将 `FengX404` 替换为你的 GitHub 用户名。
 
 ## 使用说明
 

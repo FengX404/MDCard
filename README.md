@@ -7,10 +7,10 @@ Write Markdown, pick a theme, export as images — ideal for tech articles, read
 MDCard features a Glassmorphism design language that auto-adapts to your system appearance (dark / light), 10 curated color palettes, four aspect ratios, multi-language support, and fully customizable typography.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/rouguangruye/MDCard/actions/workflows/codeql.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/codeql.yml)
+[![CI](https://github.com/FengX404/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/FengX404/MDCard/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/FengX404/MDCard/actions/workflows/codeql.yml/badge.svg)](https://github.com/FengX404/MDCard/actions/workflows/codeql.yml)
 
-**[Live Demo](https://mdcard.rouguang.top/)** · **[Changelog](https://github.com/rouguangruye/MDCard/releases)**
+**[Live Demo](https://mdcard.fengx404.com/)** · **[Changelog](https://github.com/FengX404/MDCard/releases)**
 
 Read this in: [简体中文](./README.zh-CN.md)
 
@@ -64,10 +64,10 @@ docker run -d -p 8080:80 --name mdcard mdcard:latest
 ### Option 3: Pre-built Image
 
 ```bash
-docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
+docker run -d -p 8080:80 --name mdcard ghcr.io/FengX404/mdcard:latest
 ```
 
-> If you fork the project and build your own image, replace `rouguangruye` with your GitHub username.
+> If you fork the project and build your own image, replace `FengX404` with your GitHub username.
 
 ## Usage
 
