@@ -27,7 +27,7 @@ function init() {
     const fromHash = loadFromHash();
     const fromLocal = !fromHash && restore();
 
-    document.documentElement.setAttribute('data-appearance', 'system');
+    document.documentElement.setAttribute('data-appearance', localStorage.getItem('mdcard-appearance') || 'system');
 
     if (!fromHash && !fromLocal) {
         applyPalette(store.paletteIdx);

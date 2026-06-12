@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>MDCard - Markdown 生成精美卡片</title>
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <!-- Prevent flash of incorrect theme: set appearance before CSS loads -->
+    <script>
+      (function() {
+        var appearance = localStorage.getItem('mdcard-appearance') || 'system';
+        document.documentElement.setAttribute('data-appearance', appearance);
+      })();
+    </script>
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
