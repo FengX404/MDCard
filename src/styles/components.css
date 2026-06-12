@@ -280,6 +280,27 @@
     color: #fff;
 }
 
+/* Light mode: reduce transparency to avoid text interference */
+[data-appearance="light"] .mc__lang-dropdown,
+[data-appearance="light"] .mc__lang-btn {
+    background: rgba(255, 255, 255, 0.92);
+}
+[data-appearance="light"] .mc__lang-dropdown {
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+}
+
+@media (prefers-color-scheme: light) {
+    [data-appearance="system"] .mc__lang-dropdown,
+    [data-appearance="system"] .mc__lang-btn {
+        background: rgba(255, 255, 255, 0.92);
+    }
+    [data-appearance="system"] .mc__lang-dropdown {
+        backdrop-filter: blur(32px);
+        -webkit-backdrop-filter: blur(32px);
+    }
+}
+
 /* ── Card ───────────────────────────────────────────────────────────────── */
 
 .mc__card-wrapper {
@@ -1208,5 +1229,20 @@
     .mc__lang:not(.mc__overflow-item),
     .mc__github:not(.mc__overflow-item) {
         display: none;
+    }
+}
+
+/* Light mode: reduce transparency to avoid text interference */
+[data-appearance="light"] .mc__overflow-menu {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(32px) saturate(1.3);
+    -webkit-backdrop-filter: blur(32px) saturate(1.3);
+}
+
+@media (prefers-color-scheme: light) {
+    [data-appearance="system"] .mc__overflow-menu {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(32px) saturate(1.3);
+        -webkit-backdrop-filter: blur(32px) saturate(1.3);
     }
 }
