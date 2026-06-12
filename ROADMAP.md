@@ -13,11 +13,11 @@
 
 ### 移动端
 
-- [ ] **移动端 Web 界面** — 适配手机屏幕的编辑与预览体验
+- [x] **移动端 Web 界面** — 适配手机屏幕的编辑与预览体验
 
 ## 中期探索
 
-- [x] **MCP 功能集成** — 独立项目 [MDCard-MCP](https://github.com/FengX404/MDCard-MCP)（private），HTTP Streamable 传输。Claude Code skill 独立项目 [MDCard-Skill](https://github.com/FengX404/MDCard-Skill)（private），提供 `/mdcard` 斜杠命令。
+- [ ] **MCP 功能集成** — 独立项目 [MDCard-MCP](https://github.com/FengX404/MDCard-MCP)（private），HTTP Streamable 传输。Claude Code skill 独立项目 [MDCard-Skill](https://github.com/FengX404/MDCard-Skill)（private），提供 `/mdcard` 斜杠命令。
 
 ## 远期
 

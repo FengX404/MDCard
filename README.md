@@ -4,7 +4,7 @@ Turn Markdown into beautiful shareable card images.
 
 Write Markdown, pick a theme, export as images — ideal for tech articles, reading notes, opinion cards, and social media long-form graphics.
 
-MDCard features a Glassmorphism design language with dark / light / system appearance modes, 10 curated color palettes, four aspect ratios, and fully customizable typography.
+MDCard features a Glassmorphism design language that auto-adapts to your system appearance (dark / light), 10 curated color palettes, four aspect ratios, multi-language support, and fully customizable typography.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
@@ -19,12 +19,15 @@ Read this in: [简体中文](./README.zh-CN.md)
 - **Smart Markdown Pagination** — Auto-paginate at line boundaries, never truncate mid-line. Use `---` for manual page breaks
 - **10 Curated Palettes** — One-click theme switching across dark and light styles, all WCAG AA compliant
 - **Four Aspect Ratios** — 3:4 portrait / 9:16 story / 1:1 square / 16:9 wide
-- **Dark / Light / System** — Three appearance modes, toggle from the toolbar
+- **System Appearance** — Auto-adapts to your OS dark / light mode
+- **Mobile Friendly** — Responsive layout with bottom preview panel and overflow menu
+- **Multi-language** — 中文 / English / 日本語 / 한국어 / 繁體中文
 - **Glassmorphism UI** — Modern frosted-glass design language
 - **Custom Typography** — Heading sizes, body font size, line height, spacing, and borders — all adjustable
 - **Watermark** — Custom watermark text; leave blank to disable
 - **Shareable Config** — One-click config link generation; anyone can reproduce your exact style
 - **ZIP Batch Export** — Auto-package 3+ pages into a ZIP download
+- **Auto-save Drafts** — IndexedDB-backed draft management with optional autosave
 
 ## Quick Start
 
@@ -85,15 +88,7 @@ docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
 
 ### Appearance
 
-Three buttons in the toolbar:
-
-| Button | Mode |
-|--------|------|
-| 🌙 | Dark |
-| ☀️ | Light |
-| 🖥 | System |
-
-Your preference persists in localStorage.
+MDCard automatically follows your operating system's appearance setting — no manual toggle needed.
 
 ### Shareable Config
 
@@ -112,15 +107,32 @@ Click the **Share Config** button in the settings panel. Your current style conf
 src/
 ├── index.html            # Entry page
 ├── styles/
-│   └── main.css          # Global styles & theme variables
+│   ├── main.css          # Global styles & theme variables
+│   ├── tokens.css        # Design tokens
+│   ├── layout.css        # Layout styles
+│   └── components.css    # Component styles
 └── app/
     ├── main.js            # App entry & event bindings
     ├── config.js          # Format & defaults
+    ├── dom.js             # DOM element references
+    ├── store.js           # Reactive state store
+    ├── storage.js         # localStorage persistence
+    ├── draft.js           # IndexedDB draft management
+    ├── i18n.js            # Internationalization
+    ├── analytics.js       # Vercel analytics
+    ├── image-upload.js    # Image paste/drop handling
     ├── palettes.js        # 10 curated palette data
     ├── settings.js        # Settings read/write & CSS variable mapping
+    ├── templates.js       # Layout templates
     ├── paginator.js       # Markdown pagination algorithm
     ├── renderer.js        # dom-to-image-more rendering & download
-    └── toast.js           # Toast notifications
+    ├── toast.js           # Toast notifications
+    └── ui/
+        ├── toolbar.js     # Toolbar event bindings
+        ├── drawer.js      # Settings drawer
+        ├── preview.js     # Live preview
+        ├── sheet.js       # Mobile bottom sheet
+        └── drafts-panel.js # Drafts management panel
 ```
 
 ## Contributing

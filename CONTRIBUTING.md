@@ -60,15 +60,32 @@ npm run lint
 src/
 ├── index.html            # Entry page
 ├── styles/
-│   └── main.css          # Global styles & theme variables
+│   ├── main.css          # Global styles & theme variables
+│   ├── tokens.css        # Design tokens
+│   ├── layout.css        # Layout styles
+│   └── components.css    # Component styles
 └── app/
     ├── main.js            # App entry & event bindings
     ├── config.js          # Format & defaults
+    ├── dom.js             # DOM element references
+    ├── store.js           # Reactive state store
+    ├── storage.js         # localStorage persistence
+    ├── draft.js           # IndexedDB draft management
+    ├── i18n.js            # Internationalization
+    ├── analytics.js       # Vercel analytics
+    ├── image-upload.js    # Image paste/drop handling
     ├── palettes.js        # 10 curated palette data
     ├── settings.js        # Settings read/write & CSS variable mapping
+    ├── templates.js       # Layout templates
     ├── paginator.js       # Markdown pagination algorithm
     ├── renderer.js        # dom-to-image-more rendering & download
-    └── toast.js           # Toast notifications
+    ├── toast.js           # Toast notifications
+    └── ui/
+        ├── toolbar.js     # Toolbar event bindings
+        ├── drawer.js      # Settings drawer
+        ├── preview.js     # Live preview
+        ├── sheet.js       # Mobile bottom sheet
+        └── drafts-panel.js # Drafts management panel
 ```
 
 ## Coding Style

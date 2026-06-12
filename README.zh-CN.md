@@ -4,7 +4,7 @@
 
 输入 Markdown，选择主题，导出图片——适合技术分享、读书笔记、观点卡片、社交平台长图等场景。
 
-MDCard 采用毛玻璃 (Glassmorphism) 设计语言，支持深色 / 浅色 / 跟随系统三种外观，提供 10 款精选配色主题和四种常见画幅，排版细节可逐项自定义。
+MDCard 采用毛玻璃 (Glassmorphism) 设计语言，自动跟随系统外观（深色 / 浅色），提供 10 款精选配色主题、四种常见画幅、多语言界面，排版细节可逐项自定义。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml/badge.svg)](https://github.com/rouguangruye/MDCard/actions/workflows/ci.yml)
@@ -18,12 +18,15 @@ MDCard 采用毛玻璃 (Glassmorphism) 设计语言，支持深色 / 浅色 / �
 - **Markdown 智能分页** — 自动按行边界分页，不截断文字，支持 `---` 强制分页
 - **10 款主题配色** — 一键切换，涵盖深色与浅色风格，全部通过 WCAG AA 对比度验证
 - **四种画幅** — 3:4 竖版 / 9:16 长图 / 1:1 方形 / 16:9 宽屏
-- **深色 / 浅色 / 跟随系统** — 三种外观模式，右上角一键切换
+- **跟随系统外观** — 自动适配操作系统深色 / 浅色模式
+- **移动端适配** — 响应式布局，底部预览面板和溢出菜单
+- **多语言界面** — 中文 / English / 日本語 / 한국어 / 繁體中文
 - **毛玻璃界面** — Glassmorphism 设计语言
 - **自定义排版** — 标题、正文字号、行高、间距、边框均可调
 - **水印** — 可自定义水印文字，留空关闭
 - **配置分享** — 一键生成配置链接，他人打开即可复现样式
 - **ZIP 批量导出** — 超过 2 张图片时自动打包为 ZIP 下载
+- **草稿自动保存** — 基于 IndexedDB 的草稿管理，支持自动保存
 
 ## 快速开始
 
@@ -84,15 +87,7 @@ docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
 
 ### 外观模式
 
-工具栏右上角三个按钮：
-
-| 按钮 | 说明 |
-|------|------|
-| 🌙 | 深色模式 |
-| ☀️ | 浅色模式 |
-| 🖥 | 跟随系统 |
-
-选择会持久化到 localStorage。
+MDCard 自动跟随操作系统的外观设置，无需手动切换。
 
 ### 配置分享
 
@@ -111,15 +106,32 @@ docker run -d -p 8080:80 --name mdcard ghcr.io/rouguangruye/mdcard:latest
 src/
 ├── index.html            # 入口页面
 ├── styles/
-│   └── main.css          # 全局样式 & 主题变量
+│   ├── main.css          # 全局样式 & 主题变量
+│   ├── tokens.css        # 设计 Token
+│   ├── layout.css        # 布局样式
+│   └── components.css    # 组件样式
 └── app/
     ├── main.js            # 应用入口 & 事件绑定
     ├── config.js          # 格式 & 默认值定义
+    ├── dom.js             # DOM 元素引用
+    ├── store.js           # 响应式状态管理
+    ├── storage.js         # localStorage 持久化
+    ├── draft.js           # IndexedDB 草稿管理
+    ├── i18n.js            # 国际化
+    ├── analytics.js       # Vercel 分析
+    ├── image-upload.js    # 图片粘贴/拖放处理
     ├── palettes.js        # 10 款主题配色数据
     ├── settings.js        # 设置读写 & CSS 变量映射
+    ├── templates.js       # 版式模板
     ├── paginator.js       # Markdown 分页算法
     ├── renderer.js        # dom-to-image-more 渲染 & 下载
-    └── toast.js           # Toast 通知
+    ├── toast.js           # Toast 通知
+    └── ui/
+        ├── toolbar.js     # 工具栏事件绑定
+        ├── drawer.js      # 设置抽屉
+        ├── preview.js     # 实时预览
+        ├── sheet.js       # 移动端底部面板
+        └── drafts-panel.js # 草稿管理面板
 ```
 
 ## 参与贡献
