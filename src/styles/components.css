@@ -1026,6 +1026,23 @@
     background: var(--mc-danger-alpha);
 }
 
+/* Light mode: use lighter overlay with stronger blur instead of heavy darkening */
+[data-appearance="light"] .mc__drafts-overlay,
+[data-appearance="light"] .mc__alert-overlay {
+    background: rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+@media (prefers-color-scheme: light) {
+    [data-appearance="system"] .mc__drafts-overlay,
+    [data-appearance="system"] .mc__alert-overlay {
+        background: rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+}
+
 /* ── Autosave button ────────────────────────────────────────────────────── */
 
 .mc__autosave-btn {
