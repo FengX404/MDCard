@@ -1115,6 +1115,7 @@
     flex-direction: column;
     gap: 2px;
     transform-origin: top right;
+    margin-right: env(safe-area-inset-right, 0px);
 }
 .mc__overflow--open .mc__overflow-menu {
     display: flex;
