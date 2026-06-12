@@ -77,13 +77,81 @@ export function pickLayout(id) {
     refresh();
 }
 
-export function openDrawer()  { dom.drawer.classList.add('mc__drawer--open'); }
-export function closeDrawer() { dom.drawer.classList.remove('mc__drawer--open'); }
+export function openDrawer() {
+    dom.drawer.classList.add('mc__drawer--open');
+    initDrawerSwipe();
+}
+export function closeDrawer() {
+    dom.drawer.classList.remove('mc__drawer--open');
+    const panel = dom.drawer.querySelector('.mc__drawer-panel');
+    if (panel) {
+        panel.style.transform = '';
+        panel.classList.remove('mc__drawer-panel--dragging');
+    }
+    dom.drawer.querySelector('.mc__drawer-overlay').style.opacity = '';
+}
 
 export function initCollapsibleGroups() {
     dom.drawer.querySelectorAll('.mc__group-header').forEach(header => {
         header.addEventListener('click', () => {
             header.parentElement.classList.toggle('mc__group--collapsed');
         });
+    });
+}
+
+/* ── Swipe-to-close gesture ────────────────────────────────────────────── */
+
+let swipeInitialized = false;
+
+function initDrawerSwipe() {
+    if (swipeInitialized) return;
+    swipeInitialized = true;
+
+    const panel = dom.drawer.querySelector('.mc__drawer-panel');
+    const overlay = dom.drawer.querySelector('.mc__drawer-overlay');
+    if (!panel) return;
+
+    let startX = 0;
+    let currentX = 0;
+    let dragging = false;
+
+    panel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        dragging = true;
+        panel.classList.add('mc__drawer-panel--dragging');
+    }, { passive: true });
+
+    panel.addEventListener('touchmove', (e) => {
+        if (!dragging) return;
+        currentX = e.touches[0].clientX;
+        const dx = currentX - startX;
+        // Only allow rightward drag (positive dx)
+        if (dx > 0) {
+            panel.style.transform = `translateX(${dx}px)`;
+            // Fade overlay proportionally
+            const panelWidth = panel.offsetWidth;
+            const progress = Math.min(dx / panelWidth, 1);
+            overlay.style.opacity = String(1 - progress);
+        }
+    }, { passive: true });
+
+    panel.addEventListener('touchend', () => {
+        if (!dragging) return;
+        dragging = false;
+        panel.classList.remove('mc__drawer-panel--dragging');
+
+        const dx = currentX - startX;
+        const panelWidth = panel.offsetWidth;
+
+        if (dx > panelWidth * 0.3) {
+            // Swipe past threshold — close
+            closeDrawer();
+        } else {
+            // Snap back
+            panel.style.transform = '';
+            overlay.style.opacity = '';
+        }
+        startX = 0;
+        currentX = 0;
     });
 }

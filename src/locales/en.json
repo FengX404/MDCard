@@ -122,5 +122,10 @@
   },
   "footer": {
     "links": "Links"
+  },
+  "tab": {
+    "edit": "Edit",
+    "preview": "Preview",
+    "style": "Style"
   }
 }

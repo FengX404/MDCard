@@ -5,6 +5,7 @@ import { loadFromHash, restore } from './storage.js';
 import { renderPalettes, renderLayouts, initCollapsibleGroups, applyPalette } from './ui/drawer.js';
 import { refresh } from './ui/preview.js';
 import { bindEvents } from './ui/toolbar.js';
+import { initSheet } from './ui/sheet.js';
 import { t, init as initI18n, onLocaleChange, getLocale } from './i18n.js';
 import { loadDraft, getCurrentId, setCurrentId } from './draft.js';
 import { importImages } from './image-upload.js';
@@ -87,10 +88,20 @@ function init() {
         dom.langDropdown.querySelectorAll('.mc__lang-option').forEach(o => {
             if (o.dataset.lang === locale) dom.langLabel.textContent = o.textContent;
         });
+        // Update mobile overflow language label
+        const mobileLangLabel = document.getElementById('mc-lang-label-m');
+        const mobileLangOpts = document.getElementById('mc-lang-opts-m');
+        if (mobileLangLabel && mobileLangOpts) {
+            mobileLangOpts.querySelectorAll('.mc__lang-option').forEach(o => {
+                o.classList.toggle('active', o.dataset.lang === locale);
+                if (o.dataset.lang === locale) mobileLangLabel.textContent = o.textContent;
+            });
+        }
         refresh();
     });
 
     bindEvents();
+    initSheet();
 }
 
 init();

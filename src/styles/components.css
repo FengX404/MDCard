@@ -791,6 +791,7 @@
 .mc__toast {
     position: fixed;
     top: 80px;
+    top: calc(80px + env(safe-area-inset-top, 0px));
     right: 24px;
     transform: translateX(120%);
     padding: 10px 20px;
@@ -1026,4 +1027,177 @@
     background: rgba(27, 167, 132, 0.25);
     color: var(--mc-accent-hover);
     transform: translateY(-1px) scale(1.02);
+}
+
+/* ── Mobile touch optimizations ───────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    /* Remove iOS tap highlight on interactive elements */
+    .mc__btn,
+    .mc__format-option,
+    .mc__lang-option,
+    .mc__theme-item,
+    .mc__template-item,
+    .mc__group-header {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Minimum 44px touch targets */
+    .mc__btn {
+        min-height: 44px;
+    }
+    .mc__format-option,
+    .mc__lang-option {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mc__theme-swatch {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Larger slider thumb for easier touch control */
+    .mc__slider {
+        height: 6px;
+    }
+    .mc__slider::-webkit-slider-thumb {
+        width: 22px;
+        height: 22px;
+    }
+    .mc__slider::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* 16px font-size to prevent iOS Safari auto-zoom on focus */
+    .mc__editor-input {
+        font-size: 16px;
+    }
+
+    /* Larger text input touch area */
+    .mc__text-input {
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+    /* Color input touch target */
+    .mc__color-input {
+        width: 44px;
+        height: 36px;
+    }
+}
+
+/* ── Overflow menu (mobile toolbar) ────────────────────────────────────── */
+
+.mc__overflow {
+    position: relative;
+    display: none; /* hidden on desktop */
+}
+.mc__overflow-btn {
+    padding: 8px;
+}
+.mc__overflow-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 180px;
+    padding: 6px;
+    border-radius: 14px;
+    background: var(--mc-glass-bg);
+    border: 1px solid var(--mc-glass-border);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(28px) saturate(1.3);
+    -webkit-backdrop-filter: blur(28px) saturate(1.3);
+    z-index: 100;
+    flex-direction: column;
+    gap: 2px;
+    transform-origin: top right;
+}
+.mc__overflow--open .mc__overflow-menu {
+    display: flex;
+    animation: overflow-enter 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes overflow-enter {
+    from { opacity: 0; transform: scale(0.9) translateY(-6px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.mc__overflow-item {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--mc-text-primary);
+    transition: background 0.15s;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.mc__overflow-item:hover {
+    background: var(--mc-accent-soft);
+}
+.mc__overflow-item svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+/* Autosave active state in overflow */
+.mc__overflow-item.mc__autosave-btn--on {
+    color: var(--mc-accent);
+    background: var(--mc-accent-soft);
+}
+
+/* Language sub-section in overflow */
+.mc__overflow-lang {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+}
+.mc__overflow-lang-label {
+    font-size: 0.75rem;
+    color: var(--mc-text-muted);
+    padding: 0 2px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.mc__overflow-lang-opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.mc__overflow-lang-opts .mc__lang-option {
+    all: unset;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--mc-text-primary);
+    text-align: center;
+    transition: background 0.15s, color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+}
+.mc__overflow-lang-opts .mc__lang-option:hover {
+    background: var(--mc-accent-soft);
+    color: var(--mc-accent);
+}
+.mc__overflow-lang-opts .mc__lang-option.active {
+    background: var(--mc-accent);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    /* Show overflow, hide original secondary buttons */
+    .mc__overflow {
+        display: block;
+    }
+    .mc__autosave-btn:not(.mc__overflow-item),
+    .mc__drafts:not(.mc__overflow-item),
+    .mc__lang:not(.mc__overflow-item),
+    .mc__github:not(.mc__overflow-item) {
+        display: none;
+    }
 }

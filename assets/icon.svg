@@ -1,0 +1,23 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1BA784"/>
+      <stop offset="100%" stop-color="#158A6D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 流动 M  -->
+  <path d="M 256,820 
+           L 256,280 
+           Q 256,195 308,195 
+           Q 370,300 490,545 
+           C 490,580 534,580 534,545 
+           Q 654,300 716,195 
+           Q 768,195 768,280 
+           L 768,820" 
+        stroke="url(#brand)" 
+        stroke-width="56" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+</svg>

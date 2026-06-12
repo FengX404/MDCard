@@ -122,5 +122,10 @@
   },
   "footer": {
     "links": "友情連結"
+  },
+  "tab": {
+    "edit": "編輯",
+    "preview": "預覽",
+    "style": "樣式"
   }
 }

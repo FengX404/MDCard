@@ -47,23 +47,27 @@ export async function exportAll() {
             if (i < cards.length - 1) await new Promise(r => setTimeout(r, 100));
         }
 
-        if (images.length <= 2) {
-            for (const img of images) {
-                triggerDownload(img.url, img.name);
-                await new Promise(r => setTimeout(r, 300));
+        // Try Web Share API on mobile devices
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const blobs = images.map(img => ({
+            file: new File([dataUrlToBlob(img.url)], img.name, { type: 'image/png' }),
+        }));
+        const shareFiles = blobs.map(b => b.file);
+
+        if (isMobile && navigator.canShare && navigator.canShare({ files: shareFiles })) {
+            try {
+                await navigator.share({ files: shareFiles });
+                showToast(t('toast.exportSuccess', { count: images.length, format: 'PNG' }));
+            } catch (shareErr) {
+                // User cancelled or share failed — fall back to download
+                if (shareErr.name !== 'AbortError') {
+                    fallbackDownload(images, ts);
+                }
             }
         } else {
-            const zip = new JSZip();
-            for (const img of images) {
-                zip.file(img.name, dataUrlToBlob(img.url));
-            }
-            const blob = await zip.generateAsync({ type: 'blob' });
-            const zipUrl = URL.createObjectURL(blob);
-            triggerDownload(zipUrl, `mdcard-${ts}.zip`);
-            setTimeout(() => URL.revokeObjectURL(zipUrl), 5000);
+            fallbackDownload(images, ts);
+            showToast(t('toast.exportSuccess', { count: images.length, format: 'PNG' }));
         }
-
-        showToast(t('toast.exportSuccess', { count: images.length, format: 'PNG' }));
     } catch (e) {
         console.error(e);
         showToast(t('toast.exportFail'));
@@ -71,6 +75,24 @@ export async function exportAll() {
 
     dom.exportPng.disabled = false;
     dom.status.textContent = '';
+}
+
+function fallbackDownload(images, ts) {
+    if (images.length <= 2) {
+        for (const img of images) {
+            triggerDownload(img.url, img.name);
+        }
+    } else {
+        const zip = new JSZip();
+        for (const img of images) {
+            zip.file(img.name, dataUrlToBlob(img.url));
+        }
+        zip.generateAsync({ type: 'blob' }).then(blob => {
+            const zipUrl = URL.createObjectURL(blob);
+            triggerDownload(zipUrl, `mdcard-${ts}.zip`);
+            setTimeout(() => URL.revokeObjectURL(zipUrl), 5000);
+        });
+    }
 }
 
 export function resetAll() {
@@ -254,6 +276,9 @@ export function bindEvents() {
 
     const updateAutosaveUI = (enabled) => {
         dom.autosaveToggle.classList.toggle('mc__autosave-btn--on', enabled);
+        // Also update mobile overflow version
+        const mobileAutosave = document.getElementById('mc-autosave-m');
+        if (mobileAutosave) mobileAutosave.classList.toggle('mc__autosave-btn--on', enabled);
     };
     updateAutosaveUI(getAutoSave());
 
@@ -265,6 +290,63 @@ export function bindEvents() {
     });
 
     dom.draftsBtn.addEventListener('click', openDraftsPanel);
+
+    // ── Mobile overflow menu ──────────────────────────────────────────────
+    const overflowArea = document.getElementById('mc-overflow-area');
+    const overflowBtn = document.getElementById('mc-overflow-btn');
+    const mobileAutosave = document.getElementById('mc-autosave-m');
+    const mobileDrafts = document.getElementById('mc-drafts-m');
+
+    if (overflowBtn && overflowArea) {
+        overflowBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            overflowArea.classList.toggle('mc__overflow--open');
+        });
+        document.addEventListener('click', (e) => {
+            if (!overflowArea.contains(e.target)) {
+                overflowArea.classList.remove('mc__overflow--open');
+            }
+        });
+    }
+
+    if (mobileAutosave) {
+        mobileAutosave.addEventListener('click', () => {
+            const enabled = !getAutoSave();
+            setAutoSave(enabled);
+            updateAutosaveUI(enabled);
+            if (enabled) performAutoSave();
+        });
+    }
+
+    if (mobileDrafts) {
+        mobileDrafts.addEventListener('click', () => {
+            overflowArea.classList.remove('mc__overflow--open');
+            openDraftsPanel();
+        });
+    }
+
+    // Mobile language switcher in overflow menu
+    const mobileLangOpts = document.getElementById('mc-lang-opts-m');
+    const mobileLangLabel = document.getElementById('mc-lang-label-m');
+    if (mobileLangOpts) {
+        const markMobileLangActive = (locale) => {
+            mobileLangOpts.querySelectorAll('.mc__lang-option').forEach(o => {
+                o.classList.toggle('active', o.dataset.lang === locale);
+                if (o.dataset.lang === locale && mobileLangLabel) {
+                    mobileLangLabel.textContent = o.textContent;
+                }
+            });
+        };
+        markMobileLangActive(getLocale());
+
+        mobileLangOpts.addEventListener('click', (e) => {
+            const opt = e.target.closest('.mc__lang-option');
+            if (!opt) return;
+            const locale = opt.dataset.lang;
+            setLocale(locale);
+            markMobileLangActive(locale);
+        });
+    }
 }
 
 function checkImageFits(dataUrl) {
