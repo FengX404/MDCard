@@ -9,11 +9,8 @@ opencode.jsonc
 .opencode
 .ignore
 .qoder/
-AGENTS.local.md
 .workbuddy/
 .codebuddy/
-.arts/
-.codeartsdoer/
 
 # Node.js / Next.js / React / React Native
 node_modules/
@@ -24,9 +21,6 @@ coverage/
 out/
 build/
 dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 .env
 .env*.local
 .env.development.local
@@ -83,14 +77,9 @@ $RECYCLE.BIN/
 .nfs*
 
 # Misc
-logs
-test-results/
-playwright-report/
 .vite/
+logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 *.tsbuildinfo
@@ -103,7 +92,6 @@ lerna-debug.log*
 .cache
 .parcel-cache
 .nuxt
-dist
 public
 .temp
 .docusaurus
@@ -124,6 +112,8 @@ public
 *.sublime-project
 *.sublime-workspace
 .vercel
+test-results/
+playwright-report/
 
 # Sensitive Files
 *.key
@@ -134,4 +124,6 @@ secrets.json
 credentials.json
 *.secret
 *.credentials
-*.log
+
+# Project Specific
+remotion-videos/
