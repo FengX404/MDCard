@@ -126,7 +126,7 @@ describe('config', () => {
     it('should have valid default values', () => {
       expect(DEFAULTS.h1).toBe(20);
       expect(DEFAULTS.h2).toBe(18);
-      expect(DEFAULTS.h3).toBe(15);
+      expect(DEFAULTS.h3).toBe(16);
       expect(DEFAULTS.bodyFs).toBe(14);
       expect(DEFAULTS.lh).toBe(1.25);
       expect(DEFAULTS.watermark).toBe('MDCard');

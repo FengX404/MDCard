@@ -101,7 +101,7 @@ body {
     width: 1px;
     height: 20px;
     background: var(--mc-glass-border);
-    border-radius: var(--mc-radius-2xs);
+    border-radius: var(--mc-radius-xs);
     flex-shrink: 0;
 }
 
@@ -178,7 +178,7 @@ body {
 
 .mc__preview::-webkit-scrollbar-thumb {
     background: var(--mc-glass-border);
-    border-radius: var(--mc-radius-2xs);
+    border-radius: var(--mc-radius-xs);
 }
 
 .mc__preview-empty {
@@ -338,7 +338,7 @@ body {
     max-height: 600px;
     opacity: 1;
     visibility: visible;
-    transition: max-height 0.35s ease, opacity 0.25s ease;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
 }
 
 .mc__group-title {
@@ -355,10 +355,13 @@ body {
 .mc__github {
     text-decoration: none;
     font-weight: 600;
+    color: var(--mc-text-primary);
 }
 
+@media (hover: hover) {
 .mc__github:hover {
-    color: var(--mc-text-primary);
+    color: var(--mc-accent);
+}
 }
 
 /* ── Footer ─────────────────────────────────────────────────────────────── */
@@ -380,14 +383,16 @@ body {
 }
 
 .mc__footer-link {
-    color: var(--mc-accent);
+    color: var(--mc-link);
     text-decoration: none;
     font-weight: 500;
     transition: color var(--mc-transition);
 }
 
+@media (hover: hover) {
 .mc__footer-link:hover {
-    color: var(--mc-text-primary);
+    color: var(--mc-link-hover);
+}
 }
 
 /* ── Sheet (mobile bottom-sheet preview) ─────────────────────────────────── */
@@ -448,10 +453,6 @@ body {
     .mc__btn > svg {
         margin: 0;
     }
-    .mc__autosave-btn {
-        padding: 8px;
-    }
-
     /* ── Sheet: 3-state bottom panel ──────────────────────────────────────── */
     .mc__sheet {
         display: flex;
@@ -464,7 +465,7 @@ body {
         background: var(--mc-bg-deep);
         border-radius: var(--mc-radius-lg) var(--mc-radius-lg) 0 0;
         overflow: hidden;
-        transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: height 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.12);
     }
     .mc__sheet--dragging {
@@ -566,7 +567,7 @@ body {
         opacity: 0;
         width: 0;
         overflow: hidden;
-        transition: opacity 0.25s ease, width 0.25s ease;
+        transition: opacity 0.2s ease, width 0.2s ease;
     }
     .mc__sheet--full .mc__sheet-back {
         opacity: 1;
@@ -601,7 +602,7 @@ body {
     }
     .mc__sheet--peek .mc__card-wrapper,
     .mc__sheet--full .mc__card-wrapper {
-        animation: sheet-card-enter 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation: sheet-card-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
     .mc__sheet--peek .mc__card-wrapper:nth-child(1),
     .mc__sheet--full .mc__card-wrapper:nth-child(1) { animation-delay: 0.05s; }
@@ -647,5 +648,4 @@ body {
     .mc__card--story    { width: 180px; height: 320px; }
     .mc__card--square   { width: 200px; height: 200px; }
     .mc__card--wide     { width: 240px; height: 135px; }
-    .mc__autosave-btn { width: 100%; justify-content: flex-end; font-size: 0.78rem; }
 }

@@ -39,6 +39,10 @@ describe('palettes', () => {
                 expect(p).toHaveProperty('body');
             });
 
+            it(`palette[${i}] should not have deprecated name key`, () => {
+                expect(p).not.toHaveProperty('name');
+            });
+
             it(`palette[${i}] should have valid hex color for bg`, () => {
                 expect(p.bg).toMatch(HEX_RE);
             });
@@ -65,15 +69,8 @@ describe('palettes', () => {
 
     describe('dark vs light palette groups', () => {
         const luminance = (hex) => {
-            const { r, g, b } = (() => {
-                const s = hex.replace('#', '');
-                return {
-                    r: parseInt(s.slice(0, 2), 16),
-                    g: parseInt(s.slice(2, 4), 16),
-                    b: parseInt(s.slice(4, 6), 16),
-                };
-            })();
-            return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            const s = hex.replace('#', '');
+            return (0.299 * parseInt(s.slice(0, 2), 16) + 0.587 * parseInt(s.slice(2, 4), 16) + 0.114 * parseInt(s.slice(4, 6), 16)) / 255;
         };
 
         it('first 5 palettes should have dark backgrounds', () => {
@@ -86,6 +83,17 @@ describe('palettes', () => {
             for (let i = 5; i < 10; i++) {
                 expect(luminance(PALETTES[i].bg)).toBeGreaterThan(0.5);
             }
+        });
+
+        it('palette[0] (dark classic) should use design system gray scale', () => {
+            expect(PALETTES[0].head).toBe('#F5F5F5');
+            expect(PALETTES[0].body).toBe('#B0B0B0');
+        });
+
+        it('palette[5] (warm beige) should use design system warm bg', () => {
+            expect(PALETTES[5].bg).toBe('#faf7f0');
+            expect(PALETTES[5].head).toBe('#1A1A1A');
+            expect(PALETTES[5].body).toBe('#666666');
         });
     });
 });

@@ -11,7 +11,7 @@ import { store, readDomSettings, writeDomSettings } from '../store.js';
 import { renderPalettes, renderLayouts, openDrawer, closeDrawer } from './drawer.js';
 import { refresh } from './preview.js';
 import { persist } from '../storage.js';
-import { saveDraft, getCurrentId, setCurrentId, clearCurrentId, getAutoSave, setAutoSave } from '../draft.js';
+import { saveDraft, getCurrentId, setCurrentId, clearCurrentId, getAutoSave } from '../draft.js';
 import { exportImages } from '../image-upload.js';
 import { openDraftsPanel } from './drafts-panel.js';
 import JSZip from 'jszip';
@@ -274,27 +274,11 @@ export function bindEvents() {
         }
     });
 
-    const updateAutosaveUI = (enabled) => {
-        dom.autosaveToggle.classList.toggle('mc__autosave-btn--on', enabled);
-        // Also update mobile overflow version
-        const mobileAutosave = document.getElementById('mc-autosave-m');
-        if (mobileAutosave) mobileAutosave.classList.toggle('mc__autosave-btn--on', enabled);
-    };
-    updateAutosaveUI(getAutoSave());
-
-    dom.autosaveToggle.addEventListener('click', () => {
-        const enabled = !getAutoSave();
-        setAutoSave(enabled);
-        updateAutosaveUI(enabled);
-        if (enabled) performAutoSave();
-    });
-
     dom.draftsBtn.addEventListener('click', openDraftsPanel);
 
     // ── Mobile overflow menu ──────────────────────────────────────────────
     const overflowArea = document.getElementById('mc-overflow-area');
     const overflowBtn = document.getElementById('mc-overflow-btn');
-    const mobileAutosave = document.getElementById('mc-autosave-m');
     const mobileDrafts = document.getElementById('mc-drafts-m');
 
     if (overflowBtn && overflowArea) {
@@ -306,15 +290,6 @@ export function bindEvents() {
             if (!overflowArea.contains(e.target)) {
                 overflowArea.classList.remove('mc__overflow--open');
             }
-        });
-    }
-
-    if (mobileAutosave) {
-        mobileAutosave.addEventListener('click', () => {
-            const enabled = !getAutoSave();
-            setAutoSave(enabled);
-            updateAutosaveUI(enabled);
-            if (enabled) performAutoSave();
         });
     }
 

@@ -1,4 +1,4 @@
-import { listDrafts, loadDraft, deleteDraft, setCurrentId, clearCurrentId, getCurrentId } from '../draft.js';
+import { listDrafts, loadDraft, deleteDraft, setCurrentId, clearCurrentId, getCurrentId, getAutoSave, setAutoSave } from '../draft.js';
 import { importImages } from '../image-upload.js';
 import { dom } from '../dom.js';
 import { showToast } from '../toast.js';
@@ -30,7 +30,22 @@ function createPanel() {
     closeBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
     closeBtn.addEventListener('click', closeDraftsPanel);
 
+    const autosaveToggle = document.createElement('button');
+    autosaveToggle.className = 'mc__btn mc__btn--sm mc__drafts-autosave';
+    autosaveToggle.setAttribute('data-i18n', 'toolbar.autosave');
+    autosaveToggle.textContent = t('toolbar.autosave');
+    autosaveToggle.addEventListener('click', () => {
+        const enabled = !getAutoSave();
+        setAutoSave(enabled);
+        autosaveToggle.classList.toggle('mc__drafts-autosave--on', enabled);
+    });
+    // Set initial state
+    if (getAutoSave()) {
+        autosaveToggle.classList.add('mc__drafts-autosave--on');
+    }
+
     header.appendChild(title);
+    header.appendChild(autosaveToggle);
     header.appendChild(closeBtn);
 
     const listContainer = document.createElement('div');

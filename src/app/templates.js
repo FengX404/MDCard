@@ -22,8 +22,8 @@ const LAYOUTS = [
             ruleStyle: 'hairline',
         },
         defaults: {
-            pad: 26,
-            my: 10,
+            pad: 24,
+            my: 12,
             bw: 0,
             br: 0,
         },
@@ -52,7 +52,7 @@ const LAYOUTS = [
         },
         defaults: {
             pad: 40,
-            my: 14,
+            my: 12,
             bw: 0,
             br: 0,
         },
@@ -81,8 +81,8 @@ const LAYOUTS = [
         },
         defaults: {
             pad: 36, my: 12, bw: 0, br: 0,
-            h1: 24, h2: 18, h3: 15,
-            bodyFs: 15, lh: 1.6,
+            h1: 24, h2: 18, h3: 14,
+            bodyFs: 14, lh: 1.6,
         },
     },
     {
@@ -109,7 +109,7 @@ const LAYOUTS = [
         },
         defaults: {
             pad: 36,
-            my: 10,
+            my: 12,
             bw: 0,
             br: 0,
         },
@@ -137,9 +137,9 @@ const LAYOUTS = [
             ruleStyle: 'dashed',
         },
         defaults: {
-            pad: 28, my: 8, bw: 0, br: 16,
-            h1: 17, h2: 16, h3: 14,
-            bodyFs: 14, lh: 1.35,
+            pad: 28, my: 8, bw: 0, br: 12,
+            h1: 18, h2: 16, h3: 14,
+            bodyFs: 14, lh: 1.4,
         },
     },
     {
@@ -166,8 +166,8 @@ const LAYOUTS = [
         },
         defaults: {
             pad: 48, my: 28, bw: 0, br: 0,
-            h1: 28, h2: 24, h3: 17,
-            bodyFs: 16, lh: 1.35,
+            h1: 28, h2: 24, h3: 18,
+            bodyFs: 16, lh: 1.4,
         },
     },
 ];

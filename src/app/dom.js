@@ -22,7 +22,6 @@ export const dom = {
     langBtn:      $('mc-lang-btn'),
     langLabel:    $('mc-lang-label'),
     langDropdown: $('mc-lang-dropdown'),
-    autosaveToggle: $('mc-autosave'),
     draftsBtn:       $('mc-drafts'),
     h1: $('mc-h1'),     h1V: $('mc-h1-val'),
     h2: $('mc-h2'),     h2V: $('mc-h2-val'),

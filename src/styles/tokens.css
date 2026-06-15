@@ -3,34 +3,75 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
+    /* ══ 品牌色 ════════════════════════════════════════════════════════════ */
+    --mc-accent: #1BA784;           /* 竹绿 — 图标/品牌标识 */
+    --mc-accent-hover: #158A6D;
+    --mc-accent-soft: rgba(27, 167, 132, 0.15);
+    --mc-amber: #C87D3A;            /* 琥珀 — Badge/标签点缀，面积≤10% */
+    --mc-amber-hover: #A6642E;
+    --mc-amber-soft: rgba(200, 125, 58, 0.15);
+    --mc-link: #107A5B;             /* 链接 — WCAG AA 5.0:1 */
+    --mc-link-hover: #0d6149;
+
+    /* ══ 按钮色 ════════════════════════════════════════════════════════════ */
+    --mc-btn-primary-bg: #148669;   /* Primary 按钮底色 — 白字对比度 4.5:1 */
+    --mc-btn-primary-hover: #107A5B;
+    --mc-text-on-brand: #ffffff;    /* 品牌色上文字 */
+
+    /* ══ 灰度色板 8档 ══════════════════════════════════════════════════════ */
+    --mc-gray-50: #F5F5F5;          /* 卡片背景 */
+    --mc-gray-100: #EBEBEB;         /* hover 背景 */
+    --mc-gray-200: #E0E0E0;         /* 边框 */
+    --mc-gray-400: #B0B0B0;         /* disabled 文字 */
+    --mc-gray-500: #808080;         /* ⚠️ 仅 placeholder/decorative，禁正文 */
+    --mc-gray-600: #666666;         /* 辅助正文 */
+    --mc-gray-800: #333333;         /* 正文 */
+    --mc-gray-900: #1A1A1A;         /* 标题 */
+
+    /* ══ 语义色 + 文字变体（暗色模式: 提亮以保持可读性） ══════════════════ */
+    --mc-success: #4ade80;
+    --mc-success-text: #86efac;
+    --mc-success-soft: rgba(74, 222, 128, 0.15);
+    --mc-warning: #fbbf24;
+    --mc-warning-text: #fde68a;
+    --mc-warning-soft: rgba(251, 191, 36, 0.15);
+    --mc-error: #f87171;
+    --mc-error-text: #fca5a5;       /* 文字用 -text 变体 */
+    --mc-info: #60a5fa;
+    --mc-info-text: #93c5fd;
+    --mc-info-soft: rgba(96, 165, 250, 0.15);
+
+    /* ══ 背景/玻璃态 ═══════════════════════════════════════════════════════
+       Project Override: 暗色模式使用绿色调表面 (#0d211a) 代替
+       设计系统中性灰色暗色模式 (#161616/#1E1E1E)。
+       MDCard 刻意采用暗绿色毛玻璃美学以维持项目视觉识别。
+       覆盖依据记录于项目根目录 design-override.yaml。
+       ══════════════════════════════════════════════════════════════════════ */
+    --mc-brand-primary-light: #E8F6F2;
+    --mc-brand-accent-light: #F9EFE6;
+    --mc-accent-shadow: 0 4px 12px rgba(27, 167, 132, 0.35);
     --mc-bg-deep: #161616;
     --mc-bg-mid: #0d211a;
     --mc-bg-surface: rgba(13, 33, 26, 0.6);
     --mc-glass-bg: rgba(13, 33, 26, 0.82);
     --mc-glass-border: rgba(255, 255, 255, 0.12);
     --mc-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --mc-accent: #1BA784;
-    --mc-accent-hover: #45c9a3;
-    --mc-accent-soft: rgba(27, 167, 132, 0.15);
-    --mc-text-primary: #e8f0ec;
-    --mc-text-secondary: #8dd8c0;
-    --mc-text-muted: #5a8a7a;
-    --mc-radius-sm: 8px;
-    --mc-radius-md: 12px;
-    --mc-radius-lg: 12px;
-    --mc-radius-xl: 9999px;
-    --mc-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     --mc-grad-a: rgba(27, 167, 132, 0.10);
     --mc-grad-b: rgba(27, 167, 132, 0.04);
     --mc-grad-c: rgba(27, 167, 132, 0.04);
-    --mc-btn-primary-bg: #148669;
-    --mc-btn-primary-to: #1BA784;
-    --mc-text-on-brand: #ffffff;
     --mc-toolbar-bg: rgba(8, 20, 16, 0.85);
     --mc-editor-bg: rgba(8, 20, 16, 0.5);
     --mc-glass-hover: rgba(13, 33, 26, 0.5);
+
+    /* ══ 文字色 ═════════════════════════════════════════════════════════════ */
+    --mc-text-primary: #e8f0ec;
+    --mc-text-secondary: #8dd8c0;
+    --mc-text-muted: #5a8a7a;
+
+    /* ══ 其他 ════════════════════════════════════════════════════════════════ */
     --mc-danger: #f87171;
     --mc-danger-alpha: rgba(248, 113, 113, 0.15);
+    --mc-danger-hover: #ef4444;
     --mc-badge-bg: rgba(0, 0, 0, 0.5);
     --mc-badge-text: #ffffff;
     --mc-drawer-overlay: rgba(0, 0, 0, 0.4);
@@ -39,10 +80,23 @@
     --mc-pre-bg: rgba(0, 0, 0, 0.15);
     --mc-td-border: rgba(255, 255, 255, 0.06);
     --mc-watermark-c: rgba(255, 255, 255, 0.15);
-    --mc-brand-to: #6ee7c7;
+    --mc-brand-to: #158A6D;
     --mc-slider-track: rgba(255, 255, 255, 0.1);
-    --mc-radius-2xs: 4px;
+
+    /* ══ 聚焦环 ══════════════════════════════════════════════════════════════ */
+    --mc-focus-ring: 0 0 0 3px rgba(27, 167, 132, 0.25);
+
+    /* ══ 圆角 ════════════════════════════════════════════════════════════════ */
     --mc-radius-xs: 4px;
+    --mc-radius-sm: 8px;
+    --mc-radius-md: 12px;
+    --mc-radius-lg: 16px;
+    --mc-radius-full: 9999px;
+
+    /* ══ 动效 ════════════════════════════════════════════════════════════════ */
+    --mc-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ══ 字体 ════════════════════════════════════════════════════════════════ */
     --mc-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --mc-font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
     --mc-font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Menlo', monospace;
@@ -51,28 +105,67 @@
 /* ── Light appearance ──────────────────────────────────────────────────── */
 
 [data-appearance="light"] {
-    --mc-bg-deep: #f5f5f5;
-    --mc-bg-mid: #ebebeb;
-    --mc-bg-surface: rgba(235, 235, 235, 0.6);
+    /* ══ 背景 — 暖米色系 ════════════════════════════════════════════════════ */
+    --mc-bg-deep: #faf7f0;           /* 暖米 — 设计系统主背景 */
+    --mc-bg-mid: #f5f0e6;            /* 暖米浅色 */
+    --mc-bg-surface: rgba(245, 240, 230, 0.6);
     --mc-glass-bg: rgba(255, 255, 255, 0.6);
     --mc-glass-border: rgba(0, 0, 0, 0.08);
     --mc-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    --mc-accent: #158A6D;
-    --mc-accent-hover: #1BA784;
+    --mc-toolbar-bg: rgba(250, 247, 240, 0.9);
+    --mc-editor-bg: rgba(255, 255, 255, 0.7);
+    --mc-glass-hover: rgba(0, 0, 0, 0.06);
+
+    /* ══ 品牌色（保持一致 — 设计系统 invariant） ═════════════════════════════ */
+    --mc-accent: #1BA784;
+    --mc-accent-hover: #158A6D;
     --mc-accent-soft: rgba(27, 167, 132, 0.1);
+    --mc-amber: #C87D3A;
+    --mc-amber-hover: #A6642E;
+    --mc-amber-soft: rgba(200, 125, 58, 0.15);
+    --mc-link: #107A5B;
+    --mc-link-hover: #0d6149;
+
+    /* ══ 按钮色 ═════════════════════════════════════════════════════════════ */
     --mc-btn-primary-bg: #148669;
-    --mc-btn-primary-to: #1BA784;
+    --mc-btn-primary-hover: #107A5B;
+    --mc-text-on-brand: #ffffff;
+
+    /* ══ 灰度色板 8档 ═══════════════════════════════════════════════════════ */
+    --mc-gray-50: #F5F5F5;
+    --mc-gray-100: #EBEBEB;
+    --mc-gray-200: #E0E0E0;
+    --mc-gray-400: #B0B0B0;
+    --mc-gray-500: #808080;
+    --mc-gray-600: #666666;
+    --mc-gray-800: #333333;
+    --mc-gray-900: #1A1A1A;
+
+    /* ══ 语义色 + 文字变体 ══════════════════════════════════════════════════ */
+    --mc-success: #22c55e;
+    --mc-success-text: #15803d;
+    --mc-success-soft: rgba(34, 197, 94, 0.15);
+    --mc-warning: #f59e0b;
+    --mc-warning-text: #b45309;
+    --mc-warning-soft: rgba(245, 158, 11, 0.15);
+    --mc-error: #ef4444;
+    --mc-error-text: #b91c1c;
+    --mc-info: #3b82f6;
+    --mc-info-text: #1d4ed8;
+    --mc-info-soft: rgba(59, 130, 246, 0.15);
+
+    /* ══ 文字色 ══════════════════════════════════════════════════════════════ */
     --mc-text-primary: #1a1a1a;
-    --mc-text-secondary: #158A6D;
+    --mc-text-secondary: #107A5B;   /* 亮色模式: #1BA784 禁用于文字，#107A5B(link) WCAG AA 5.0:1 */
     --mc-text-muted: #666666;
+
+    /* ══ 其他 ═════════════════════════════════════════════════════════════════ */
     --mc-grad-a: rgba(0, 0, 0, 0.02);
     --mc-grad-b: rgba(0, 0, 0, 0.01);
     --mc-grad-c: rgba(0, 0, 0, 0.01);
-    --mc-toolbar-bg: rgba(245, 245, 245, 0.9);
-    --mc-editor-bg: rgba(255, 255, 255, 0.7);
-    --mc-glass-hover: rgba(0, 0, 0, 0.06);
     --mc-danger: #ef4444;
     --mc-danger-alpha: rgba(239, 68, 68, 0.12);
+    --mc-danger-hover: #b91c1c;
     --mc-badge-bg: rgba(255, 255, 255, 0.8);
     --mc-badge-text: #1a1a1a;
     --mc-drawer-overlay: rgba(0, 0, 0, 0.15);
@@ -83,6 +176,11 @@
     --mc-watermark-c: rgba(0, 0, 0, 0.1);
     --mc-brand-to: #1BA784;
     --mc-slider-track: rgba(0, 0, 0, 0.08);
+
+    /* ══ 聚焦环 ══════════════════════════════════════════════════════════════ */
+    --mc-focus-ring: 0 0 0 3px rgba(27, 167, 132, 0.25);
+
+    /* ══ 字体 ════════════════════════════════════════════════════════════════ */
     --mc-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     --mc-font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
     --mc-font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Menlo', monospace;
@@ -99,28 +197,67 @@
 
 @media (prefers-color-scheme: light) {
     [data-appearance="system"] {
-        --mc-bg-deep: #f5f5f5;
-        --mc-bg-mid: #ebebeb;
-        --mc-bg-surface: rgba(235, 235, 235, 0.6);
+        /* ══ 背景 — 暖米色系 ════════════════════════════════════════════════════ */
+        --mc-bg-deep: #faf7f0;
+        --mc-bg-mid: #f5f0e6;
+        --mc-bg-surface: rgba(245, 240, 230, 0.6);
         --mc-glass-bg: rgba(255, 255, 255, 0.6);
         --mc-glass-border: rgba(0, 0, 0, 0.08);
         --mc-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-        --mc-accent: #158A6D;
-        --mc-accent-hover: #1BA784;
+        --mc-toolbar-bg: rgba(250, 247, 240, 0.9);
+        --mc-editor-bg: rgba(255, 255, 255, 0.7);
+        --mc-glass-hover: rgba(0, 0, 0, 0.06);
+
+        /* ══ 品牌色 ═════════════════════════════════════════════════════════════ */
+        --mc-accent: #1BA784;
+        --mc-accent-hover: #158A6D;
         --mc-accent-soft: rgba(27, 167, 132, 0.1);
+        --mc-amber: #C87D3A;
+        --mc-amber-hover: #A6642E;
+        --mc-amber-soft: rgba(200, 125, 58, 0.15);
+        --mc-link: #107A5B;
+        --mc-link-hover: #0d6149;
+
+        /* ══ 按钮色 ═════════════════════════════════════════════════════════════ */
         --mc-btn-primary-bg: #148669;
-        --mc-btn-primary-to: #1BA784;
+        --mc-btn-primary-hover: #107A5B;
+        --mc-text-on-brand: #ffffff;
+
+        /* ══ 灰度色板 8档 ═══════════════════════════════════════════════════════ */
+        --mc-gray-50: #F5F5F5;
+        --mc-gray-100: #EBEBEB;
+        --mc-gray-200: #E0E0E0;
+        --mc-gray-400: #B0B0B0;
+        --mc-gray-500: #808080;
+        --mc-gray-600: #666666;
+        --mc-gray-800: #333333;
+        --mc-gray-900: #1A1A1A;
+
+        /* ══ 语义色 + 文字变体 ══════════════════════════════════════════════════ */
+        --mc-success: #22c55e;
+        --mc-success-text: #15803d;
+        --mc-success-soft: rgba(34, 197, 94, 0.15);
+        --mc-warning: #f59e0b;
+        --mc-warning-text: #b45309;
+        --mc-warning-soft: rgba(245, 158, 11, 0.15);
+        --mc-error: #ef4444;
+        --mc-error-text: #b91c1c;
+        --mc-info: #3b82f6;
+        --mc-info-text: #1d4ed8;
+        --mc-info-soft: rgba(59, 130, 246, 0.15);
+
+        /* ══ 文字色 ══════════════════════════════════════════════════════════════ */
         --mc-text-primary: #1a1a1a;
-        --mc-text-secondary: #158A6D;
+        --mc-text-secondary: #107A5B;   /* 亮色模式: #1BA784 禁用于文字，#107A5B(link) WCAG AA 5.0:1 */
         --mc-text-muted: #666666;
+
+        /* ══ 其他 ═════════════════════════════════════════════════════════════════ */
         --mc-grad-a: rgba(0, 0, 0, 0.02);
         --mc-grad-b: rgba(0, 0, 0, 0.01);
         --mc-grad-c: rgba(0, 0, 0, 0.01);
-        --mc-toolbar-bg: rgba(245, 245, 245, 0.9);
-        --mc-editor-bg: rgba(255, 255, 255, 0.7);
-        --mc-glass-hover: rgba(0, 0, 0, 0.06);
         --mc-danger: #ef4444;
         --mc-danger-alpha: rgba(239, 68, 68, 0.12);
+        --mc-danger-hover: #b91c1c;
         --mc-badge-bg: rgba(255, 255, 255, 0.8);
         --mc-badge-text: #1a1a1a;
         --mc-drawer-overlay: rgba(0, 0, 0, 0.15);
@@ -131,6 +268,11 @@
         --mc-watermark-c: rgba(0, 0, 0, 0.1);
         --mc-brand-to: #1BA784;
         --mc-slider-track: rgba(0, 0, 0, 0.08);
+
+        /* ══ 聚焦环 ══════════════════════════════════════════════════════════════ */
+        --mc-focus-ring: 0 0 0 3px rgba(27, 167, 132, 0.25);
+
+        /* ══ 字体 ════════════════════════════════════════════════════════════════ */
         --mc-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
         --mc-font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
         --mc-font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Menlo', monospace;

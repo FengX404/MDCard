@@ -16,15 +16,15 @@ export const FORMATS = {
  * @type {Record<string, number[]>}
  */
 export const LEVELS = {
-    h1:     [14, 17, 20, 24, 26, 28, 31, 34, 37, 40, 44],
-    h2:     [12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 34],
-    h3:     [12, 13, 14, 15, 17, 18, 20, 22, 24, 26, 28],
-    bodyFs: [11, 12, 13, 14, 15, 16, 18, 20, 22, 24, 26],
-    lh:     [1.05, 1.1, 1.25, 1.35, 1.45, 1.5, 1.6, 1.75, 1.9, 2.1, 2.4],
-    pad:    [12, 17, 22, 26, 28, 30, 38, 48, 60, 76, 96],
-    my:     [2,  2,  4,  6,  10, 14, 20, 28, 38, 48, 60],
+    h1:     [16, 18, 20, 24, 24, 28, 28, 36, 36, 48, 48],
+    h2:     [14, 16, 18, 18, 20, 20, 24, 24, 28, 36, 36],
+    h3:     [12, 14, 14, 16, 16, 18, 18, 20, 24, 24, 28],
+    bodyFs: [11, 12, 12, 14, 14, 16, 16, 18, 20, 24, 28],
+    lh:     [1.15, 1.2, 1.25, 1.4, 1.5, 1.6, 1.75, 1.75, 1.75, 1.75, 1.75],
+    pad:    [12, 16, 20, 24, 28, 32, 40, 48, 60, 76, 96],
+    my:     [4,  4,  4,  8,  12, 16, 20, 28, 40, 48, 60],
     bw:     [0,  1,  2,  3,  4,  5,  7,  9,  12, 14, 16],
-    br:     [0,  2,  4,  6,  8,  10, 16, 22, 30, 40, 50],
+    br:     [0,  0,  4,  4,  8,  8,  12, 12, 9999, 9999, 9999],
 };
 
 /**
@@ -53,7 +53,7 @@ export function valueToLevel(key, value) {
     let bestDist = Infinity;
     for (let i = 0; i < table.length; i++) {
         const dist = Math.abs(table[i] - value);
-        if (dist < bestDist) { bestDist = dist; best = i; }
+        if (dist <= bestDist) { bestDist = dist; best = i; }
     }
     return best;
 }
@@ -63,10 +63,10 @@ export function valueToLevel(key, value) {
  * @type {{ h1: number, h2: number, h3: number, bodyFs: number, lh: number, bg: string, headC: string, bodyC: string, pad: number, my: number, bw: number, bc: string, br: number, watermark: string }}
  */
 export const DEFAULTS = {
-    h1: 20, h2: 18, h3: 15,
+    h1: 20, h2: 18, h3: 16,
     bodyFs: 14, lh: 1.25,
-    bg: '#faf7f0', headC: '#3b2d1f', bodyC: '#292018',
-    pad: 26, my: 10,
+    bg: '#faf7f0', headC: '#1A1A1A', bodyC: '#333333',
+    pad: 24, my: 12,
     bw: 0, bc: '#E0E0E0',
     br: 0,
     watermark: 'MDCard',
