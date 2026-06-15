@@ -1,0 +1,3 @@
+[submodule ".trae/skills/personal-design-system"]
+	path = .trae/skills/personal-design-system
+	url = git@github.com:FengX404/personal-design-system.git
