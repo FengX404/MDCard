@@ -1,5 +1,5 @@
 const PALETTES = [
-    { bg: '#000000', head: '#fafafa', body: '#bbbbbb' },
+    { bg: '#1A1A1A', head: '#fafafa', body: '#bbbbbb' },
     { bg: '#0b121f', head: '#fdf3d1', body: '#b8a88a' },
     { bg: '#071712', head: '#f8f2ea', body: '#89bfb0' },
     { bg: '#181412', head: '#f2e9d8', body: '#b4a494' },

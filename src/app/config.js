@@ -67,7 +67,7 @@ export const DEFAULTS = {
     bodyFs: 14, lh: 1.25,
     bg: '#faf7f0', headC: '#3b2d1f', bodyC: '#292018',
     pad: 26, my: 10,
-    bw: 0, bc: '#ffffff',
+    bw: 0, bc: '#E0E0E0',
     br: 0,
     watermark: 'MDCard',
 };
