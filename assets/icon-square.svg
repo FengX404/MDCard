@@ -1,0 +1,45 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 浅竹绿渐变底 -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9F6"/>
+      <stop offset="100%" stop-color="#DDF0E8"/>
+    </linearGradient>
+
+    <!-- 毛玻璃层 -->
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.18)"/>
+    </linearGradient>
+
+    <!-- 深竹绿 M 字母 -->
+    <linearGradient id="m" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#158A6D"/>
+      <stop offset="100%" stop-color="#0F6B53"/>
+    </linearGradient>
+
+    <!-- 微内阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#158A6D" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- 正方形背景 rx=0 -->
+  <rect width="1024" height="1024" rx="0" fill="url(#bg)"/>
+
+  <!-- 毛玻璃层 -->
+  <rect width="1010" height="1010" x="7" y="7" rx="0" fill="url(#glass)" filter="url(#shadow)"/>
+
+  <!-- M 字母 -->
+  <path d="
+    M 276,750
+    Q 276,318 296,290
+    Q 492,544 512,556
+    Q 728,290 748,290
+    Q 768,318 768,750
+    L 656,750
+    Q 648,440 512,624
+    Q 376,440 368,750
+    Z
+  " fill="url(#m)"/>
+</svg>
